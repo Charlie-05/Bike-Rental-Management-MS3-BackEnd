@@ -25,14 +25,14 @@ namespace BikeRentalApplication.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<InventoryUnit>>> GetInventoryUnit()
         {
-            return await _context.InventoryUnit.ToListAsync();
+            return await _context.InventoryUnits.ToListAsync();
         }
 
         // GET: api/InventoryUnits/5
         [HttpGet("{id}")]
         public async Task<ActionResult<InventoryUnit>> GetInventoryUnit(string id)
         {
-            var inventoryUnit = await _context.InventoryUnit.FindAsync(id);
+            var inventoryUnit = await _context.InventoryUnits.FindAsync(id);
 
             if (inventoryUnit == null)
             {
@@ -78,7 +78,7 @@ namespace BikeRentalApplication.Controllers
         [HttpPost]
         public async Task<ActionResult<InventoryUnit>> PostInventoryUnit(InventoryUnit inventoryUnit)
         {
-            _context.InventoryUnit.Add(inventoryUnit);
+            _context.InventoryUnits.Add(inventoryUnit);
             try
             {
                 await _context.SaveChangesAsync();
@@ -102,13 +102,13 @@ namespace BikeRentalApplication.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteInventoryUnit(string id)
         {
-            var inventoryUnit = await _context.InventoryUnit.FindAsync(id);
+            var inventoryUnit = await _context.InventoryUnits.FindAsync(id);
             if (inventoryUnit == null)
             {
                 return NotFound();
             }
 
-            _context.InventoryUnit.Remove(inventoryUnit);
+            _context.InventoryUnits.Remove(inventoryUnit);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -116,7 +116,7 @@ namespace BikeRentalApplication.Controllers
 
         private bool InventoryUnitExists(string id)
         {
-            return _context.InventoryUnit.Any(e => e.RegistrationNo == id);
+            return _context.InventoryUnits.Any(e => e.RegistrationNo == id);
         }
     }
 }

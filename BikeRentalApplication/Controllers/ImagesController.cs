@@ -25,14 +25,14 @@ namespace BikeRentalApplication.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Image>>> GetImage()
         {
-            return await _context.Image.ToListAsync();
+            return await _context.Images.ToListAsync();
         }
 
         // GET: api/Images/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Image>> GetImage(Guid id)
         {
-            var image = await _context.Image.FindAsync(id);
+            var image = await _context.Images.FindAsync(id);
 
             if (image == null)
             {
@@ -78,7 +78,7 @@ namespace BikeRentalApplication.Controllers
         [HttpPost]
         public async Task<ActionResult<Image>> PostImage(Image image)
         {
-            _context.Image.Add(image);
+          await _context.AddAsync(image);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetImage", new { id = image.Id }, image);
@@ -88,13 +88,13 @@ namespace BikeRentalApplication.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteImage(Guid id)
         {
-            var image = await _context.Image.FindAsync(id);
+            var image = await _context.Images.FindAsync(id);
             if (image == null)
             {
                 return NotFound();
             }
 
-            _context.Image.Remove(image);
+            _context.Images.Remove(image);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -102,7 +102,7 @@ namespace BikeRentalApplication.Controllers
 
         private bool ImageExists(Guid id)
         {
-            return _context.Image.Any(e => e.Id == id);
+            return _context.Images.Any(e => e.Id == id);
         }
     }
 }

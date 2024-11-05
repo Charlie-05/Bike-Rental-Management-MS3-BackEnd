@@ -44,11 +44,11 @@ namespace BikeRentalApplication.Database
 
             base.OnModelCreating(modelBuilder);
         }
-        public DbSet<BikeRentalApplication.Entities.Bike> Bike { get; set; } = default!;
-        public DbSet<BikeRentalApplication.Entities.User> User { get; set; } = default!;
-        public DbSet<BikeRentalApplication.Entities.Image> Image { get; set; } = default!;
-        public DbSet<BikeRentalApplication.Entities.InventoryUnit> InventoryUnit { get; set; } = default!;
-        public DbSet<BikeRentalApplication.Entities.RentalRequest> RentalRequest { get; set; } = default!;
-        public DbSet<BikeRentalApplication.Entities.RentalRecord> RentalRecord { get; set; } = default!;
+        public DbSet<BikeRentalApplication.Entities.Bike> Bikes { get; set; } = default!;
+        public DbSet<BikeRentalApplication.Entities.User> Users { get; set; } = default!;
+        public DbSet<BikeRentalApplication.Entities.Image> Images { get; set; } = default!;
+        public DbSet<BikeRentalApplication.Entities.InventoryUnit> InventoryUnits { get; set; } = default!;
+        public DbSet<BikeRentalApplication.Entities.RentalRequest> RentalRequests { get; set; } = default!;
+        public DbSet<BikeRentalApplication.Entities.RentalRecord> RentalRecords { get; set; } = default!;
     }
 }

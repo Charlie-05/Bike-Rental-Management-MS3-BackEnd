@@ -25,14 +25,14 @@ namespace BikeRentalApplication.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<RentalRequest>>> GetRentalRequest()
         {
-            return await _context.RentalRequest.ToListAsync();
+            return await _context.RentalRequests.ToListAsync();
         }
 
         // GET: api/RentalRequests/5
         [HttpGet("{id}")]
         public async Task<ActionResult<RentalRequest>> GetRentalRequest(Guid id)
         {
-            var rentalRequest = await _context.RentalRequest.FindAsync(id);
+            var rentalRequest = await _context.RentalRequests.FindAsync(id);
 
             if (rentalRequest == null)
             {
@@ -78,7 +78,7 @@ namespace BikeRentalApplication.Controllers
         [HttpPost]
         public async Task<ActionResult<RentalRequest>> PostRentalRequest(RentalRequest rentalRequest)
         {
-            _context.RentalRequest.Add(rentalRequest);
+            _context.RentalRequests.Add(rentalRequest);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetRentalRequest", new { id = rentalRequest.Id }, rentalRequest);
@@ -88,13 +88,13 @@ namespace BikeRentalApplication.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRentalRequest(Guid id)
         {
-            var rentalRequest = await _context.RentalRequest.FindAsync(id);
+            var rentalRequest = await _context.RentalRequests.FindAsync(id);
             if (rentalRequest == null)
             {
                 return NotFound();
             }
 
-            _context.RentalRequest.Remove(rentalRequest);
+            _context.RentalRequests.Remove(rentalRequest);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -102,7 +102,7 @@ namespace BikeRentalApplication.Controllers
 
         private bool RentalRequestExists(Guid id)
         {
-            return _context.RentalRequest.Any(e => e.Id == id);
+            return _context.RentalRequests.Any(e => e.Id == id);
         }
     }
 }

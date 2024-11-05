@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BikeRentalApplication.Database;
 using BikeRentalApplication.Entities;
+using BikeRentalApplication.IServices;
 
 namespace BikeRentalApplication.Controllers
 {
@@ -15,31 +16,35 @@ namespace BikeRentalApplication.Controllers
     public class BikesController : ControllerBase
     {
         private readonly RentalDbContext _context;
+        private readonly IBikeService _bikeService;
 
-        public BikesController(RentalDbContext context)
+        public BikesController(RentalDbContext context, IBikeService bikeService)
         {
             _context = context;
+            _bikeService = bikeService;
         }
 
         // GET: api/Bikes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Bike>>> GetBike()
+        public async Task<IActionResult> GetBike()
         {
-            return await _context.Bike.ToListAsync();
+            var data = await _bikeService.GetBike();
+            return Ok(data);
         }
 
         // GET: api/Bikes/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Bike>> GetBike(Guid id)
         {
-            var bike = await _context.Bike.FindAsync(id);
-
-            if (bike == null)
+            try
             {
-                return NotFound();
+                var data = await _bikeService.GetBike(id);
+                return Ok(data);
             }
-
-            return bike;
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         // PUT: api/Bikes/5
@@ -51,12 +56,12 @@ namespace BikeRentalApplication.Controllers
             {
                 return BadRequest();
             }
-
-            _context.Entry(bike).State = EntityState.Modified;
+            // _context.Entry(bike).State = EntityState.Modified;          
 
             try
             {
-                await _context.SaveChangesAsync();
+                var data = await _bikeService.PutBike(bike, id);
+                return Ok(data);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -70,39 +75,54 @@ namespace BikeRentalApplication.Controllers
                 }
             }
 
-            return NoContent();
         }
 
         // POST: api/Bikes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Bike>> PostBike(Bike bike)
+        public async Task<IActionResult> PostBike(Bike bike)
         {
-            _context.Bike.Add(bike);
-            await _context.SaveChangesAsync();
+            //_context.Bikes.Add(bike);
+            //await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetBike", new { id = bike.Id }, bike);
+            //return CreatedAtAction("GetBike", new { id = bike.Id }, bike);
+            var data = await _bikeService.PostBike(bike);
+            return Ok(data);
         }
 
         // DELETE: api/Bikes/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBike(Guid id)
         {
-            var bike = await _context.Bike.FindAsync(id);
-            if (bike == null)
+            //var bike = await _context.Bikes.FindAsync(id);
+            //if (bike == null)
+            //{
+            //    return NotFound();
+            //}
+
+            //_context.Bikes.Remove(bike);
+            //await _context.SaveChangesAsync();
+            try
             {
-                return NotFound();
+                var data = await _bikeService.DeleteBike(id);
+                return Ok();
             }
+            catch (DbUpdateConcurrencyException)
+            {
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+           
 
-            _context.Bike.Remove(bike);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+           // return NoContent();
         }
 
         private bool BikeExists(Guid id)
         {
-            return _context.Bike.Any(e => e.Id == id);
+            return _context.Bikes.Any(e => e.Id == id);
         }
     }
 }
