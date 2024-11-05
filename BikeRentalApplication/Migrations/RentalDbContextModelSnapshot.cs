@@ -147,9 +147,6 @@ namespace BikeRentalApplication.Migrations
                     b.Property<bool?>("Notify")
                         .HasColumnType("bit");
 
-                    b.Property<Guid>("RentalRecordId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("RequestTime")
                         .HasColumnType("datetime2");
 

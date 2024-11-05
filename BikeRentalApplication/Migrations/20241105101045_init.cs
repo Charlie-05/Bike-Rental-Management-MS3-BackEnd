@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BikeRentalApplication.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -98,7 +98,6 @@ namespace BikeRentalApplication.Migrations
                     Status = table.Column<int>(type: "int", nullable: false),
                     BikeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     NICNumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    RentalRecordId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Notify = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>

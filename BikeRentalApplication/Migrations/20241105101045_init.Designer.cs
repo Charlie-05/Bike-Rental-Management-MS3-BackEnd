@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BikeRentalApplication.Migrations
 {
     [DbContext(typeof(RentalDbContext))]
-    [Migration("20241105053013_Initial")]
-    partial class Initial
+    [Migration("20241105101045_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -149,9 +149,6 @@ namespace BikeRentalApplication.Migrations
 
                     b.Property<bool?>("Notify")
                         .HasColumnType("bit");
-
-                    b.Property<Guid>("RentalRecordId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("RequestTime")
                         .HasColumnType("datetime2");
