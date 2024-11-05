@@ -25,14 +25,14 @@ namespace BikeRentalApplication.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<RentalRecord>>> GetRentalRecord()
         {
-            return await _context.RentalRecord.ToListAsync();
+            return await _context.RentalRecords.ToListAsync();
         }
 
         // GET: api/RentalRecords/5
         [HttpGet("{id}")]
         public async Task<ActionResult<RentalRecord>> GetRentalRecord(Guid id)
         {
-            var rentalRecord = await _context.RentalRecord.FindAsync(id);
+            var rentalRecord = await _context.RentalRecords.FindAsync(id);
 
             if (rentalRecord == null)
             {
@@ -78,7 +78,7 @@ namespace BikeRentalApplication.Controllers
         [HttpPost]
         public async Task<ActionResult<RentalRecord>> PostRentalRecord(RentalRecord rentalRecord)
         {
-            _context.RentalRecord.Add(rentalRecord);
+            _context.RentalRecords.Add(rentalRecord);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetRentalRecord", new { id = rentalRecord.Id }, rentalRecord);
@@ -88,13 +88,13 @@ namespace BikeRentalApplication.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRentalRecord(Guid id)
         {
-            var rentalRecord = await _context.RentalRecord.FindAsync(id);
+            var rentalRecord = await _context.RentalRecords.FindAsync(id);
             if (rentalRecord == null)
             {
                 return NotFound();
             }
 
-            _context.RentalRecord.Remove(rentalRecord);
+            _context.RentalRecords.Remove(rentalRecord);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -102,7 +102,7 @@ namespace BikeRentalApplication.Controllers
 
         private bool RentalRecordExists(Guid id)
         {
-            return _context.RentalRecord.Any(e => e.Id == id);
+            return _context.RentalRecords.Any(e => e.Id == id);
         }
     }
 }

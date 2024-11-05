@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BikeRentalApplication.Migrations
 {
     [DbContext(typeof(RentalDbContext))]
-    [Migration("20241104120944_Record-Model-FK")]
-    partial class RecordModelFK
+    [Migration("20241105053013_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,7 +48,7 @@ namespace BikeRentalApplication.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Bike");
+                    b.ToTable("Bikes");
                 });
 
             modelBuilder.Entity("BikeRentalApplication.Entities.Image", b =>
@@ -68,7 +68,7 @@ namespace BikeRentalApplication.Migrations
 
                     b.HasIndex("BikeId");
 
-                    b.ToTable("Image");
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("BikeRentalApplication.Entities.InventoryUnit", b =>
@@ -95,7 +95,7 @@ namespace BikeRentalApplication.Migrations
 
                     b.HasIndex("BikeId");
 
-                    b.ToTable("InventoryUnit");
+                    b.ToTable("InventoryUnits");
                 });
 
             modelBuilder.Entity("BikeRentalApplication.Entities.RentalRecord", b =>
@@ -131,7 +131,7 @@ namespace BikeRentalApplication.Migrations
 
                     b.HasIndex("UserNICNumber");
 
-                    b.ToTable("RentalRecord");
+                    b.ToTable("RentalRecords");
                 });
 
             modelBuilder.Entity("BikeRentalApplication.Entities.RentalRequest", b =>
@@ -165,7 +165,7 @@ namespace BikeRentalApplication.Migrations
 
                     b.HasIndex("NICNumber");
 
-                    b.ToTable("RentalRequest");
+                    b.ToTable("RentalRequests");
                 });
 
             modelBuilder.Entity("BikeRentalApplication.Entities.User", b =>
@@ -215,7 +215,7 @@ namespace BikeRentalApplication.Migrations
 
                     b.HasKey("NICNumber");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("BikeRentalApplication.Entities.Image", b =>

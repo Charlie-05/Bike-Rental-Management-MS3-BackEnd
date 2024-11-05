@@ -12,7 +12,7 @@ namespace BikeRentalApplication.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Bike",
+                name: "Bikes",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -23,11 +23,11 @@ namespace BikeRentalApplication.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Bike", x => x.Id);
+                    table.PrimaryKey("PK_Bikes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Users",
                 columns: table => new
                 {
                     NICNumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -45,11 +45,11 @@ namespace BikeRentalApplication.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.NICNumber);
+                    table.PrimaryKey("PK_Users", x => x.NICNumber);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Image",
+                name: "Images",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -58,17 +58,17 @@ namespace BikeRentalApplication.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Image", x => x.Id);
+                    table.PrimaryKey("PK_Images", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Image_Bike_BikeId",
+                        name: "FK_Images_Bikes_BikeId",
                         column: x => x.BikeId,
-                        principalTable: "Bike",
+                        principalTable: "Bikes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "InventoryUnit",
+                name: "InventoryUnits",
                 columns: table => new
                 {
                     RegistrationNo = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -80,44 +80,17 @@ namespace BikeRentalApplication.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_InventoryUnit", x => x.RegistrationNo);
+                    table.PrimaryKey("PK_InventoryUnits", x => x.RegistrationNo);
                     table.ForeignKey(
-                        name: "FK_InventoryUnit_Bike_BikeId",
+                        name: "FK_InventoryUnits_Bikes_BikeId",
                         column: x => x.BikeId,
-                        principalTable: "Bike",
+                        principalTable: "Bikes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "RentalRecord",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    RentalOut = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    RentalReturn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Payment = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    BikeRegNo = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    RentalRequestId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserNICNumber = table.Column<string>(type: "nvarchar(450)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RentalRecord", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_RentalRecord_InventoryUnit_BikeRegNo",
-                        column: x => x.BikeRegNo,
-                        principalTable: "InventoryUnit",
-                        principalColumn: "RegistrationNo");
-                    table.ForeignKey(
-                        name: "FK_RentalRecord_User_UserNICNumber",
-                        column: x => x.UserNICNumber,
-                        principalTable: "User",
-                        principalColumn: "NICNumber");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "RentalRequest",
+                name: "RentalRequests",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -130,84 +103,111 @@ namespace BikeRentalApplication.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RentalRequest", x => x.Id);
+                    table.PrimaryKey("PK_RentalRequests", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RentalRequest_Bike_BikeId",
+                        name: "FK_RentalRequests_Bikes_BikeId",
                         column: x => x.BikeId,
-                        principalTable: "Bike",
+                        principalTable: "Bikes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_RentalRequest_RentalRecord_RentalRecordId",
-                        column: x => x.RentalRecordId,
-                        principalTable: "RentalRecord",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_RentalRequest_User_NICNumber",
+                        name: "FK_RentalRequests_Users_NICNumber",
                         column: x => x.NICNumber,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "NICNumber",
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "RentalRecords",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    RentalOut = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    RentalReturn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Payment = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    BikeRegNo = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    RentalRequestId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserNICNumber = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RentalRecords", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RentalRecords_InventoryUnits_BikeRegNo",
+                        column: x => x.BikeRegNo,
+                        principalTable: "InventoryUnits",
+                        principalColumn: "RegistrationNo");
+                    table.ForeignKey(
+                        name: "FK_RentalRecords_RentalRequests_RentalRequestId",
+                        column: x => x.RentalRequestId,
+                        principalTable: "RentalRequests",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_RentalRecords_Users_UserNICNumber",
+                        column: x => x.UserNICNumber,
+                        principalTable: "Users",
+                        principalColumn: "NICNumber");
+                });
+
             migrationBuilder.CreateIndex(
-                name: "IX_Image_BikeId",
-                table: "Image",
+                name: "IX_Images_BikeId",
+                table: "Images",
                 column: "BikeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_InventoryUnit_BikeId",
-                table: "InventoryUnit",
+                name: "IX_InventoryUnits_BikeId",
+                table: "InventoryUnits",
                 column: "BikeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RentalRecord_BikeRegNo",
-                table: "RentalRecord",
+                name: "IX_RentalRecords_BikeRegNo",
+                table: "RentalRecords",
                 column: "BikeRegNo");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RentalRecord_UserNICNumber",
-                table: "RentalRecord",
+                name: "IX_RentalRecords_RentalRequestId",
+                table: "RentalRecords",
+                column: "RentalRequestId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RentalRecords_UserNICNumber",
+                table: "RentalRecords",
                 column: "UserNICNumber");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RentalRequest_BikeId",
-                table: "RentalRequest",
+                name: "IX_RentalRequests_BikeId",
+                table: "RentalRequests",
                 column: "BikeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RentalRequest_NICNumber",
-                table: "RentalRequest",
+                name: "IX_RentalRequests_NICNumber",
+                table: "RentalRequests",
                 column: "NICNumber");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RentalRequest_RentalRecordId",
-                table: "RentalRequest",
-                column: "RentalRecordId",
-                unique: true);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Image");
+                name: "Images");
 
             migrationBuilder.DropTable(
-                name: "RentalRequest");
+                name: "RentalRecords");
 
             migrationBuilder.DropTable(
-                name: "RentalRecord");
+                name: "InventoryUnits");
 
             migrationBuilder.DropTable(
-                name: "InventoryUnit");
+                name: "RentalRequests");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Bikes");
 
             migrationBuilder.DropTable(
-                name: "Bike");
+                name: "Users");
         }
     }
 }
