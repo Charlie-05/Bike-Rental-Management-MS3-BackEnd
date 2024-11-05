@@ -124,6 +124,7 @@ node_modules/
 *.coveragexml
 
 # Visual Studio profiler
+.vs/
 *.psess
 *.vsp
 *.vspx

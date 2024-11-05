@@ -1,77 +1,93 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "X:\\MS3\\BikeRentalApplication\\",
+  "WorkspaceRootPath": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\ms3\\bikerentalapplication\\bikerentalapplication\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\ms3\\bikerentalapplication\\bikerentalapplication\\database\\rentaldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\services\\bikeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\services\\bikeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\repositories\\bikerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\repositories\\bikerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\iservices\\ibikeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\iservices\\ibikeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\irepositories\\ibikerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\irepositories\\ibikerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\database\\rentaldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\database\\rentaldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\ms3\\bikerentalapplication\\bikerentalapplication\\controllers\\rentalrecordscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\controllers\\rentalrecordscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\controllers\\rentalrecordscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\ms3\\bikerentalapplication\\bikerentalapplication\\controllers\\rentalrequestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\controllers\\rentalrequestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\controllers\\rentalrequestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\ms3\\bikerentalapplication\\bikerentalapplication\\controllers\\inventoryunitscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\controllers\\inventoryunitscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\controllers\\inventoryunitscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\ms3\\bikerentalapplication\\bikerentalapplication\\controllers\\imagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\controllers\\imagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\controllers\\imagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\ms3\\bikerentalapplication\\bikerentalapplication\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\ms3\\bikerentalapplication\\bikerentalapplication\\controllers\\bikescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\controllers\\bikescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\controllers\\bikescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\ms3\\bikerentalapplication\\bikerentalapplication\\entities\\rentalrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\entities\\rentalrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\entities\\rentalrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\ms3\\bikerentalapplication\\bikerentalapplication\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\ms3\\bikerentalapplication\\bikerentalapplication\\entities\\inventoryunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\entities\\inventoryunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\entities\\inventoryunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\ms3\\bikerentalapplication\\bikerentalapplication\\entities\\image.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\entities\\image.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\entities\\image.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\ms3\\bikerentalapplication\\bikerentalapplication\\entities\\rentalrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\entities\\rentalrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\entities\\rentalrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\ms3\\bikerentalapplication\\bikerentalapplication\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\ms3\\bikerentalapplication\\bikerentalapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\ms3\\bikerentalapplication\\bikerentalapplication\\entities\\bike.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\entities\\bike.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\entities\\bike.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\ms3\\bikerentalapplication\\bikerentalapplication\\migrations\\20241104120944_record-model-fk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\migrations\\20241104120944_record-model-fk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\migrations\\20241104120944_record-model-fk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\ms3\\bikerentalapplication\\bikerentalapplication\\migrations\\20241104120249_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|x:\\milestone3-git\\bike-rental-management-ms3-backendd\\bikerentalapplication\\migrations\\20241104120249_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\migrations\\20241104120249_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -82,28 +98,80 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BikeService.cs",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Services\\BikeService.cs",
+              "RelativeDocumentMoniker": "BikeRentalApplication\\Services\\BikeService.cs",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Services\\BikeService.cs",
+              "RelativeToolTip": "BikeRentalApplication\\Services\\BikeService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T04:49:56.419Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BikeRepository.cs",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Repositories\\BikeRepository.cs",
+              "RelativeDocumentMoniker": "BikeRentalApplication\\Repositories\\BikeRepository.cs",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Repositories\\BikeRepository.cs",
+              "RelativeToolTip": "BikeRentalApplication\\Repositories\\BikeRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T04:49:43.858Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IBikeService.cs",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\IServices\\IBikeService.cs",
+              "RelativeDocumentMoniker": "BikeRentalApplication\\IServices\\IBikeService.cs",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\IServices\\IBikeService.cs",
+              "RelativeToolTip": "BikeRentalApplication\\IServices\\IBikeService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T04:48:13.031Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IBikeRepository.cs",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\IRepositories\\IBikeRepository.cs",
+              "RelativeDocumentMoniker": "BikeRentalApplication\\IRepositories\\IBikeRepository.cs",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\IRepositories\\IBikeRepository.cs",
+              "RelativeToolTip": "BikeRentalApplication\\IRepositories\\IBikeRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T04:44:28.575Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": ".gitignore",
-              "DocumentMoniker": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\.gitignore",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\.gitignore",
               "RelativeDocumentMoniker": "BikeRentalApplication\\.gitignore",
-              "ToolTip": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\.gitignore",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\.gitignore",
               "RelativeToolTip": "BikeRentalApplication\\.gitignore",
-              "ViewState": "AQIAAJcAAAAAAAAAAAAAAKYAAAAAAAAA",
+              "ViewState": "AQIAAHMAAAAAAAAAAAAAAH4AAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2024-11-05T04:17:28.514Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "RentalRecordsController.cs",
-              "DocumentMoniker": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Controllers\\RentalRecordsController.cs",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Controllers\\RentalRecordsController.cs",
               "RelativeDocumentMoniker": "BikeRentalApplication\\Controllers\\RentalRecordsController.cs",
-              "ToolTip": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Controllers\\RentalRecordsController.cs",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Controllers\\RentalRecordsController.cs",
               "RelativeToolTip": "BikeRentalApplication\\Controllers\\RentalRecordsController.cs",
               "ViewState": "AQIAAAwAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -111,11 +179,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "RentalRequestsController.cs",
-              "DocumentMoniker": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Controllers\\RentalRequestsController.cs",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Controllers\\RentalRequestsController.cs",
               "RelativeDocumentMoniker": "BikeRentalApplication\\Controllers\\RentalRequestsController.cs",
-              "ToolTip": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Controllers\\RentalRequestsController.cs",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Controllers\\RentalRequestsController.cs",
               "RelativeToolTip": "BikeRentalApplication\\Controllers\\RentalRequestsController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -123,11 +191,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "InventoryUnitsController.cs",
-              "DocumentMoniker": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Controllers\\InventoryUnitsController.cs",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Controllers\\InventoryUnitsController.cs",
               "RelativeDocumentMoniker": "BikeRentalApplication\\Controllers\\InventoryUnitsController.cs",
-              "ToolTip": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Controllers\\InventoryUnitsController.cs",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Controllers\\InventoryUnitsController.cs",
               "RelativeToolTip": "BikeRentalApplication\\Controllers\\InventoryUnitsController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -135,11 +203,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "ImagesController.cs",
-              "DocumentMoniker": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Controllers\\ImagesController.cs",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Controllers\\ImagesController.cs",
               "RelativeDocumentMoniker": "BikeRentalApplication\\Controllers\\ImagesController.cs",
-              "ToolTip": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Controllers\\ImagesController.cs",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Controllers\\ImagesController.cs",
               "RelativeToolTip": "BikeRentalApplication\\Controllers\\ImagesController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -147,11 +215,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "UsersController.cs",
-              "DocumentMoniker": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Controllers\\UsersController.cs",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "BikeRentalApplication\\Controllers\\UsersController.cs",
-              "ToolTip": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Controllers\\UsersController.cs",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Controllers\\UsersController.cs",
               "RelativeToolTip": "BikeRentalApplication\\Controllers\\UsersController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -159,11 +227,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "BikesController.cs",
-              "DocumentMoniker": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Controllers\\BikesController.cs",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Controllers\\BikesController.cs",
               "RelativeDocumentMoniker": "BikeRentalApplication\\Controllers\\BikesController.cs",
-              "ToolTip": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Controllers\\BikesController.cs",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Controllers\\BikesController.cs",
               "RelativeToolTip": "BikeRentalApplication\\Controllers\\BikesController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -171,11 +239,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "20241104120944_Record-Model-FK.cs",
-              "DocumentMoniker": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Migrations\\20241104120944_Record-Model-FK.cs",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Migrations\\20241104120944_Record-Model-FK.cs",
               "RelativeDocumentMoniker": "BikeRentalApplication\\Migrations\\20241104120944_Record-Model-FK.cs",
-              "ToolTip": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Migrations\\20241104120944_Record-Model-FK.cs",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Migrations\\20241104120944_Record-Model-FK.cs",
               "RelativeToolTip": "BikeRentalApplication\\Migrations\\20241104120944_Record-Model-FK.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -183,11 +251,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 21,
               "Title": "20241104120249_Initial.cs",
-              "DocumentMoniker": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Migrations\\20241104120249_Initial.cs",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Migrations\\20241104120249_Initial.cs",
               "RelativeDocumentMoniker": "BikeRentalApplication\\Migrations\\20241104120249_Initial.cs",
-              "ToolTip": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Migrations\\20241104120249_Initial.cs",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Migrations\\20241104120249_Initial.cs",
               "RelativeToolTip": "BikeRentalApplication\\Migrations\\20241104120249_Initial.cs",
               "ViewState": "AQIAAI4AAAAAAAAAAAAgwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -195,11 +263,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "appsettings.json",
-              "DocumentMoniker": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\appsettings.json",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\appsettings.json",
               "RelativeDocumentMoniker": "BikeRentalApplication\\appsettings.json",
-              "ToolTip": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\appsettings.json",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\appsettings.json",
               "RelativeToolTip": "BikeRentalApplication\\appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAABtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -207,11 +275,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "Program.cs",
-              "DocumentMoniker": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Program.cs",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Program.cs",
               "RelativeDocumentMoniker": "BikeRentalApplication\\Program.cs",
-              "ToolTip": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Program.cs",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Program.cs",
               "RelativeToolTip": "BikeRentalApplication\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAACPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -219,24 +287,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "RentalDbContext.cs",
-              "DocumentMoniker": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Database\\RentalDbContext.cs",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Database\\RentalDbContext.cs",
               "RelativeDocumentMoniker": "BikeRentalApplication\\Database\\RentalDbContext.cs",
-              "ToolTip": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Database\\RentalDbContext.cs",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Database\\RentalDbContext.cs",
               "RelativeToolTip": "BikeRentalApplication\\Database\\RentalDbContext.cs",
               "ViewState": "AQIAABsAAAAAAAAAAAAowB8AAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-04T09:30:00.671Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-04T09:30:00.671Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "User.cs",
-              "DocumentMoniker": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Entities\\User.cs",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Entities\\User.cs",
               "RelativeDocumentMoniker": "BikeRentalApplication\\Entities\\User.cs",
-              "ToolTip": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Entities\\User.cs",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Entities\\User.cs",
               "RelativeToolTip": "BikeRentalApplication\\Entities\\User.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -244,11 +311,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "Image.cs",
-              "DocumentMoniker": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Entities\\Image.cs",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Entities\\Image.cs",
               "RelativeDocumentMoniker": "BikeRentalApplication\\Entities\\Image.cs",
-              "ToolTip": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Entities\\Image.cs",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Entities\\Image.cs",
               "RelativeToolTip": "BikeRentalApplication\\Entities\\Image.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -256,11 +323,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "RentalRecord.cs",
-              "DocumentMoniker": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Entities\\RentalRecord.cs",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Entities\\RentalRecord.cs",
               "RelativeDocumentMoniker": "BikeRentalApplication\\Entities\\RentalRecord.cs",
-              "ToolTip": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Entities\\RentalRecord.cs",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Entities\\RentalRecord.cs",
               "RelativeToolTip": "BikeRentalApplication\\Entities\\RentalRecord.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -268,11 +335,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "RentalRequest.cs",
-              "DocumentMoniker": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Entities\\RentalRequest.cs",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Entities\\RentalRequest.cs",
               "RelativeDocumentMoniker": "BikeRentalApplication\\Entities\\RentalRequest.cs",
-              "ToolTip": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Entities\\RentalRequest.cs",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Entities\\RentalRequest.cs",
               "RelativeToolTip": "BikeRentalApplication\\Entities\\RentalRequest.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -280,11 +347,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "InventoryUnit.cs",
-              "DocumentMoniker": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Entities\\InventoryUnit.cs",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Entities\\InventoryUnit.cs",
               "RelativeDocumentMoniker": "BikeRentalApplication\\Entities\\InventoryUnit.cs",
-              "ToolTip": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Entities\\InventoryUnit.cs",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Entities\\InventoryUnit.cs",
               "RelativeToolTip": "BikeRentalApplication\\Entities\\InventoryUnit.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -292,11 +359,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "Bike.cs",
-              "DocumentMoniker": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Entities\\Bike.cs",
+              "DocumentMoniker": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Entities\\Bike.cs",
               "RelativeDocumentMoniker": "BikeRentalApplication\\Entities\\Bike.cs",
-              "ToolTip": "X:\\MS3\\BikeRentalApplication\\BikeRentalApplication\\Entities\\Bike.cs",
+              "ToolTip": "X:\\MileStone3-Git\\Bike-Rental-Management-MS3-BackEndd\\BikeRentalApplication\\Entities\\Bike.cs",
               "RelativeToolTip": "BikeRentalApplication\\Entities\\Bike.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
