@@ -82,10 +82,7 @@ namespace BikeRentalApplication.Controllers
         [HttpPost]
         public async Task<IActionResult> PostBike(Bike bike)
         {
-            //_context.Bikes.Add(bike);
-            //await _context.SaveChangesAsync();
-
-            //return CreatedAtAction("GetBike", new { id = bike.Id }, bike);
+           
             var data = await _bikeService.PostBike(bike);
             return Ok(data);
         }
@@ -94,18 +91,11 @@ namespace BikeRentalApplication.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBike(Guid id)
         {
-            //var bike = await _context.Bikes.FindAsync(id);
-            //if (bike == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //_context.Bikes.Remove(bike);
-            //await _context.SaveChangesAsync();
+           
             try
             {
                 var data = await _bikeService.DeleteBike(id);
-                return Ok();
+                return Ok(data);
             }
             catch (DbUpdateConcurrencyException)
             {

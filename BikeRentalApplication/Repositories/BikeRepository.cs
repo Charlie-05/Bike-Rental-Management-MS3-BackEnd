@@ -34,30 +34,9 @@ namespace BikeRentalApplication.Repositories
 
         public async Task<Bike> PutBike(Bike bike)
         {
-            //if (id != bike.Id)
-            //{
-            //    return BadRequest();
-            //}
-
             _dbContext.Entry(bike).State = EntityState.Modified;
-
-            //try
-            //{
             await _dbContext.SaveChangesAsync();
-            //}
-            //catch (DbUpdateConcurrencyException)
-            //{
-            //    if (!BikeExists(id))
-            //    {
-            //        return NotFound();
-            //    }
-            //    else
-            //    {
-            //        throw;
-            //    }
-            //}
-
-            //return NoContent();
+          
             return bike;
         }
 
@@ -66,7 +45,6 @@ namespace BikeRentalApplication.Repositories
            var data = await _dbContext.Bikes.AddAsync(bike);
             await _dbContext.SaveChangesAsync();
 
-          //  return CreatedAtAction("GetBike", new { id = bike.Id }, bike);
           return data.Entity;
         }
 
@@ -75,7 +53,6 @@ namespace BikeRentalApplication.Repositories
             var bike = await _dbContext.Bikes.FindAsync(id);
             if (bike == null)
             {
-                //  return NotFound();
                 throw new ArgumentException();
             }
 
