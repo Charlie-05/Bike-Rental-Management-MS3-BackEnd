@@ -15,6 +15,7 @@ namespace BikeRentalApplication.Controllers
     public class ImagesController : ControllerBase
     {
         private readonly RentalDbContext _context;
+       
 
         public ImagesController(RentalDbContext context)
         {

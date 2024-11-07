@@ -24,6 +24,17 @@ namespace BikeRentalApplication
             builder.Services.AddDbContext<RentalDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddScoped<IBikeRepository , BikeRepository>();
             builder.Services.AddScoped<IBikeService, BikeService>();
+
+            builder.Services.AddCors(opt =>
+            {
+                opt.AddPolicy(
+                    name: "CORSPolicy",
+                    builder =>
+                    {
+                        builder.WithOrigins("*").AllowAnyHeader().AllowAnyMethod();
+                    }
+                    );
+            });
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -32,6 +43,7 @@ namespace BikeRentalApplication
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseCors("CORSPolicy");
 
             app.UseHttpsRedirection();
 
