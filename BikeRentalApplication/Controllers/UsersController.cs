@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BikeRentalApplication.Database;
 using BikeRentalApplication.Entities;
+using BikeRentalApplication.IServices;
+using BikeRentalApplication.DTOs.RequestDTOs;
 
 namespace BikeRentalApplication.Controllers
 {
@@ -15,10 +17,12 @@ namespace BikeRentalApplication.Controllers
     public class UsersController : ControllerBase
     {
         private readonly RentalDbContext _context;
+        private readonly IUserService _userService;
 
-        public UsersController(RentalDbContext context)
+        public UsersController(RentalDbContext context , IUserService userService)
         {
             _context = context;
+            _userService = userService;
         }
 
         // GET: api/Users
@@ -97,6 +101,35 @@ namespace BikeRentalApplication.Controllers
 
             return CreatedAtAction("GetUser", new { id = user.NICNumber }, user);
         }
+
+        [HttpPost("Sign-Up")]
+        public async Task<ActionResult<User>> SignUp(UserRequest userRequest)
+        {
+        
+            try
+            {
+                var data = await _userService.SignUp(userRequest);
+                await _context.SaveChangesAsync();
+                return Ok(data);
+            }
+            catch (Exception ex) {
+                return BadRequest(ex.Message);
+            }
+            //catch (DbUpdateException)
+            //{
+            //    if (UserExists(user.NICNumber))
+            //    {
+            //        return Conflict();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
+
+           // return CreatedAtAction("GetUser", new { id = user.NICNumber }, user);
+        }
+
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
