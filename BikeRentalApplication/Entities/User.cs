@@ -20,8 +20,8 @@ namespace BikeRentalApplication.Entities
 
         public List<RentalRequest>? RentalRequests { get; set; }
         public List<RentalRecord>? RentalRecords { get; set; }
-
         public string? ProfileImage {  get; set; }   
+        public bool IsVerified { get; set; }
     }
 
     public enum Roles

@@ -19,16 +19,16 @@ namespace BikeRentalApplication.Repositories
             return await _dbContext.Users.ToListAsync();
         }
 
-        public async Task<User> GetUser(Guid id)
+        public async Task<User> GetUser(string NICNo)
         {
-            var bike = await _dbContext.Users.FindAsync(id);
+            var user = await _dbContext.Users.SingleOrDefaultAsync(u => u.NICNumber == NICNo);
 
-            if (bike == null)
+            if (user == null)
             {
                 throw new Exception();
             }
 
-            return bike;
+            return user;
         }
 
         public async Task<User> UpdateUser(User user)

@@ -24,6 +24,8 @@ namespace BikeRentalApplication
             builder.Services.AddDbContext<RentalDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddScoped<IBikeRepository , BikeRepository>();
             builder.Services.AddScoped<IBikeService, BikeService>();
+            builder.Services.AddScoped<IUserRepository , UserRepository>();
+            builder.Services.AddScoped<IUserService , UserService>();   
 
             builder.Services.AddCors(opt =>
             {

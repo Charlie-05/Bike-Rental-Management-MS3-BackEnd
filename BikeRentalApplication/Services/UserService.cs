@@ -2,16 +2,22 @@
 using BikeRentalApplication.Entities;
 using BikeRentalApplication.IRepositories;
 using BikeRentalApplication.IServices;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace BikeRentalApplication.Services
 {
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-
-        public UserService(IUserRepository userRepository)
+        private readonly IConfiguration _configuration;
+        public UserService(IUserRepository userRepository, IConfiguration configuration)
         {
             _userRepository = userRepository;
+            _configuration = configuration;
         }
 
         public async Task<List<User>> GetUsers()
@@ -39,7 +45,7 @@ namespace BikeRentalApplication.Services
                 Email = userRequest.Email,
                 ContactNo = userRequest.ContactNo,
                 Address = userRequest.Address,
-                HashPassword = userRequest.Password,
+                HashPassword = BCrypt.Net.BCrypt.HashPassword(userRequest.Password),
                 AccountCreated = DateTime.Now,
                 Role = userRequest.Role,
                 IsBlocked = false,
@@ -50,6 +56,46 @@ namespace BikeRentalApplication.Services
         public async Task<string> DeleteUser(Guid id)
         {
             return await _userRepository.DeleteUser(id);
+        }
+
+        public async Task<TokenModel> LogIn(LogInData logInData)
+        {
+
+                var user = await _userRepository.GetUser(logInData.NICNumber);
+                var hash = BCrypt.Net.BCrypt.Verify(logInData.Password, user.HashPassword);
+                if (hash)
+                {
+                    var token = CreateToken(user);
+                    return token;
+                }
+                else
+                {
+                    throw new Exception("Invalid Password");
+                }                  
+        }
+
+        private TokenModel CreateToken(User user)
+        {
+            var claimList = new List<Claim>();
+            claimList.Add(new Claim("ContactNo", user.ContactNo));
+            claimList.Add(new Claim("UserName", user.UserName));
+            claimList.Add(new Claim("Email", user.Email));
+            claimList.Add(new Claim("Role", user.Role.ToString()));
+
+            var key = _configuration["JWT:Key"];
+            var secKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key));
+            var credentials = new SigningCredentials(secKey, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                issuer: _configuration["JWT:Issuer"],
+                audience: _configuration["JWT:Audience"],
+                claims: claimList,
+                expires: DateTime.Now.AddDays(1),
+                signingCredentials: credentials
+                );
+            var res = new TokenModel();
+            res.Token = new JwtSecurityTokenHandler().WriteToken(token);
+            return res;
         }
     }
 }
