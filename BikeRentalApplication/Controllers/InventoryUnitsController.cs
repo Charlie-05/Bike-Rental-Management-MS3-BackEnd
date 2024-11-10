@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BikeRentalApplication.Database;
 using BikeRentalApplication.Entities;
+using BikeRentalApplication.IServices;
 
 namespace BikeRentalApplication.Controllers
 {
@@ -15,10 +16,12 @@ namespace BikeRentalApplication.Controllers
     public class InventoryUnitsController : ControllerBase
     {
         private readonly RentalDbContext _context;
+        private readonly IInventoryUnitService _inventoryUnitService;
 
-        public InventoryUnitsController(RentalDbContext context)
+        public InventoryUnitsController(RentalDbContext context , IInventoryUnitService inventoryUnitService)
         {
             _context = context;
+            _inventoryUnitService = inventoryUnitService;
         }
 
         // GET: api/InventoryUnits
@@ -76,26 +79,34 @@ namespace BikeRentalApplication.Controllers
         // POST: api/InventoryUnits
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<InventoryUnit>> PostInventoryUnit(InventoryUnit inventoryUnit)
+        public async Task<IActionResult> PostInventoryUnit(InventoryUnit inventoryUnit)
         {
-            _context.InventoryUnits.Add(inventoryUnit);
+            //_context.InventoryUnits.Add(inventoryUnit);
+            //try
+            //{
+            //    await _context.SaveChangesAsync();
+            //}
+            //catch (DbUpdateException)
+            //{
+            //    if (InventoryUnitExists(inventoryUnit.RegistrationNo))
+            //    {
+            //        return Conflict();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
+
+            //return CreatedAtAction("GetInventoryUnit", new { id = inventoryUnit.RegistrationNo }, inventoryUnit);
             try
             {
-                await _context.SaveChangesAsync();
+                var data = await _inventoryUnitService.PostInventoryUnit(inventoryUnit);
+                return Ok(data);
             }
-            catch (DbUpdateException)
-            {
-                if (InventoryUnitExists(inventoryUnit.RegistrationNo))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
+            catch (Exception ex) { 
+                return BadRequest(ex.Message);
             }
-
-            return CreatedAtAction("GetInventoryUnit", new { id = inventoryUnit.RegistrationNo }, inventoryUnit);
         }
 
         // DELETE: api/InventoryUnits/5

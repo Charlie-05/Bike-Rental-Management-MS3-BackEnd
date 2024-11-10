@@ -115,19 +115,7 @@ namespace BikeRentalApplication.Controllers
             catch (Exception ex) {
                 return BadRequest(ex.Message);
             }
-            //catch (DbUpdateException)
-            //{
-            //    if (UserExists(user.NICNumber))
-            //    {
-            //        return Conflict();
-            //    }
-            //    else
-            //    {
-            //        throw;
-            //    }
-            //}
-
-           // return CreatedAtAction("GetUser", new { id = user.NICNumber }, user);
+          
         }
 
 
