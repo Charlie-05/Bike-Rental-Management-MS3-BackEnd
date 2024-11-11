@@ -25,9 +25,9 @@ namespace BikeRentalApplication.Services
             return await _userRepository.GetUsers();
         }
 
-        public async Task<User> GetUser(Guid id)
+        public async Task<User> GetUser(string NICNo)
         {
-            return await _userRepository.GetUser(id);
+            return await _userRepository.GetUser(NICNo);
         }
 
         public async Task<User> UpdateUser(User user, Guid id)
