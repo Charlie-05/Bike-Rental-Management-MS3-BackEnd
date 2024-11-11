@@ -109,13 +109,28 @@ namespace BikeRentalApplication.Controllers
             try
             {
                 var data = await _userService.SignUp(userRequest);
-                await _context.SaveChangesAsync();
                 return Ok(data);
             }
             catch (Exception ex) {
                 return BadRequest(ex.Message);
             }
           
+        }
+
+        [HttpPost("Log-In")]
+        public async Task<ActionResult<User>> LogIn(LogInData logInData)
+        {
+
+            try
+            {
+                var data = await _userService.LogIn(logInData);
+                return Ok(data.Token);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
 
