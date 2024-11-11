@@ -2,7 +2,7 @@
 
 namespace BikeRentalApplication.IRepositories
 {
-    public interface IInvenroryUnitRepository
+    public interface IIRentalRequestRepository
     {
         Task<List<InventoryUnit>> GetInventoryUnits();
         Task<InventoryUnit> GetInventoryUnit(Guid id);
