@@ -9,22 +9,22 @@ namespace BikeRentalApplication.Services
     public class InventoryUnitService : IInventoryUnitService
     {
 
-        private readonly IInventoryUnitService _invenroryUnitRepository;
+        private readonly IInventoryUnitRepository _inventoryUnitRepository;
 
-        public InventoryUnitService(IInventoryUnitService invenroryUnitRepository)
+        public InventoryUnitService(IInventoryUnitRepository invenroryUnitRepository)
         {
-  
-            _invenroryUnitRepository = invenroryUnitRepository;
+
+            _inventoryUnitRepository = invenroryUnitRepository;
         }
 
         public async Task<List<InventoryUnit>> GetInventoryUnits()
         {
-            return await _invenroryUnitRepository.GetInventoryUnits();
+            return await _inventoryUnitRepository.GetInventoryUnits();
         }
 
-        public async Task<InventoryUnit> GetInventoryUnit(Guid id)
+        public async Task<InventoryUnit> GetInventoryUnit(string registrationNumber)
         {
-            var data = await _invenroryUnitRepository.GetInventoryUnit(id);
+            var data = await _inventoryUnitRepository.GetInventoryUnit(registrationNumber);
 
       
             return data;
@@ -32,19 +32,20 @@ namespace BikeRentalApplication.Services
 
         public async Task<InventoryUnit> PutInventoryUnit(InventoryUnit inventoryUnit)
         {
-            var data = await _invenroryUnitRepository.PutInventoryUnit(inventoryUnit);
+            var data = await _inventoryUnitRepository.PutInventoryUnit(inventoryUnit);
             return inventoryUnit;
         }
 
         public async Task<InventoryUnit> PostInventoryUnit(InventoryUnit inventoryUnit)
         {
-            var data = await _invenroryUnitRepository.PostInventoryUnit(inventoryUnit);
+            var data = await _inventoryUnitRepository.PostInventoryUnit(inventoryUnit);
             return inventoryUnit;
         }
 
-        public async Task<string> DeleteInventoryUnit(Guid id)
+        public async Task<string> DeleteInventoryUnit(string  registrationNumber)
         {
-            var data = await _invenroryUnitRepository.DeleteInventoryUnit(id);
+            var del = await _inventoryUnitRepository.GetInventoryUnit(registrationNumber);
+            var data = await _inventoryUnitRepository.DeleteInventoryUnit(del);
             return data;
         }
     }
