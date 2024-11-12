@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BikeRentalApplication.Database;
 using BikeRentalApplication.Entities;
+using BikeRentalApplication.IServices;
 
 namespace BikeRentalApplication.Controllers
 {
@@ -15,17 +16,29 @@ namespace BikeRentalApplication.Controllers
     public class RentalRequestsController : ControllerBase
     {
         private readonly RentalDbContext _context;
+        private readonly IRentalRequestService _rentalRequestService;
 
-        public RentalRequestsController(RentalDbContext context)
+        public RentalRequestsController(RentalDbContext context, IRentalRequestService rentalRequestService)
         {
             _context = context;
+            _rentalRequestService = rentalRequestService;
         }
 
         // GET: api/RentalRequests
         [HttpGet]
         public async Task<ActionResult<IEnumerable<RentalRequest>>> GetRentalRequest()
         {
-            return await _context.RentalRequests.ToListAsync();
+            //  return await _context.RentalRequests.ToListAsync();
+            try
+            {
+                var data = await _rentalRequestService.GetRentalRequests();
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
         // GET: api/RentalRequests/5
