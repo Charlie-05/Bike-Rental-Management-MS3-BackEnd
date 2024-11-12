@@ -12,7 +12,6 @@ namespace BikeRentalApplication.Entities
         public decimal RatePerHour { get; set; }
         public List<InventoryUnit>? InventoryUnits {  get; set; }
         public List<RentalRequest>? RentalRequests { get; set; }
-      //  public List<RentalRecord>? RentalRecords { get; set; }
         public List<Image>? Images { get; set; }
     }
 }

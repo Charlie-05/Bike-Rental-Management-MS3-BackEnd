@@ -26,10 +26,19 @@ namespace BikeRentalApplication.Controllers
 
         // GET: api/Bikes
         [HttpGet]
-        public async Task<IActionResult> GetBike()
+        public async Task<ActionResult<Bike>> GetBike()
         {
-            var data = await _bikeService.GetBike();
-            return Ok(data);
+            try
+            {
+                var data = await _bikeService.GetBike();
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+
         }
 
         // GET: api/Bikes/5
@@ -82,7 +91,7 @@ namespace BikeRentalApplication.Controllers
         [HttpPost]
         public async Task<IActionResult> PostBike(Bike bike)
         {
-           
+
             var data = await _bikeService.PostBike(bike);
             return Ok(data);
         }
@@ -91,7 +100,7 @@ namespace BikeRentalApplication.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBike(Guid id)
         {
-           
+
             try
             {
                 var data = await _bikeService.DeleteBike(id);
@@ -105,9 +114,9 @@ namespace BikeRentalApplication.Controllers
             {
                 return BadRequest(ex.Message);
             }
-           
 
-           // return NoContent();
+
+            // return NoContent();
         }
 
         private bool BikeExists(Guid id)
