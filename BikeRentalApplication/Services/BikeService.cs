@@ -1,4 +1,5 @@
-﻿using BikeRentalApplication.Entities;
+﻿using BikeRentalApplication.DTOs.ResponseDTOs;
+using BikeRentalApplication.Entities;
 using BikeRentalApplication.IRepositories;
 using BikeRentalApplication.IServices;
 using Microsoft.EntityFrameworkCore;
@@ -14,9 +15,18 @@ namespace BikeRentalApplication.Services
             _bikeRepository = bikeRepository;
         }
 
-        public async Task<List<Bike>> GetBike()
+        public async Task<List<BikeResponse>> GetBike()
         {
-            return await _bikeRepository.GetBike();
+            var data = await _bikeRepository.GetBike();
+            var bikes = data.Select(b => new BikeResponse
+            {   Id = b.Id,
+                Brand = b.Brand,
+                Model = b.Model,
+                Type = b.Type,
+                RatePerHour = b.RatePerHour,
+                Images = b.Images,
+            }).ToList();
+            return bikes;
         }
 
         public async Task<Bike> GetBike(Guid id)

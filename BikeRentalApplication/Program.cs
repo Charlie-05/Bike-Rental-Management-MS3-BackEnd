@@ -5,6 +5,7 @@ using BikeRentalApplication.IServices;
 using BikeRentalApplication.Repositories;
 using BikeRentalApplication.Services;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 namespace BikeRentalApplication
 {
@@ -16,18 +17,23 @@ namespace BikeRentalApplication
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            // builder.Services.AddControllers();
+            builder.Services.AddControllers()
+         .AddJsonOptions(options =>
+         {
+             options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+         });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddDbContext<RentalDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-            builder.Services.AddScoped<IBikeRepository , BikeRepository>();
+            builder.Services.AddScoped<IBikeRepository, BikeRepository>();
             builder.Services.AddScoped<IBikeService, BikeService>();
-            builder.Services.AddScoped<IUserRepository , UserRepository>();
-            builder.Services.AddScoped<IUserService , UserService>();   
-            builder.Services.AddScoped<IInventoryUnitService , InventoryUnitService>();
-            builder.Services.AddScoped<IInventoryUnitRepository , InventoryUnitRepository>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IInventoryUnitService, InventoryUnitService>();
+            builder.Services.AddScoped<IInventoryUnitRepository, InventoryUnitRepository>();
 
             builder.Services.AddCors(opt =>
             {

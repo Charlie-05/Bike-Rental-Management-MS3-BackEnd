@@ -17,7 +17,9 @@ namespace BikeRentalApplication.Repositories
 
         public async Task<List<Bike>> GetBike()
         {
-            return await _dbContext.Bikes.ToListAsync();
+            var bikes = await _dbContext.Bikes.ToListAsync();
+            var data = await _dbContext.Bikes.Include(b => b.Images).ToListAsync();
+            return data;
         }
 
         public async Task<Bike> GetBike(Guid id)
