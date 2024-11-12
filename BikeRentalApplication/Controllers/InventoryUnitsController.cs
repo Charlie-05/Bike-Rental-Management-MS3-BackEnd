@@ -15,119 +15,109 @@ namespace BikeRentalApplication.Controllers
     [ApiController]
     public class InventoryUnitsController : ControllerBase
     {
-        private readonly RentalDbContext _context;
         private readonly IInventoryUnitService _inventoryUnitService;
 
-        public InventoryUnitsController(RentalDbContext context , IInventoryUnitService inventoryUnitService)
+        public InventoryUnitsController(IInventoryUnitService inventoryUnitService)
         {
-            _context = context;
             _inventoryUnitService = inventoryUnitService;
         }
 
         // GET: api/InventoryUnits
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<InventoryUnit>>> GetInventoryUnit()
+        public async Task<IActionResult> GetInventoryUnit()
         {
-            return await _context.InventoryUnits.ToListAsync();
+            try
+            {
+                var data = await _inventoryUnitService.GetInventoryUnits();
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
         // GET: api/InventoryUnits/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<InventoryUnit>> GetInventoryUnit(string id)
+        [HttpGet("{registrationNumber}")]
+        public async Task<IActionResult> GetInventoryUnit(string registrationNumber)
         {
-            var inventoryUnit = await _context.InventoryUnits.FindAsync(id);
-
-            if (inventoryUnit == null)
+            try
             {
-                return NotFound();
+                var data = await _inventoryUnitService.GetInventoryUnit(registrationNumber);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
 
-            return inventoryUnit;
+
         }
 
         // PUT: api/InventoryUnits/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutInventoryUnit(string id, InventoryUnit inventoryUnit)
-        {
-            if (id != inventoryUnit.RegistrationNo)
-            {
-                return BadRequest();
-            }
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutInventoryUnit(string RegistrationNumber, InventoryUnit inventoryUnit)
+        //{
+        //    if (id != inventoryUnit.RegistrationNo)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            _context.Entry(inventoryUnit).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!InventoryUnitExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!InventoryUnitExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
         // POST: api/InventoryUnits
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<IActionResult> PostInventoryUnit(InventoryUnit inventoryUnit)
         {
-            //_context.InventoryUnits.Add(inventoryUnit);
-            //try
-            //{
-            //    await _context.SaveChangesAsync();
-            //}
-            //catch (DbUpdateException)
-            //{
-            //    if (InventoryUnitExists(inventoryUnit.RegistrationNo))
-            //    {
-            //        return Conflict();
-            //    }
-            //    else
-            //    {
-            //        throw;
-            //    }
-            //}
-
-            //return CreatedAtAction("GetInventoryUnit", new { id = inventoryUnit.RegistrationNo }, inventoryUnit);
             try
             {
                 var data = await _inventoryUnitService.PostInventoryUnit(inventoryUnit);
                 return Ok(data);
             }
-            catch (Exception ex) { 
+            catch (Exception ex)
+            {
                 return BadRequest(ex.Message);
             }
         }
 
-        // DELETE: api/InventoryUnits/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteInventoryUnit(string id)
+        //    // DELETE: api/InventoryUnits/5
+        [HttpDelete("{registrationNumber}")]
+        public async Task<IActionResult> DeleteInventoryUnit(string registrationNumber)
         {
-            var inventoryUnit = await _context.InventoryUnits.FindAsync(id);
-            if (inventoryUnit == null)
+            try
             {
-                return NotFound();
+                var res = await _inventoryUnitService.DeleteInventoryUnit(registrationNumber);
+                return Ok(res);
             }
-
-            _context.InventoryUnits.Remove(inventoryUnit);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            catch (Exception ex) {
+                return BadRequest(ex.Message);
+            }               
         }
 
-        private bool InventoryUnitExists(string id)
-        {
-            return _context.InventoryUnits.Any(e => e.RegistrationNo == id);
-        }
+        //private bool InventoryUnitExists(string id)
+        //{
+        //    return _context.InventoryUnits.Any(e => e.RegistrationNo == id);
+        //}
     }
 }

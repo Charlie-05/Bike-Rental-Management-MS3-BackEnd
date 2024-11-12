@@ -19,9 +19,9 @@ namespace BikeRentalApplication.Repositories
             return await _dbContext.InventoryUnits.ToListAsync();
         }
 
-        public async Task<InventoryUnit> GetInventoryUnit(Guid id)
+        public async Task<InventoryUnit> GetInventoryUnit(string RegistrationNumber)
         {
-            var data = await _dbContext.InventoryUnits.FindAsync(id);
+            var data = await _dbContext.InventoryUnits.SingleOrDefaultAsync(u => u.RegistrationNo == RegistrationNumber);
 
             if (data == null)
             {
@@ -47,14 +47,8 @@ namespace BikeRentalApplication.Repositories
             return data.Entity;
         }
 
-        public async Task<string> DeleteInventoryUnit(Guid id)
+        public async Task<string> DeleteInventoryUnit(InventoryUnit unit)
         {
-            var unit = await _dbContext.InventoryUnits.FindAsync(id);
-            if (unit == null)
-            {
-                throw new ArgumentException();
-            }
-
             _dbContext.InventoryUnits.Remove(unit);
             await _dbContext.SaveChangesAsync();
 
