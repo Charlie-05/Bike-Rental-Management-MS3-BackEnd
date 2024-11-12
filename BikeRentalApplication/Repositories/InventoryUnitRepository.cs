@@ -1,10 +1,11 @@
 ﻿using BikeRentalApplication.Database;
 using BikeRentalApplication.Entities;
+using BikeRentalApplication.IRepositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace BikeRentalApplication.Repositories
 {
-    public class InventoryUnitRepository 
+    public class InventoryUnitRepository : IInventoryUnitRepository
     {
         private readonly RentalDbContext _dbContext;
 

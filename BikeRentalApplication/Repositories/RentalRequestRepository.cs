@@ -25,7 +25,7 @@ namespace BikeRentalApplication.Repositories
             return await _dbContext.RentalRequests.ToListAsync();
         }
 
-        public async Task<RentalRequest> GetRequest(Guid id)
+        public async Task<RentalRequest> GetRentalRequest(Guid id)
         {
             var request = await _dbContext.RentalRequests.SingleOrDefaultAsync(u => u.Id == id);
 
@@ -37,7 +37,7 @@ namespace BikeRentalApplication.Repositories
             return request;
         }
 
-        public async Task<RentalRequest> UpdateRequest(RentalRequest rentalRequest)
+        public async Task<RentalRequest> UpdateRentalRequest(RentalRequest rentalRequest)
         {
             _dbContext.Entry(rentalRequest).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
@@ -45,7 +45,7 @@ namespace BikeRentalApplication.Repositories
             return rentalRequest;
         }
 
-        public async Task<string> DeleteRequest(Guid id)
+        public async Task<string> DeleteRentalRequest(Guid id)
         {
             var request = await _dbContext.RentalRequests.FindAsync(id);
             if (request == null)

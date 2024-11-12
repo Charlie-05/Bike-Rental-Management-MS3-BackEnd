@@ -9,9 +9,9 @@ namespace BikeRentalApplication.Services
     public class InventoryUnitService : IInventoryUnitService
     {
 
-        private readonly IIRentalRequestRepository _invenroryUnitRepository;
+        private readonly IInventoryUnitService _invenroryUnitRepository;
 
-        public InventoryUnitService(IIRentalRequestRepository invenroryUnitRepository)
+        public InventoryUnitService(IInventoryUnitService invenroryUnitRepository)
         {
   
             _invenroryUnitRepository = invenroryUnitRepository;
