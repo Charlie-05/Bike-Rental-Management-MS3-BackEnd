@@ -24,7 +24,7 @@ namespace BikeRentalApplication.Repositories
 
         public async Task<Bike> GetBike(Guid id)
         {
-            var bike = await _dbContext.Bikes.FindAsync(id);
+            var bike = await _dbContext.Bikes.Include(b => b.Images).Include(b => b.InventoryUnits).FirstOrDefaultAsync(b => b.Id == id);
 
             if (bike == null)
             {
@@ -36,10 +36,10 @@ namespace BikeRentalApplication.Repositories
 
         public async Task<Bike> PutBike(Bike bike)
         {
-            _dbContext.Entry(bike).State = EntityState.Modified;
+            var updated = _dbContext.Bikes.Update(bike);
             await _dbContext.SaveChangesAsync();
           
-            return bike;
+            return updated.Entity;
         }
 
         public async Task<Bike> PostBike(Bike bike)
