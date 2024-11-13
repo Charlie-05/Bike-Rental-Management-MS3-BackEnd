@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BikeRentalApplication.Database;
 using BikeRentalApplication.Entities;
 using BikeRentalApplication.IServices;
+using BikeRentalApplication.DTOs.RequestDTOs;
 
 namespace BikeRentalApplication.Controllers
 {
@@ -59,17 +60,17 @@ namespace BikeRentalApplication.Controllers
         // PUT: api/Bikes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBike(Guid id, Bike bike)
+        public async Task<IActionResult> PutBike(Guid id, BikeRequest bikeRequest)
         {
-            if (id != bike.Id)
-            {
-                return BadRequest();
-            }
+            //if (id != bike.Id)
+            //{
+            //    return BadRequest();
+            //}
             // _context.Entry(bike).State = EntityState.Modified;          
 
             try
             {
-                var data = await _bikeService.PutBike(bike, id);
+                var data = await _bikeService.PutBike(bikeRequest, id);
                 return Ok(data);
             }
             catch (DbUpdateConcurrencyException)

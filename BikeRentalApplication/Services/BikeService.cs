@@ -1,4 +1,5 @@
-﻿using BikeRentalApplication.DTOs.ResponseDTOs;
+﻿using BikeRentalApplication.DTOs.RequestDTOs;
+using BikeRentalApplication.DTOs.ResponseDTOs;
 using BikeRentalApplication.Entities;
 using BikeRentalApplication.IRepositories;
 using BikeRentalApplication.IServices;
@@ -19,7 +20,8 @@ namespace BikeRentalApplication.Services
         {
             var data = await _bikeRepository.GetBike();
             var bikes = data.Select(b => new BikeResponse
-            {   Id = b.Id,
+            {
+                Id = b.Id,
                 Brand = b.Brand,
                 Model = b.Model,
                 Type = b.Type,
@@ -34,13 +36,22 @@ namespace BikeRentalApplication.Services
             return await _bikeRepository.GetBike(id);
         }
 
-        public async Task<Bike> PutBike(Bike bike , Guid id)
+        public async Task<Bike> PutBike(BikeRequest bikeRequest, Guid id)
         {
-            return await _bikeRepository.PutBike(bike);
+            var getBike = await _bikeRepository.GetBike(id);
+            if (getBike != null)
+            {
+                return await _bikeRepository.PutBike(getBike);
+            }
+            else
+            {
+                throw new Exception();
+            }
+            
         }
         public async Task<Bike> PostBike(Bike bike)
         {
-            return await _bikeRepository.PostBike(bike);    
+            return await _bikeRepository.PostBike(bike);
         }
         public async Task<string> DeleteBike(Guid id)
         {
