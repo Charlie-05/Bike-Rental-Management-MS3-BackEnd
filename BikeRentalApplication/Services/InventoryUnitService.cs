@@ -1,4 +1,5 @@
 ﻿using BikeRentalApplication.Database;
+using BikeRentalApplication.DTOs.RequestDTOs;
 using BikeRentalApplication.Entities;
 using BikeRentalApplication.IRepositories;
 using BikeRentalApplication.IServices;
@@ -36,10 +37,20 @@ namespace BikeRentalApplication.Services
             return inventoryUnit;
         }
 
-        public async Task<InventoryUnit> PostInventoryUnit(InventoryUnit inventoryUnit)
+        public async Task<List<InventoryUnit>> PostInventoryUnit(List<InventoryUnitRequest> inventoryUnitRequests)
         {
-            var data = await _inventoryUnitRepository.PostInventoryUnit(inventoryUnit);
-            return inventoryUnit;
+         
+            var inventoryUnits = inventoryUnitRequests.Select(u => new InventoryUnit
+            {
+                IsDeleted = false,
+                RegistrationNo = u.RegistrationNo,
+                YearOfManufacture = u.YearOfManufacture,
+                DateAdded = DateTime.Now,
+                Availability = true,
+                BikeId = u.BikeId,
+            }).ToList();
+            var data = await _inventoryUnitRepository.PostInventoryUnit(inventoryUnits);
+            return data;
         }
 
         public async Task<string> DeleteInventoryUnit(string  registrationNumber)

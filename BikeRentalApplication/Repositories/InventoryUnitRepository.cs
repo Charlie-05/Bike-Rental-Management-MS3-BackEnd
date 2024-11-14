@@ -39,12 +39,12 @@ namespace BikeRentalApplication.Repositories
             return inventoryUnit;
         }
 
-        public async Task<InventoryUnit> PostInventoryUnit(InventoryUnit inventoryUnit)
+        public async Task<List<InventoryUnit>> PostInventoryUnit(List<InventoryUnit> inventoryUnits)
         {
-            var data = await _dbContext.InventoryUnits.AddAsync(inventoryUnit);
+             _dbContext.InventoryUnits.AddRangeAsync(inventoryUnits);
             await _dbContext.SaveChangesAsync();
 
-            return data.Entity;
+            return inventoryUnits;
         }
 
         public async Task<string> DeleteInventoryUnit(InventoryUnit unit)
