@@ -26,7 +26,22 @@ namespace BikeRentalApplication.Services
                 Model = b.Model,
                 Type = b.Type,
                 RatePerHour = b.RatePerHour,
-                Images = b.Images,
+                Images = b.Images.Select(i => new ImageResponse
+                {
+                    Id = i.Id,
+                    ImagePath = i.ImagePath,
+                    BikeId = i.BikeId,
+
+                }).ToList() ?? [],
+                InventoryUnits = b.InventoryUnits.Select(u => new InventoryUnitResponse
+                {
+                    RegistrationNo = u.RegistrationNo,
+                    YearOfManufacture = u.YearOfManufacture,
+                    Availability = u.Availability,
+                    IsDeleted = u.IsDeleted,
+                    RentalRecords = u.RentalRecords,
+                    BikeId = u.BikeId,
+                }).ToList() ?? [],
             }).ToList();
             return bikes;
         }
@@ -47,7 +62,7 @@ namespace BikeRentalApplication.Services
             {
                 throw new Exception();
             }
-            
+
         }
         public async Task<Bike> PostBike(Bike bike)
         {

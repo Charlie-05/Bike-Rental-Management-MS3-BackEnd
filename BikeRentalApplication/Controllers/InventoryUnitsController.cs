@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BikeRentalApplication.Database;
 using BikeRentalApplication.Entities;
 using BikeRentalApplication.IServices;
+using BikeRentalApplication.DTOs.RequestDTOs;
 
 namespace BikeRentalApplication.Controllers
 {
@@ -88,11 +89,11 @@ namespace BikeRentalApplication.Controllers
         // POST: api/InventoryUnits
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<IActionResult> PostInventoryUnit(InventoryUnit inventoryUnit)
+        public async Task<IActionResult> PostInventoryUnit(List<InventoryUnitRequest> inventoryUnitRequests)
         {
             try
             {
-                var data = await _inventoryUnitService.PostInventoryUnit(inventoryUnit);
+                var data = await _inventoryUnitService.PostInventoryUnit(inventoryUnitRequests);
                 return Ok(data);
             }
             catch (Exception ex)

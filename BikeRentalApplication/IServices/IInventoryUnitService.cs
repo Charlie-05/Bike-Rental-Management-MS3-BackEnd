@@ -1,4 +1,5 @@
-﻿using BikeRentalApplication.Entities;
+﻿using BikeRentalApplication.DTOs.RequestDTOs;
+using BikeRentalApplication.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BikeRentalApplication.IServices
@@ -8,7 +9,7 @@ namespace BikeRentalApplication.IServices
         Task<List<InventoryUnit>> GetInventoryUnits();
         Task<InventoryUnit> GetInventoryUnit(string RegistrationNumber);
         Task<InventoryUnit> PutInventoryUnit(InventoryUnit inventoryUnit);
-        Task<InventoryUnit> PostInventoryUnit(InventoryUnit inventoryUnit);
+        Task<List<InventoryUnit>> PostInventoryUnit(List<InventoryUnitRequest> inventoryUnits);
         Task<string> DeleteInventoryUnit(string registrationNumber);
     }
 }
