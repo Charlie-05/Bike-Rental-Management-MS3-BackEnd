@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BikeRentalApplication.Database;
 using BikeRentalApplication.Entities;
 using BikeRentalApplication.IServices;
+using BikeRentalApplication.DTOs.RequestDTOs;
 
 namespace BikeRentalApplication.Controllers
 {
@@ -89,12 +90,14 @@ namespace BikeRentalApplication.Controllers
         // POST: api/RentalRequests
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<RentalRequest>> PostRentalRequest(RentalRequest rentalRequest)
+        public async Task<IActionResult> PostRentalRequest(RentalReqRequest rentalReqRequest)
         {
-            _context.RentalRequests.Add(rentalRequest);
-            await _context.SaveChangesAsync();
+            //_context.RentalRequests.Add(rentalRequest);
+            //await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRentalRequest", new { id = rentalRequest.Id }, rentalRequest);
+            //return CreatedAtAction("GetRentalRequest", new { id = rentalRequest.Id }, rentalRequest);
+            var data = await _rentalRequestService.PostRentalRequest(rentalReqRequest);
+            return Ok(data);
         }
 
         // DELETE: api/RentalRequests/5

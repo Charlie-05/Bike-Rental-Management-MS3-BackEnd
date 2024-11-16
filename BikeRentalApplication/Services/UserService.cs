@@ -1,4 +1,5 @@
 ﻿using BikeRentalApplication.DTOs.RequestDTOs;
+using BikeRentalApplication.DTOs.ResponseDTOs;
 using BikeRentalApplication.Entities;
 using BikeRentalApplication.IRepositories;
 using BikeRentalApplication.IServices;
@@ -41,15 +42,14 @@ namespace BikeRentalApplication.Services
                 NICNumber = userRequest.NICNumber,
                 FirstName = userRequest.FirstName,
                 LastName = userRequest.LastName,
-
                 Email = userRequest.Email,
                 ContactNo = userRequest.ContactNo,
                 Address = userRequest.Address,
-                HashPassword = BCrypt.Net.BCrypt.HashPassword(userRequest.Password),
+                HashPassword = BCrypt.Net.BCrypt.HashPassword(userRequest.Password?? "Admin"),
                 AccountCreated = DateTime.Now,
                 Role = userRequest.Role,
                 IsBlocked = false,
-                UserName = userRequest.UserName,
+                UserName = userRequest.UserName?? "admin",
             };
             return await _userRepository.SignUp(user);
         }
@@ -61,19 +61,38 @@ namespace BikeRentalApplication.Services
         public async Task<TokenModel> LogIn(LogInData logInData)
         {
 
-                var user = await _userRepository.GetUser(logInData.NICNumber);
-                var hash = BCrypt.Net.BCrypt.Verify(logInData.Password, user.HashPassword);
-                if (hash)
-                {
-                    var token = CreateToken(user);
-                    return token;
-                }
-                else
-                {
-                    throw new Exception("Invalid Password");
-                }                  
+            var user = await _userRepository.GetUser(logInData.NICNumber);
+            var hash = BCrypt.Net.BCrypt.Verify(logInData.Password, user.HashPassword);
+            if (hash)
+            {
+                var token = CreateToken(user);
+                return token;
+            }
+            else
+            {
+                throw new Exception("Invalid Password");
+            }
         }
 
+        public async Task<List<RoleResponse>> GetRoles()
+        {
+            var dict = new Dictionary<int, string>();
+            foreach (var name in Enum.GetNames(typeof(Roles)))
+            {
+                dict.Add((int)Enum.Parse(typeof(Roles), name), name);
+            }
+            var roles = new List<RoleResponse>();
+            foreach(var item in dict)
+            {
+                var role = new RoleResponse
+                {
+                    Key = item.Key,
+                    Value = item.Value
+                };
+                roles.Add(role);
+            }
+            return roles;
+        }
         private TokenModel CreateToken(User user)
         {
             var claimList = new List<Claim>();
