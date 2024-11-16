@@ -32,6 +32,21 @@ namespace BikeRentalApplication.Services
             return data;
         }
 
+        public async Task<RentalRequest>AcceptRentalRequest(Guid Id)
+        {
+            var request = await _rentalRequestRepository.GetRentalRequest(Id);
+             request.Status = Status.Accepted;
+            var data = await _rentalRequestRepository.UpdateRentalRequest(request);
+            return data;
+        }
+        public async Task<RentalRequest> DeclineRentalRequest(Guid Id)
+        {
+            var request = await _rentalRequestRepository.GetRentalRequest(Id);
+            request.Status = Status.Declined;
+            var data = await _rentalRequestRepository.UpdateRentalRequest(request);
+            return data;
+        }
+
         public async Task<RentalRequest> PostRentalRequest(RentalReqRequest rentalReqRequest)
         {
             var rentalRequest = new RentalRequest()

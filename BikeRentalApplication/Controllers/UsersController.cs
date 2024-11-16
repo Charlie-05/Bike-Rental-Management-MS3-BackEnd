@@ -124,7 +124,7 @@ namespace BikeRentalApplication.Controllers
             try
             {
                 var data = await _userService.LogIn(logInData);
-                return Ok(data.Token);
+                return Ok(data);
             }
             catch (Exception ex)
             {
@@ -132,8 +132,6 @@ namespace BikeRentalApplication.Controllers
             }
 
         }
-
-
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(string id)

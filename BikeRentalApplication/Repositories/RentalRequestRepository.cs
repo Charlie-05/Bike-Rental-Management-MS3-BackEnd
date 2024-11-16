@@ -39,10 +39,10 @@ namespace BikeRentalApplication.Repositories
 
         public async Task<RentalRequest> UpdateRentalRequest(RentalRequest rentalRequest)
         {
-            _dbContext.Entry(rentalRequest).State = EntityState.Modified;
+           var data = _dbContext.RentalRequests.Update(rentalRequest);
             await _dbContext.SaveChangesAsync();
 
-            return rentalRequest;
+            return data.Entity;
         }
 
         public async Task<string> DeleteRentalRequest(Guid id)

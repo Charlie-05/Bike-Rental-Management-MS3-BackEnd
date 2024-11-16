@@ -115,6 +115,12 @@ namespace BikeRentalApplication.Controllers
 
             return NoContent();
         }
+        [HttpGet("Accept-Request{id}")]
+        public async Task<IActionResult> AcceptRenatlRequest(Guid id)
+        {
+            var data = await _rentalRequestService.AcceptRentalRequest(id);
+            return Ok(data);
+        }
 
         private bool RentalRequestExists(Guid id)
         {

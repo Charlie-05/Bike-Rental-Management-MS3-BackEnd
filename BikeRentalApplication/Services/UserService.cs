@@ -100,6 +100,7 @@ namespace BikeRentalApplication.Services
             claimList.Add(new Claim("UserName", user.UserName));
             claimList.Add(new Claim("Email", user.Email));
             claimList.Add(new Claim("Role", user.Role.ToString()));
+            claimList.Add(new Claim("NICNo" , user.NICNumber));
 
             var key = _configuration["JWT:Key"];
             var secKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key));
@@ -112,8 +113,10 @@ namespace BikeRentalApplication.Services
                 expires: DateTime.Now.AddDays(1),
                 signingCredentials: credentials
                 );
-            var res = new TokenModel();
-            res.Token = new JwtSecurityTokenHandler().WriteToken(token);
+            var res = new TokenModel
+            {
+                Token = new JwtSecurityTokenHandler().WriteToken(token)
+            };
             return res;
         }
     }
