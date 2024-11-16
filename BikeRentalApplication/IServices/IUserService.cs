@@ -1,4 +1,5 @@
 ﻿using BikeRentalApplication.DTOs.RequestDTOs;
+using BikeRentalApplication.DTOs.ResponseDTOs;
 using BikeRentalApplication.Entities;
 
 namespace BikeRentalApplication.IServices
@@ -10,8 +11,8 @@ namespace BikeRentalApplication.IServices
         Task<User> UpdateUser(User user, Guid id);
         Task<User> SignUp(UserRequest userRequest);
         Task<string> DeleteUser(Guid id);
-
         Task<TokenModel> LogIn(LogInData logInData);
+        Task<List<RoleResponse>> GetRoles();
 
     }
 }

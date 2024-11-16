@@ -1,4 +1,5 @@
-﻿using BikeRentalApplication.Entities;
+﻿using BikeRentalApplication.DTOs.RequestDTOs;
+using BikeRentalApplication.Entities;
 using BikeRentalApplication.IRepositories;
 using BikeRentalApplication.IServices;
 
@@ -31,8 +32,15 @@ namespace BikeRentalApplication.Services
             return data;
         }
 
-        public async Task<RentalRequest> PostRentalRequest(RentalRequest rentalRequest)
+        public async Task<RentalRequest> PostRentalRequest(RentalReqRequest rentalReqRequest)
         {
+            var rentalRequest = new RentalRequest()
+            {
+                BikeId = rentalReqRequest.BikeId,
+                RequestTime = rentalReqRequest.RequestTime,
+                NICNumber = rentalReqRequest.NICNumber,
+                Status = Status.Pending,
+            };
             var data = await _rentalRequestRepository.PostRentalRequest(rentalRequest);
             return data;
         }

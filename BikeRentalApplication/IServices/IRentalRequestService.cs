@@ -1,4 +1,5 @@
-﻿using BikeRentalApplication.Entities;
+﻿using BikeRentalApplication.DTOs.RequestDTOs;
+using BikeRentalApplication.Entities;
 
 namespace BikeRentalApplication.IServices
 {
@@ -7,7 +8,7 @@ namespace BikeRentalApplication.IServices
         Task<List<RentalRequest>> GetRentalRequests();
         Task<RentalRequest> GetRentalRequest(Guid id);
         Task<RentalRequest> UpdateRentalRequest(RentalRequest rentalRequest);
-        Task<RentalRequest> PostRentalRequest(RentalRequest rentalRequest);
+        Task<RentalRequest> PostRentalRequest(RentalReqRequest rentalReqRequest);
         Task<string> DeleteInventoryUnit(Guid id);
     }
 }

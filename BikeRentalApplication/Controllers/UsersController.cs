@@ -150,6 +150,13 @@ namespace BikeRentalApplication.Controllers
             return NoContent();
         }
 
+        [HttpGet("Get-Roles")]
+        public async Task<IActionResult> GetRoles()
+        {
+            var data = await _userService.GetRoles();
+            return Ok(data);
+        }
+
         private bool UserExists(string id)
         {
             return _context.Users.Any(e => e.NICNumber == id);
