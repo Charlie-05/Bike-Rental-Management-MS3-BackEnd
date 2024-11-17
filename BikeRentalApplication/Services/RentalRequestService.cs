@@ -15,9 +15,16 @@ namespace BikeRentalApplication.Services
             _rentalRequestRepository = rentalRequestRepository;
         }
 
-        public async Task<List<RentalRequest>> GetRentalRequests()
+        public async Task<List<RentalRequest>> GetRentalRequests(Status? status)
         {
-            return await _rentalRequestRepository.GetRentalRequests();
+            if (status == null)
+            {
+                return await _rentalRequestRepository.GetRentalRequests();
+            }
+            else {
+                return await _rentalRequestRepository.GetRentalRequestsForPortal();
+            }
+
         }
 
         public async Task<RentalRequest> GetRentalRequest(Guid id)
@@ -32,10 +39,10 @@ namespace BikeRentalApplication.Services
             return data;
         }
 
-        public async Task<RentalRequest>AcceptRentalRequest(Guid Id)
+        public async Task<RentalRequest> AcceptRentalRequest(Guid Id)
         {
             var request = await _rentalRequestRepository.GetRentalRequest(Id);
-             request.Status = Status.Accepted;
+            request.Status = Status.Accepted;
             var data = await _rentalRequestRepository.UpdateRentalRequest(request);
             return data;
         }

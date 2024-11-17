@@ -12,15 +12,15 @@ namespace BikeRentalApplication.Services
 
         private readonly IInventoryUnitRepository _inventoryUnitRepository;
 
-        public InventoryUnitService(IInventoryUnitRepository invenroryUnitRepository)
+        public InventoryUnitService(IInventoryUnitRepository inventoryUnitRepository)
         {
 
-            _inventoryUnitRepository = invenroryUnitRepository;
+            _inventoryUnitRepository = inventoryUnitRepository;
         }
 
-        public async Task<List<InventoryUnit>> GetInventoryUnits()
+        public async Task<List<InventoryUnit>> GetInventoryUnits(bool? availability, Guid? bikeId)
         {
-            return await _inventoryUnitRepository.GetInventoryUnits();
+            return await _inventoryUnitRepository.GetInventoryUnits(availability , bikeId);
         }
 
         public async Task<InventoryUnit> GetInventoryUnit(string registrationNumber)

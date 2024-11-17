@@ -27,12 +27,12 @@ namespace BikeRentalApplication.Controllers
 
         // GET: api/RentalRequests
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<RentalRequest>>> GetRentalRequest()
+        public async Task<IActionResult> GetRentalRequest(Status? status)
         {
             //  return await _context.RentalRequests.ToListAsync();
             try
             {
-                var data = await _rentalRequestService.GetRentalRequests();
+                var data = await _rentalRequestService.GetRentalRequests(status);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -44,7 +44,7 @@ namespace BikeRentalApplication.Controllers
 
         // GET: api/RentalRequests/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<RentalRequest>> GetRentalRequest(Guid id)
+        public async Task<IActionResult> GetRentalRequest(Guid id)
         {
             var rentalRequest = await _context.RentalRequests.FindAsync(id);
 
@@ -53,7 +53,7 @@ namespace BikeRentalApplication.Controllers
                 return NotFound();
             }
 
-            return rentalRequest;
+            return Ok(rentalRequest);
         }
 
         // PUT: api/RentalRequests/5
@@ -119,6 +119,12 @@ namespace BikeRentalApplication.Controllers
         public async Task<IActionResult> AcceptRenatlRequest(Guid id)
         {
             var data = await _rentalRequestService.AcceptRentalRequest(id);
+            return Ok(data);
+        }
+        [HttpGet("Decline-Request{id}")]
+        public async Task<IActionResult> DeclineRenatlRequest(Guid id)
+        {
+            var data = await _rentalRequestService.DeclineRentalRequest(id);
             return Ok(data);
         }
 

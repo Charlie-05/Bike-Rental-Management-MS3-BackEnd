@@ -6,6 +6,7 @@ namespace BikeRentalApplication.IRepositories
     {
         Task<RentalRequest> PostRentalRequest(RentalRequest rentalRequest);
         Task<List<RentalRequest>> GetRentalRequests();
+        Task<List<RentalRequest>> GetRentalRequestsForPortal();
         Task<RentalRequest> GetRentalRequest(Guid id);
         Task<RentalRequest> UpdateRentalRequest(RentalRequest rentalRequest);
         Task<string> DeleteRentalRequest(Guid id);
