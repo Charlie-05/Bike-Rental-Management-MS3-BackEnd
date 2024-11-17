@@ -14,9 +14,9 @@ namespace BikeRentalApplication.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<List<InventoryUnit>> GetInventoryUnits()
+        public async Task<List<InventoryUnit>> GetInventoryUnits(bool? availability, Guid? bikeId)
         {
-            return await _dbContext.InventoryUnits.ToListAsync();
+            return await _dbContext.InventoryUnits.Where(u => (u.Availability == availability) && (u.BikeId == bikeId)).ToListAsync();
         }
 
         public async Task<InventoryUnit> GetInventoryUnit(string RegistrationNumber)

@@ -25,11 +25,11 @@ namespace BikeRentalApplication.Controllers
 
         // GET: api/InventoryUnits
         [HttpGet]
-        public async Task<IActionResult> GetInventoryUnit()
+        public async Task<IActionResult> GetInventoryUnit(bool? availability, Guid? bikeId)
         {
             try
             {
-                var data = await _inventoryUnitService.GetInventoryUnits();
+                var data = await _inventoryUnitService.GetInventoryUnits(availability , bikeId);
                 return Ok(data);
             }
             catch (Exception ex)

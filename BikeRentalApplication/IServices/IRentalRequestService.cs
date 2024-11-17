@@ -5,7 +5,7 @@ namespace BikeRentalApplication.IServices
 {
     public interface IRentalRequestService
     {
-        Task<List<RentalRequest>> GetRentalRequests();
+        Task<List<RentalRequest>> GetRentalRequests(Status? status);
         Task<RentalRequest> GetRentalRequest(Guid id);
         Task<RentalRequest> UpdateRentalRequest(RentalRequest rentalRequest);
         Task<RentalRequest> PostRentalRequest(RentalReqRequest rentalReqRequest);
