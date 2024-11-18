@@ -7,7 +7,7 @@ namespace BikeRentalApplication.IServices
     {
         Task<List<RentalRequest>> GetRentalRequests(Status? status);
         Task<RentalRequest> GetRentalRequest(Guid id);
-        Task<RentalRequest> UpdateRentalRequest(RentalRequest rentalRequest);
+        Task<RentalRequest> UpdateRentalRequest(Guid id , RentalRequest rentalRequest);
         Task<RentalRequest> PostRentalRequest(RentalReqRequest rentalReqRequest);
         Task<RentalRequest> AcceptRentalRequest(Guid Id);
         Task<RentalRequest> DeclineRentalRequest(Guid Id);
