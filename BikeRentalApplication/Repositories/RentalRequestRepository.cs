@@ -25,9 +25,9 @@ namespace BikeRentalApplication.Repositories
             return await _dbContext.RentalRequests.Where(r => r.Status == Status.Pending).Include(r => r.Bike).ToListAsync();
         }
 
-        public async Task<List<RentalRequest>> GetRentalRequestsForPortal()
+        public async Task<List<RentalRequest>> GetRentalRequestsByStatus(Status? status)
         {
-            return await _dbContext.RentalRequests.Where(r => r.Status == Status.Accepted).Include(r => r.Bike).ToListAsync();
+            return await _dbContext.RentalRequests.Where(r => r.Status == status).Include(r => r.Bike).ToListAsync();
         }
 
         public async Task<RentalRequest> GetRentalRequest(Guid id)

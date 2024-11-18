@@ -21,8 +21,9 @@ namespace BikeRentalApplication.Services
             {
                 return await _rentalRequestRepository.GetRentalRequests();
             }
-            else {
-                return await _rentalRequestRepository.GetRentalRequestsForPortal();
+            else
+            {
+                return await _rentalRequestRepository.GetRentalRequestsByStatus(status);
             }
 
         }
