@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BikeRentalApplication.Database;
 using BikeRentalApplication.Entities;
+using BikeRentalApplication.IServices;
+using BikeRentalApplication.DTOs.RequestDTOs;
 
 namespace BikeRentalApplication.Controllers
 {
@@ -14,32 +16,34 @@ namespace BikeRentalApplication.Controllers
     [ApiController]
     public class RentalRecordsController : ControllerBase
     {
-        private readonly RentalDbContext _context;
+        private readonly IRentalRecordService _rentalRecordService;
 
-        public RentalRecordsController(RentalDbContext context)
+        public RentalRecordsController(IRentalRecordService rentalRecordService)
         {
-            _context = context;
+            _rentalRecordService = rentalRecordService;
         }
 
         // GET: api/RentalRecords
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<RentalRecord>>> GetRentalRecord()
+        public async Task<IActionResult> GetRentalRecord()
         {
-            return await _context.RentalRecords.ToListAsync();
+            var data = await _rentalRecordService.GetRentalRecords();
+            return Ok(data);
         }
 
         // GET: api/RentalRecords/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<RentalRecord>> GetRentalRecord(Guid id)
+        public async Task<IActionResult> GetRentalRecord(Guid id)
         {
-            var rentalRecord = await _context.RentalRecords.FindAsync(id);
-
-            if (rentalRecord == null)
+            try
             {
-                return NotFound();
+                var data = await _rentalRecordService.GetRentalRecord(id);
+                return Ok(data);
             }
-
-            return rentalRecord;
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // PUT: api/RentalRecords/5
@@ -47,62 +51,38 @@ namespace BikeRentalApplication.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRentalRecord(Guid id, RentalRecord rentalRecord)
         {
-            if (id != rentalRecord.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(rentalRecord).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                var data = await _rentalRecordService.UpdateRentalRecord(id, rentalRecord);
+                return Ok(data);
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
-                if (!RentalRecordExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest(ex.Message);
             }
 
-            return NoContent();
         }
 
         // POST: api/RentalRecords
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<RentalRecord>> PostRentalRecord(RentalRecord rentalRecord)
+        public async Task<IActionResult> PostRentalRecord(RentalRecRequest rentalRecRequest)
         {
-            _context.RentalRecords.Add(rentalRecord);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetRentalRecord", new { id = rentalRecord.Id }, rentalRecord);
+            var data = await _rentalRecordService.PostRentalRecord(rentalRecRequest);
+            return Ok(data);
         }
 
         // DELETE: api/RentalRecords/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRentalRecord(Guid id)
         {
-            var rentalRecord = await _context.RentalRecords.FindAsync(id);
-            if (rentalRecord == null)
-            {
-                return NotFound();
-            }
-
-            _context.RentalRecords.Remove(rentalRecord);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            var data = await _rentalRecordService.DeleteRentalRecord(id);
+            return Ok(data);
         }
 
-        private bool RentalRecordExists(Guid id)
-        {
-            return _context.RentalRecords.Any(e => e.Id == id);
-        }
+        //private bool RentalRecordExists(Guid id)
+        //{
+        //    return _context.RentalRecords.Any(e => e.Id == id);
+        //}
     }
 }

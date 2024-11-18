@@ -36,6 +36,8 @@ namespace BikeRentalApplication
             builder.Services.AddScoped<IInventoryUnitService, InventoryUnitService>();
             builder.Services.AddScoped<IRentalRequestRepository, RentalRequestRepository>();
             builder.Services.AddScoped<IRentalRequestService, RentalRequestService>();
+            builder.Services.AddScoped<IRentalRecordRepository, RentalRecordRepository>();
+            builder.Services.AddScoped<IRentalRecordService, RentalRecordService>();
 
             builder.Services.AddCors(opt =>
             {
