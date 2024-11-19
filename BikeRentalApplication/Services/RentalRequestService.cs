@@ -69,7 +69,7 @@ namespace BikeRentalApplication.Services
             {
                 BikeId = rentalReqRequest.BikeId,
                 RequestTime = rentalReqRequest.RequestTime,
-                NICNumber = rentalReqRequest.NICNumber,
+                UserId = rentalReqRequest.UserId,
                 Status = Status.Pending,
             };
             var data = await _rentalRequestRepository.PostRentalRequest(rentalRequest);

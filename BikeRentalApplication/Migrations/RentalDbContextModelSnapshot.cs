@@ -140,10 +140,6 @@ namespace BikeRentalApplication.Migrations
                     b.Property<Guid>("BikeId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("NICNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<bool?>("Notify")
                         .HasColumnType("bit");
 
@@ -153,11 +149,15 @@ namespace BikeRentalApplication.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BikeId");
 
-                    b.HasIndex("NICNumber");
+                    b.HasIndex("UserId");
 
                     b.ToTable("RentalRequests");
                 });
@@ -268,7 +268,7 @@ namespace BikeRentalApplication.Migrations
 
                     b.HasOne("BikeRentalApplication.Entities.User", "User")
                         .WithMany("RentalRequests")
-                        .HasForeignKey("NICNumber")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

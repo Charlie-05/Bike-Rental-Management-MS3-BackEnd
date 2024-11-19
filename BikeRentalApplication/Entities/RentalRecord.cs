@@ -11,4 +11,10 @@
         public RentalRequest? RentalRequest { get; set; }
         public Guid RentalRequestId { get; set; }
     }
+
+    public enum State
+    {
+        Incompleted = 0,
+        Completed = 1
+    }
 }

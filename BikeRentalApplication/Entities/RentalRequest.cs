@@ -8,7 +8,7 @@
         public Bike? Bike { get; set; }
         public Guid BikeId { get; set; }
         public User? User { get; set; }
-        public string NICNumber { get; set; }
+        public string UserId { get; set; }
         public RentalRecord? RentalRecord { get; set; }
       //  public Guid RentalRecordId { get; set; }
         public bool? Notify { get; set; }
@@ -19,6 +19,7 @@
     {
         Pending,
         Accepted,
-        Declined
+        Declined,
+        OnRent
     }
 }
