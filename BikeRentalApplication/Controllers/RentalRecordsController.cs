@@ -45,6 +45,19 @@ namespace BikeRentalApplication.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("get-payment{id}")]
+        public async Task<IActionResult> GetRentalRecordPayment(Guid id)
+        {
+            try
+            {
+                var data = await _rentalRecordService.GetPayment(id);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         // PUT: api/RentalRecords/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -61,6 +74,13 @@ namespace BikeRentalApplication.Controllers
                 return BadRequest(ex.Message);
             }
 
+        }
+
+        [HttpPut("complete-record")]
+        public async Task<IActionResult> CompleteRentalRecord(Guid id , RentalRecPutRequest rentalRecPutRequest)
+        {
+            var data = await _rentalRecordService.CompleteRentalRecord(id , rentalRecPutRequest);
+            return Ok(data);
         }
 
         // POST: api/RentalRecords
