@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BikeRentalApplication.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -36,12 +36,13 @@ namespace BikeRentalApplication.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ContactNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HashPassword = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AccountCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Role = table.Column<int>(type: "int", nullable: false),
                     IsBlocked = table.Column<bool>(type: "bit", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProfileImage = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    ProfileImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsVerified = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -97,7 +98,7 @@ namespace BikeRentalApplication.Migrations
                     RequestTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     BikeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    NICNumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Notify = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
@@ -110,8 +111,8 @@ namespace BikeRentalApplication.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_RentalRequests_Users_NICNumber",
-                        column: x => x.NICNumber,
+                        name: "FK_RentalRequests_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "NICNumber",
                         onDelete: ReferentialAction.Cascade);
@@ -182,9 +183,9 @@ namespace BikeRentalApplication.Migrations
                 column: "BikeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RentalRequests_NICNumber",
+                name: "IX_RentalRequests_UserId",
                 table: "RentalRequests",
-                column: "NICNumber");
+                column: "UserId");
         }
 
         /// <inheritdoc />

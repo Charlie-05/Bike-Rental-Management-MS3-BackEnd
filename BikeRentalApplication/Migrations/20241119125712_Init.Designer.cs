@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BikeRentalApplication.Migrations
 {
     [DbContext(typeof(RentalDbContext))]
-    [Migration("20241111122717_User-Update")]
-    partial class UserUpdate
+    [Migration("20241119125712_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -143,10 +143,6 @@ namespace BikeRentalApplication.Migrations
                     b.Property<Guid>("BikeId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("NICNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<bool?>("Notify")
                         .HasColumnType("bit");
 
@@ -156,11 +152,15 @@ namespace BikeRentalApplication.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BikeId");
 
-                    b.HasIndex("NICNumber");
+                    b.HasIndex("UserId");
 
                     b.ToTable("RentalRequests");
                 });
@@ -271,7 +271,7 @@ namespace BikeRentalApplication.Migrations
 
                     b.HasOne("BikeRentalApplication.Entities.User", "User")
                         .WithMany("RentalRequests")
-                        .HasForeignKey("NICNumber")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

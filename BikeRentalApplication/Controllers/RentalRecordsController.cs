@@ -25,9 +25,9 @@ namespace BikeRentalApplication.Controllers
 
         // GET: api/RentalRecords
         [HttpGet]
-        public async Task<IActionResult> GetRentalRecord()
+        public async Task<IActionResult> GetRentalRecord(State? state)
         {
-            var data = await _rentalRecordService.GetRentalRecords();
+            var data = await _rentalRecordService.GetRentalRecords(state);
             return Ok(data);
         }
 
@@ -58,6 +58,7 @@ namespace BikeRentalApplication.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
 
         // PUT: api/RentalRecords/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

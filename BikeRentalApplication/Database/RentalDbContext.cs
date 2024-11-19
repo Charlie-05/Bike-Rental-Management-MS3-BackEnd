@@ -11,36 +11,48 @@ namespace BikeRentalApplication.Database
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Bike>()
-                .HasMany(b => b.Images)
-                .WithOne(i => i.Bike)
-                .HasForeignKey(b => b.BikeId);
+            //modelBuilder.Entity<Bike>()
+            //    .HasMany(b => b.Images)
+            //    .WithOne(i => i.Bike)
+            //    .HasForeignKey(b => b.BikeId);
 
-            modelBuilder.Entity<InventoryUnit>()
-                .HasOne(i => i.Bike)
-                .WithMany(b => b.InventoryUnits)
-                .HasForeignKey(b => b.BikeId);
+            //modelBuilder.Entity<InventoryUnit>()
+            //    .HasOne(i => i.Bike)
+            //    .WithMany(b => b.InventoryUnits)
+            //    .HasForeignKey(b => b.BikeId);
 
             modelBuilder.Entity<InventoryUnit>()
               .HasMany(i => i.RentalRecords)
               .WithOne(r => r.InventoryUnit)
               .HasForeignKey(r => r.BikeRegNo);
 
-            modelBuilder.Entity<RentalRecord>()
-                .HasOne(r => r.RentalRequest)
-                .WithOne(r => r.RentalRecord)
-                .HasForeignKey<RentalRecord>(r => r.RentalRequestId)
-                .OnDelete(DeleteBehavior.Cascade);
+            //modelBuilder.Entity<RentalRecord>()
+            //    .HasOne(r => r.RentalRequest)
+            //    .WithOne(r => r.RentalRecord)
+            //    .HasForeignKey<RentalRecord>(r => r.RentalRequestId)
+            //    .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<User>()
-              .HasMany(u => u.RentalRequests)
-              .WithOne(r => r.User)
-              .HasForeignKey(r => r.NICNumber);
+            //modelBuilder.Entity<User>()
+            //  .HasMany(u => u.RentalRequests)
+            //  .WithOne(r => r.User)
+            //  .HasForeignKey(r => r.UserId);
 
-            modelBuilder.Entity<RentalRecord>()
-              .HasOne(r => r.InventoryUnit)
-              .WithMany(u => u.RentalRecords)
-              .HasForeignKey(r => r.BikeRegNo);
+            //modelBuilder.Entity<RentalRecord>()
+            //  .HasOne(r => r.InventoryUnit)
+            //  .WithMany(u => u.RentalRecords)
+            //  .HasForeignKey(r => r.BikeRegNo);
+
+            //modelBuilder.Entity<RentalRequest>()
+            //.HasOne(r => r.User)
+            // .WithMany(u => u.RentalRequests)
+            //.HasForeignKey(r => r.UserId)  
+            // .OnDelete(DeleteBehavior.Cascade); 
+
+            //modelBuilder.Entity<RentalRecord>()
+            //    .HasOne(r => r.RentalRequest)
+            //    .WithOne(r => r.RentalRecord)
+            //    .HasForeignKey<RentalRecord>(r => r.RentalRequestId)
+            //    .OnDelete(DeleteBehavior.Cascade);
 
             base.OnModelCreating(modelBuilder);
         }

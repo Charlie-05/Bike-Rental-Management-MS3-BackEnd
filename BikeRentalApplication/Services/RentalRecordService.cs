@@ -17,10 +17,22 @@ namespace BikeRentalApplication.Services
             _rentalRequestRepository = rentalRequestRepository;
         }
 
-        public async Task<List<RentalRecord>> GetRentalRecords()
+        public async Task<List<RentalRecord>> GetRentalRecords(State? state)
         {
-            var data = await _rentalRecordRepository.GetRentalRecords();
-            return data;
+            if (state == State.Incompleted)
+            {
+                var data = await _rentalRecordRepository.GetIncompleteRentalRecords();
+                return data;
+            }
+            else if (state == State.Completed) {
+                var data = await _rentalRecordRepository.GetRentalRecords();
+                return data;
+            }
+            else
+            {
+                throw new Exception("Invalid State Code");
+            }
+            
         }
 
         public async Task<RentalRecord> GetRentalRecord(Guid id)
@@ -78,7 +90,7 @@ namespace BikeRentalApplication.Services
         }
 
         public async Task<RentalRecord> PostRentalRecord(RentalRecRequest rentalRecRequest)
-        {
+        {   
             var RentalRecord = new RentalRecord()
             {
                RentalRequestId = rentalRecRequest.RentalRequestId,
@@ -86,6 +98,9 @@ namespace BikeRentalApplication.Services
                BikeRegNo = rentalRecRequest.BikeRegNo,
             };
             var data = await _rentalRecordRepository.PostRentalRecord(RentalRecord);
+            var getRequest = await _rentalRequestRepository.GetRentalRequest(rentalRecRequest.RentalRequestId);
+            getRequest.Status = Status.OnRent;
+            var updated = await _rentalRequestRepository.UpdateRentalRequest(getRequest);
             return data;
         }
 
