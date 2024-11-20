@@ -1,6 +1,10 @@
-﻿namespace BikeRentalApplication.IRepositories
+﻿using BikeRentalApplication.Entities;
+
+namespace BikeRentalApplication.IRepositories
 {
-    public interface IBrandRepository
+    public interface IBrandRepository 
     {
+        Task<Brand> AddBrand(Brand brand);
+       Task<List<Brand>> GetAllBrands();
     }
 }
