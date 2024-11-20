@@ -4,7 +4,7 @@ namespace BikeRentalApplication.IRepositories
 {
     public interface IUserRepository
     {
-        Task<List<User>> GetUsers();
+        Task<List<User>> GetUsers(Roles? role);
         Task<User> GetUser(string NICNo);
         Task<User> UpdateUser(User user);
         Task<User> SignUp(User user);

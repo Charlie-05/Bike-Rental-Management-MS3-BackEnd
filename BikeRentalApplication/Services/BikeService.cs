@@ -22,7 +22,7 @@ namespace BikeRentalApplication.Services
             var bikes = data.Select(b => new BikeResponse
             {
                 Id = b.Id,
-                Brand = b.Brand,
+                BrandId = b.BrandId,
                 Model = b.Model,
                 Type = b.Type,
                 RatePerHour = b.RatePerHour,
@@ -51,11 +51,15 @@ namespace BikeRentalApplication.Services
             return await _bikeRepository.GetBike(id);
         }
 
-        public async Task<Bike> PutBike(BikeRequest bikeRequest, Guid id)
+        public async Task<Bike> PutBike(BikePutRequest bikePutRequest, Guid id)
         {
             var getBike = await _bikeRepository.GetBike(id);
             if (getBike != null)
             {
+                getBike.BrandId = bikePutRequest.BrandId;
+                getBike.RatePerHour = bikePutRequest.RatePerHour;
+                getBike.Model = bikePutRequest.Model;
+                getBike.Type = bikePutRequest.Type;
                 return await _bikeRepository.PutBike(getBike);
             }
             else

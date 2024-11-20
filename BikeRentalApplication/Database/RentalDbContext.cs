@@ -62,5 +62,6 @@ namespace BikeRentalApplication.Database
         public DbSet<BikeRentalApplication.Entities.InventoryUnit> InventoryUnits { get; set; } = default!;
         public DbSet<BikeRentalApplication.Entities.RentalRequest> RentalRequests { get; set; } = default!;
         public DbSet<BikeRentalApplication.Entities.RentalRecord> RentalRecords { get; set; } = default!;
+        public DbSet<BikeRentalApplication.Entities.Brand> Brands { get; set; } = default!;
     }
 }

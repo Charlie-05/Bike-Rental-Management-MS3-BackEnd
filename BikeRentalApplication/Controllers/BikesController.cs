@@ -60,17 +60,12 @@ namespace BikeRentalApplication.Controllers
         // PUT: api/Bikes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBike(Guid id, BikeRequest bikeRequest)
+        public async Task<IActionResult> PutBike(BikePutRequest bikePutRequest, Guid id)
         {
-            //if (id != bike.Id)
-            //{
-            //    return BadRequest();
-            //}
-            // _context.Entry(bike).State = EntityState.Modified;          
 
             try
             {
-                var data = await _bikeService.PutBike(bikeRequest, id);
+                var data = await _bikeService.PutBike(bikePutRequest, id);
                 return Ok(data);
             }
             catch (DbUpdateConcurrencyException)
@@ -83,6 +78,10 @@ namespace BikeRentalApplication.Controllers
                 {
                     throw;
                 }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
 
         }
