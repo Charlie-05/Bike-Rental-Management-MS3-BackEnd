@@ -14,9 +14,9 @@ namespace BikeRentalApplication.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<List<User>> GetUsers()
+        public async Task<List<User>> GetUsers(Roles? role)
         {
-            return await _dbContext.Users.ToListAsync();
+            return await _dbContext.Users.Where(u => u.Role == role).ToListAsync();
         }
 
         public async Task<User> GetUser(string NICNo)

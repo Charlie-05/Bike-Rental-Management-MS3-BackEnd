@@ -21,9 +21,9 @@ namespace BikeRentalApplication.Services
             _configuration = configuration;
         }
 
-        public async Task<List<User>> GetUsers()
+        public async Task<List<User>> GetUsers(Roles? role)
         {
-            return await _userRepository.GetUsers();
+            return await _userRepository.GetUsers(role);
         }
 
         public async Task<User> GetUser(string NICNo)

@@ -27,9 +27,10 @@ namespace BikeRentalApplication.Controllers
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUser()
+        public async Task<IActionResult> GetUsers(Roles? role)
         {
-            return await _context.Users.ToListAsync();
+            var data = await _userService.GetUsers(role);
+            return Ok(data);
         }
 
         // GET: api/Users/5
