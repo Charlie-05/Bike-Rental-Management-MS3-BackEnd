@@ -89,10 +89,10 @@ namespace BikeRentalApplication.Controllers
         // POST: api/Bikes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<IActionResult> PostBike(Bike bike)
+        public async Task<IActionResult> PostBike(BikeRequest bikeRequest)
         {
 
-            var data = await _bikeService.PostBike(bike);
+            var data = await _bikeService.PostBike(bikeRequest);
             return Ok(data);
         }
 
