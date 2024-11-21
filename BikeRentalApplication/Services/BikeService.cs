@@ -22,6 +22,7 @@ namespace BikeRentalApplication.Services
             var bikes = data.Select(b => new BikeResponse
             {
                 Id = b.Id,
+                Brand = b.Brand,
                 BrandId = b.BrandId,
                 Model = b.Model,
                 Type = b.Type,
@@ -68,8 +69,20 @@ namespace BikeRentalApplication.Services
             }
 
         }
-        public async Task<Bike> PostBike(Bike bike)
+        public async Task<Bike> PostBike(BikeRequest bikeRequest)
         {
+            var bike = new Bike
+            {
+                BrandId = bikeRequest.BrandId,
+                Model = bikeRequest.Model,
+                Type = bikeRequest.Type,
+                RatePerHour = bikeRequest.RatePerHour,
+                Images = bikeRequest.Images?.Select(i => new Image
+                {
+                    ImagePath = i.ImagePath
+                }).ToList()
+            };
+           
             return await _bikeRepository.PostBike(bike);
         }
         public async Task<string> DeleteBike(Guid id)

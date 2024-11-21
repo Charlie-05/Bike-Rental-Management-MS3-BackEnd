@@ -2,6 +2,7 @@
 using BikeRentalApplication.Entities;
 using BikeRentalApplication.IRepositories;
 using Microsoft.EntityFrameworkCore;
+using System.Runtime.InteropServices;
 
 namespace BikeRentalApplication.Repositories
 {
@@ -16,7 +17,12 @@ namespace BikeRentalApplication.Repositories
 
         public async Task<List<InventoryUnit>> GetInventoryUnits(bool? availability, Guid? bikeId)
         {
+            if (availability == null || bikeId == null) {
+                var data = await _dbContext.InventoryUnits.ToListAsync();
+                return data;
+            }
             return await _dbContext.InventoryUnits.Where(u => (u.Availability == availability) && (u.BikeId == bikeId)).ToListAsync();
+           
         }
 
         public async Task<InventoryUnit> GetInventoryUnit(string RegistrationNumber)

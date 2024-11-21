@@ -18,13 +18,13 @@ namespace BikeRentalApplication.Repositories
         public async Task<List<Bike>> GetBike()
         {
             var bikes = await _dbContext.Bikes.ToListAsync();
-            var data = await _dbContext.Bikes.Include(b => b.Images).Include(b => b.InventoryUnits).ToListAsync();
+            var data = await _dbContext.Bikes.Include(b => b.Images).Include(b => b.InventoryUnits).Include(b=> b.Brand).ToListAsync();
             return data;
         }
 
         public async Task<Bike> GetBike(Guid id)
         {
-            var bike = await _dbContext.Bikes.Include(b => b.Images).Include(b => b.InventoryUnits).FirstOrDefaultAsync(b => b.Id == id);
+            var bike = await _dbContext.Bikes.Include(b => b.Images).Include(b => b.InventoryUnits).Include(b => b.Brand).FirstOrDefaultAsync(b => b.Id == id);
 
             if (bike == null)
             {

@@ -16,6 +16,7 @@ namespace BikeRentalApplication.Repositories
         public async Task<Brand> AddBrand(Brand brand)
         {
             var data = await _context.Brands.AddAsync(brand);
+           await _context.SaveChangesAsync();
             return data.Entity;
         }
         public async Task<List<Brand>> GetAllBrands()
