@@ -10,7 +10,7 @@
         public InventoryUnit? InventoryUnit { get; set; }
         public RentalRequest? RentalRequest { get; set; }
         public Guid RentalRequestId { get; set; }
-        public string Review {  get; set; }
+        public string? Review {  get; set; }
     }
 
     public enum State
