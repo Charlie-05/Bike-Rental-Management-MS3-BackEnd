@@ -61,5 +61,15 @@ namespace BikeRentalApplication.Repositories
             return "Successfully Deleted...";
         }
 
+        public async Task<User> GetUserByUserName(string userName)
+        {
+            return await _dbContext.Users.SingleOrDefaultAsync(u => u.UserName == userName);
+        }
+
+        public async Task<bool>UserNameExists(string userName)
+        {
+            return _dbContext.Users.Any(e => e.NICNumber == userName);
+        }
+
     }
 }

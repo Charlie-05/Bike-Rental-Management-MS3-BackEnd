@@ -49,33 +49,22 @@ namespace BikeRentalApplication.Controllers
 
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(string id, User user)
+        [HttpPut("{nicNo}")]
+        public async Task<IActionResult> PutUser(User user, string nicNo)
         {
-            if (id != user.NICNumber)
-            {
-                return BadRequest();
-            }
 
-            _context.Entry(user).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+               var data = await  _userService.UpdateUser(user, nicNo);  
+                return Ok(data);
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest(ex.Message);
             }
 
-            return NoContent();
+       
         }
 
         // POST: api/Users
@@ -107,14 +96,14 @@ namespace BikeRentalApplication.Controllers
         public async Task<ActionResult<User>> SignUp(UserRequest userRequest)
         {
         
-            try
-            {
+            //try
+            //{
                 var data = await _userService.SignUp(userRequest);
                 return Ok(data);
-            }
-            catch (Exception ex) {
-                return BadRequest(ex.Message);
-            }
+           // }
+            //catch (Exception ex) {
+            //    return BadRequest(ex.Message);
+            //}
           
         }
 

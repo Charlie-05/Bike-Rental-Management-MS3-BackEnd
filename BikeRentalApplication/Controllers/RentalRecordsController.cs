@@ -59,6 +59,16 @@ namespace BikeRentalApplication.Controllers
             }
         }
 
+        [HttpGet("Get-overdue")]
+        public async Task<IActionResult> GetOverDueRentals()
+        {
+            try { 
+                var data = await _rentalRecordService.GetOverDueRentals();
+                return Ok(data);
+            } catch (Exception ex) {
+                return BadRequest(ex.Message);
+            }
+        }
 
         // PUT: api/RentalRecords/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

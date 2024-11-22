@@ -31,11 +31,12 @@ namespace BikeRentalApplication.Services
             return await _userRepository.GetUser(NICNo);
         }
 
-        public async Task<User> UpdateUser(User user, Guid id)
+        public async Task<User> UpdateUser(User user, string nicNo)
         {
+            user.HashPassword = BCrypt.Net.BCrypt.HashPassword(user.HashPassword);
             return await _userRepository.UpdateUser(user);
         }
-        public async Task<User> SignUp(UserRequest userRequest)
+        public async Task<TokenModel> SignUp(UserRequest userRequest)
         {
             var user = new User
             {
@@ -45,13 +46,24 @@ namespace BikeRentalApplication.Services
                 Email = userRequest.Email,
                 ContactNo = userRequest.ContactNo,
                 Address = userRequest.Address,
-                HashPassword = BCrypt.Net.BCrypt.HashPassword(userRequest.Password?? "Admin"),
                 AccountCreated = DateTime.Now,
                 Role = userRequest.Role,
-                IsBlocked = false,
-                UserName = userRequest.UserName?? "admin",
+                IsBlocked = false
             };
-            return await _userRepository.SignUp(user);
+            if (userRequest.Role == Roles.Admin)
+            {
+                user.HashPassword = BCrypt.Net.BCrypt.HashPassword("Admin");
+                user.UserName = "admin";
+            }
+            var getUser = await _userRepository.SignUp(user);
+            if (getUser != null) {
+                var token = CreateToken(user);
+                return token;
+            }
+            else
+            {
+                throw new Exception("User Registration Failed");
+            }
         }
         public async Task<string> DeleteUser(Guid id)
         {
@@ -61,7 +73,11 @@ namespace BikeRentalApplication.Services
         public async Task<TokenModel> LogIn(LogInData logInData)
         {
 
-            var user = await _userRepository.GetUser(logInData.NICNumber);
+            var user = await _userRepository.GetUserByUserName(logInData.UserName);
+            if (user == null)
+            {
+                throw new Exception("Invalid Username");
+            }
             var hash = BCrypt.Net.BCrypt.Verify(logInData.Password, user.HashPassword);
             if (hash)
             {
@@ -82,7 +98,7 @@ namespace BikeRentalApplication.Services
                 dict.Add((int)Enum.Parse(typeof(Roles), name), name);
             }
             var roles = new List<RoleResponse>();
-            foreach(var item in dict)
+            foreach (var item in dict)
             {
                 var role = new RoleResponse
                 {
@@ -97,10 +113,13 @@ namespace BikeRentalApplication.Services
         {
             var claimList = new List<Claim>();
             claimList.Add(new Claim("ContactNo", user.ContactNo));
-            claimList.Add(new Claim("UserName", user.UserName));
+            if(user.UserName != null)
+            {
+                claimList.Add(new Claim("UserName", user.UserName));
+            }
             claimList.Add(new Claim("Email", user.Email));
             claimList.Add(new Claim("Role", user.Role.ToString()));
-            claimList.Add(new Claim("NICNo" , user.NICNumber));
+            claimList.Add(new Claim("NICNo", user.NICNumber));
 
             var key = _configuration["JWT:Key"];
             var secKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key));
