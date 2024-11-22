@@ -9,5 +9,7 @@ namespace BikeRentalApplication.IRepositories
         Task<User> UpdateUser(User user);
         Task<User> SignUp(User user);
         Task<string> DeleteUser(Guid id);
+        Task<User> GetUserByUserName(string userName);
+        Task<bool> UserNameExists(string userName);
     }
 }

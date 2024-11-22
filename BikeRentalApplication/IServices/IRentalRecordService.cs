@@ -10,6 +10,7 @@ namespace BikeRentalApplication.IServices
         Task<RentalRecord> GetRentalRecord(Guid id);
         Task<RentalRecord> UpdateRentalRecord(Guid id, RentalRecord RentalRecord);
         Task<RentalRecord> CompleteRentalRecord(Guid id, RentalRecPutRequest rentalRecPutRequest);
+        Task<List<RentalRecord>> GetOverDueRentals();
         Task<RentalRecord> PostRentalRecord(RentalRecRequest rentalRecRequest);
         Task<string> DeleteRentalRecord(Guid id);
         Task<PaymentResponse> GetPayment(Guid id);

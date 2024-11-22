@@ -56,8 +56,24 @@ namespace BikeRentalApplication.Services
         public async Task<string> DeleteInventoryUnit(string  registrationNumber)
         {
             var del = await _inventoryUnitRepository.GetInventoryUnit(registrationNumber);
-            var data = await _inventoryUnitRepository.DeleteInventoryUnit(del);
-            return data;
+            if (del != null)
+            {
+                if (del.Availability == true)
+                {
+                    var data = await _inventoryUnitRepository.DeleteInventoryUnit(del);
+                    return data;
+                }
+                else
+                {
+                    throw new Exception("Can not delete a bike on rent");
+                }
+
+            }
+            else
+            {
+                return null;
+            }
+
         }
     }
 }

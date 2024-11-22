@@ -8,8 +8,8 @@ namespace BikeRentalApplication.IServices
     {
         Task<List<User>> GetUsers(Roles? role);
         Task<User> GetUser(string NICNo);
-        Task<User> UpdateUser(User user, Guid id);
-        Task<User> SignUp(UserRequest userRequest);
+        Task<User> UpdateUser(User user, string nicNo);
+        Task<TokenModel> SignUp(UserRequest userRequest);
         Task<string> DeleteUser(Guid id);
         Task<TokenModel> LogIn(LogInData logInData);
         Task<List<RoleResponse>> GetRoles();
