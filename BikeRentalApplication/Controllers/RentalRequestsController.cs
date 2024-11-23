@@ -92,12 +92,15 @@ namespace BikeRentalApplication.Controllers
         [HttpPost]
         public async Task<IActionResult> PostRentalRequest(RentalReqRequest rentalReqRequest)
         {
-            //_context.RentalRequests.Add(rentalRequest);
-            //await _context.SaveChangesAsync();
-
-            //return CreatedAtAction("GetRentalRequest", new { id = rentalRequest.Id }, rentalRequest);
-            var data = await _rentalRequestService.PostRentalRequest(rentalReqRequest);
-            return Ok(data);
+            try
+            {
+                var data = await _rentalRequestService.PostRentalRequest(rentalReqRequest);
+                return Ok(data);
+            }
+            catch (Exception ex) {
+                return BadRequest(ex.Message);
+            }
+           
         }
 
         // DELETE: api/RentalRequests/5

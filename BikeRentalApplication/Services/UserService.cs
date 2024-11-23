@@ -28,7 +28,12 @@ namespace BikeRentalApplication.Services
 
         public async Task<User> GetUser(string NICNo)
         {
-            return await _userRepository.GetUser(NICNo);
+            var data = await _userRepository.GetUser(NICNo);
+            if (data == null)
+            {
+                throw new Exception("Not found");
+            }
+            return data;
         }
 
         public async Task<User> UpdateUser(User user, string nicNo)
@@ -65,9 +70,18 @@ namespace BikeRentalApplication.Services
                 throw new Exception("User Registration Failed");
             }
         }
-        public async Task<string> DeleteUser(Guid id)
+        public async Task<string> DeleteUser(string nicNo)
         {
-            return await _userRepository.DeleteUser(id);
+            var getUser = await _userRepository.GetUser(nicNo);
+            if (getUser != null)
+            {
+                return await _userRepository.DeleteUser(getUser);
+            }
+            else
+            {
+                throw new Exception();
+            }
+            
         }
 
         public async Task<TokenModel> LogIn(LogInData logInData)

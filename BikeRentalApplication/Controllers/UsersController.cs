@@ -126,16 +126,14 @@ namespace BikeRentalApplication.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(string id)
         {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
+            try
             {
-                return NotFound();
+                var data = await _userService.DeleteUser(id);
+                return Ok(data);
+            }catch(Exception ex){
+                return BadRequest(ex.Message);  
             }
-
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+          
         }
 
         [HttpGet("Get-Roles")]

@@ -22,12 +22,6 @@ namespace BikeRentalApplication.Repositories
         public async Task<User> GetUser(string NICNo)
         {
             var user = await _dbContext.Users.SingleOrDefaultAsync(u => u.NICNumber == NICNo);
-
-            if (user == null)
-            {
-                throw new Exception();
-            }
-
             return user;
         }
 
@@ -47,14 +41,8 @@ namespace BikeRentalApplication.Repositories
             return data.Entity;
         }
 
-        public async Task<string> DeleteUser(Guid id)
+        public async Task<string> DeleteUser(User user)
         {
-            var user = await _dbContext.Users.FindAsync(id);
-            if (user == null)
-            {
-                throw new ArgumentException();
-            }
-
             _dbContext.Users.Remove(user);
             await _dbContext.SaveChangesAsync();
 
