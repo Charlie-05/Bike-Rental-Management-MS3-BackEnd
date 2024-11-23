@@ -21,7 +21,7 @@ namespace BikeRentalApplication.Repositories
         }
         public async Task<List<Brand>> GetAllBrands()
         {
-            var data = await _context.Brands.ToListAsync();
+            var data = await _context.Brands.Include(b => b.Bikes).ToListAsync();
             return data;
         }
     }

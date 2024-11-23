@@ -65,6 +65,11 @@ namespace BikeRentalApplication.Services
 
         public async Task<RentalRequest> PostRentalRequest(RentalReqRequest rentalReqRequest)
         {
+            var now = DateTime.Now;
+            if (rentalReqRequest.RequestTime.Subtract(now).Minutes < 0)
+            {
+                throw new Exception("Check your request Date");
+            }
             var rentalRequest = new RentalRequest()
             {
                 BikeId = rentalReqRequest.BikeId,
