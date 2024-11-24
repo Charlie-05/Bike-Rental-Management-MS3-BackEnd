@@ -15,6 +15,7 @@ namespace BikeRentalApplication.Entities
         public List<RentalRequest>? RentalRequests { get; set; }
         public List<Image>? Images { get; set; }
         public decimal Rating { get; set; }
+        public int NumberOfRatings { get; set; }    
         public string? Description { get; set; }
 
     }

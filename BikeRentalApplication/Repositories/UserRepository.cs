@@ -16,12 +16,12 @@ namespace BikeRentalApplication.Repositories
 
         public async Task<List<User>> GetUsers(Roles? role)
         {
-            return await _dbContext.Users.Where(u => u.Role == role).ToListAsync();
+            return await _dbContext.Users.Where(u => u.Role == role).Include(u => u.RentalRequests).Include(u => u.RentalRecords).ToListAsync();
         }
 
         public async Task<User> GetUser(string NICNo)
         {
-            var user = await _dbContext.Users.SingleOrDefaultAsync(u => u.NICNumber == NICNo);
+            var user = await _dbContext.Users.Include(u => u.RentalRequests).Include(u => u.RentalRecords).SingleOrDefaultAsync(u => u.NICNumber == NICNo);
             return user;
         }
 
