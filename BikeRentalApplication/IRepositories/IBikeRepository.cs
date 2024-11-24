@@ -6,7 +6,8 @@ namespace BikeRentalApplication.IRepositories
     {
         Task<List<Bike>> GetBike();
         Task<List<Bike>> GetBikeFilter(string? type,Guid? brandId);
-
+        Task<List<Bike>> GetBikeTypeFilter(string? type);
+        Task<List<Bike>> GetBikeBrandFilter(Guid? brandId);
         Task<Bike> GetBike(Guid id);
         Task<Bike> PutBike(Bike bike);
         Task<Bike> PostBike(Bike bike);

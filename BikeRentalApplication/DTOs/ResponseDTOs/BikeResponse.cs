@@ -6,7 +6,7 @@ namespace BikeRentalApplication.DTOs.ResponseDTOs
     {
         public Guid Id { get; set; }
         public Guid BrandId { get; set; }
-        public Brand Brand { get; set; }
+        public BrandResponse Brand { get; set; }
         public string Model { get; set; }
         public string Type { get; set; }
         public decimal RatePerHour { get; set; }
