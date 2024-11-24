@@ -27,11 +27,11 @@ namespace BikeRentalApplication.Controllers
 
         // GET: api/Bikes
         [HttpGet]
-        public async Task<ActionResult<Bike>> GetBike()
+        public async Task<ActionResult<Bike>> GetBike(string? type, Guid? brandId)
         {
             try
             {
-                var data = await _bikeService.GetBike();
+                var data = await _bikeService.GetBike(type , brandId);
                 return Ok(data);
             }
             catch (Exception ex)

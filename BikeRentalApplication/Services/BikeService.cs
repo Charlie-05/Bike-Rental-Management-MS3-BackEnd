@@ -16,9 +16,16 @@ namespace BikeRentalApplication.Services
             _bikeRepository = bikeRepository;
         }
 
-        public async Task<List<BikeResponse>> GetBike()
+        public async Task<List<BikeResponse>> GetBike(string? type, Guid? brandId)
         {
-            var data = await _bikeRepository.GetBike();
+            var data = new List<Bike>();
+            if (brandId == null && type == null) {
+                data = await _bikeRepository.GetBike();
+            }
+            else
+            {
+                data = await _bikeRepository.GetBikeFilter(type, brandId);
+            }
             var bikes = data.Select(b => new BikeResponse
             {
                 Id = b.Id,
@@ -27,6 +34,7 @@ namespace BikeRentalApplication.Services
                 Model = b.Model,
                 Type = b.Type,
                 RatePerHour = b.RatePerHour,
+                Description = b.Description,
                 Images = b.Images.Select(i => new ImageResponse
                 {
                     Id = i.Id,
@@ -47,9 +55,37 @@ namespace BikeRentalApplication.Services
             return bikes;
         }
 
-        public async Task<Bike> GetBike(Guid id)
+        public async Task<BikeResponse> GetBike(Guid id)
         {
-            return await _bikeRepository.GetBike(id);
+            var data = await _bikeRepository.GetBike(id);
+            var response = new BikeResponse
+            {
+                Id = data.Id,
+                Brand = data.Brand,
+                BrandId = data.BrandId,
+                Model = data.Model,
+                Type = data.Type,
+                RatePerHour = data.RatePerHour,
+                Description = data.Description,
+                Images = data.Images.Select(i => new ImageResponse
+                {
+                    Id = i.Id,
+                    ImagePath = i.ImagePath,
+                    BikeId = i.BikeId,
+
+                }).ToList() ?? [],
+                InventoryUnits = data.InventoryUnits.Select(u => new InventoryUnitResponse
+                {
+                    RegistrationNo = u.RegistrationNo,
+                    YearOfManufacture = u.YearOfManufacture,
+                    Availability = u.Availability,
+                    IsDeleted = u.IsDeleted,
+                    RentalRecords = u.RentalRecords,
+                    BikeId = u.BikeId,
+                }).ToList() ?? [],
+            };
+           // return await _bikeRepository.GetBike(id);
+           return response;
         }
 
         public async Task<Bike> PutBike(BikePutRequest bikePutRequest, Guid id)
@@ -77,6 +113,7 @@ namespace BikeRentalApplication.Services
                 Model = bikeRequest.Model,
                 Type = bikeRequest.Type,
                 RatePerHour = bikeRequest.RatePerHour,
+                Description = bikeRequest.Description,
                 Images = bikeRequest.Images?.Select(i => new Image
                 {
                     ImagePath = i.ImagePath

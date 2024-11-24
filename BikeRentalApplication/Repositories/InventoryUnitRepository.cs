@@ -21,13 +21,13 @@ namespace BikeRentalApplication.Repositories
                 var data = await _dbContext.InventoryUnits.ToListAsync();
                 return data;
             }
-            return await _dbContext.InventoryUnits.Where(u => (u.Availability == availability) && (u.BikeId == bikeId)).ToListAsync();
+            return await _dbContext.InventoryUnits.Include(i => i.Bike).Where(u => (u.Availability == availability) && (u.BikeId == bikeId)).ToListAsync();
            
         }
 
         public async Task<InventoryUnit> GetInventoryUnit(string RegistrationNumber)
         {
-            var data = await _dbContext.InventoryUnits.SingleOrDefaultAsync(u => u.RegistrationNo == RegistrationNumber);
+            var data = await _dbContext.InventoryUnits.Include(i => i.Bike).SingleOrDefaultAsync(u => u.RegistrationNo == RegistrationNumber);
 
             if (data == null)
             {
