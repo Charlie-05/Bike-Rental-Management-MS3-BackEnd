@@ -14,11 +14,16 @@ namespace BikeRentalApplication.Repositories
         {
             _dbContext = dbContext;
         }
-
         public async Task<List<Bike>> GetBike()
         {
-            var bikes = await _dbContext.Bikes.ToListAsync();
-            var data = await _dbContext.Bikes.Include(b => b.Images).Include(b => b.InventoryUnits).Include(b=> b.Brand).ToListAsync();
+            var data = await _dbContext.Bikes.Include(b => b.Images).Include(b => b.InventoryUnits).Include(b => b.Brand).ToListAsync();
+            return data;
+        }
+
+        public async Task<List<Bike>> GetBikeFilter(string? type , Guid? brandId)
+        {
+            var data = await _dbContext.Bikes.Where(b => b.Type == type || b.BrandId == brandId).Include(b => b.Images)
+                .Include(b => b.InventoryUnits).Include(b=> b.Brand).ToListAsync();
             return data;
         }
 

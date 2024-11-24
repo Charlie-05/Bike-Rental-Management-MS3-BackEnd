@@ -7,5 +7,6 @@
         public string Type { get; set; }
         public decimal RatePerHour { get; set; }
         public List<ImageRequest>? Images { get; set; }
+        public string? Description { get; set; }
     }
 }
