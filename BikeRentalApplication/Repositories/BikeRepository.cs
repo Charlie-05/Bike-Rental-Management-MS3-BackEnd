@@ -19,10 +19,21 @@ namespace BikeRentalApplication.Repositories
             var data = await _dbContext.Bikes.Include(b => b.Images).Include(b => b.InventoryUnits).Include(b => b.Brand).ToListAsync();
             return data;
         }
-
+        public async Task<List<Bike>> GetBikeTypeFilter(string? type)
+        {
+            var data = await _dbContext.Bikes.Where(b => b.Type == type).Include(b => b.Images)
+                .Include(b => b.InventoryUnits).Include(b => b.Brand).ToListAsync();
+            return data;
+        }
+        public async Task<List<Bike>> GetBikeBrandFilter(Guid? brandId)
+        {
+            var data = await _dbContext.Bikes.Where(b => b.BrandId == brandId).Include(b => b.Images)
+                .Include(b => b.InventoryUnits).Include(b => b.Brand).ToListAsync();
+            return data;
+        }
         public async Task<List<Bike>> GetBikeFilter(string? type , Guid? brandId)
         {
-            var data = await _dbContext.Bikes.Where(b => b.Type == type || b.BrandId == brandId).Include(b => b.Images)
+            var data = await _dbContext.Bikes.Where(b => b.Type == type && b.BrandId == brandId).Include(b => b.Images)
                 .Include(b => b.InventoryUnits).Include(b=> b.Brand).ToListAsync();
             return data;
         }

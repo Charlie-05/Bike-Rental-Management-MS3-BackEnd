@@ -4,6 +4,7 @@ using BikeRentalApplication.Entities;
 using BikeRentalApplication.IRepositories;
 using BikeRentalApplication.IServices;
 using Microsoft.EntityFrameworkCore;
+using System.Runtime.Intrinsics.X86;
 
 namespace BikeRentalApplication.Services
 {
@@ -19,8 +20,17 @@ namespace BikeRentalApplication.Services
         public async Task<List<BikeResponse>> GetBike(string? type, Guid? brandId)
         {
             var data = new List<Bike>();
-            if (brandId == null && type == null) {
+            if (brandId == null && type == null)
+            {
                 data = await _bikeRepository.GetBike();
+            }
+            else if (brandId != null && type == null)
+            {
+                data = await _bikeRepository.GetBikeBrandFilter(brandId);
+            }
+            else if (brandId == null && type != null)
+            {
+                data = await _bikeRepository.GetBikeTypeFilter(type);
             }
             else
             {
@@ -29,12 +39,16 @@ namespace BikeRentalApplication.Services
             var bikes = data.Select(b => new BikeResponse
             {
                 Id = b.Id,
-                Brand = b.Brand,
                 BrandId = b.BrandId,
                 Model = b.Model,
                 Type = b.Type,
                 RatePerHour = b.RatePerHour,
                 Description = b.Description,
+                Brand = new BrandResponse
+                {
+                    Name = b.Brand.Name,
+                    Id = b.Brand.Id,
+                },
                 Images = b.Images.Select(i => new ImageResponse
                 {
                     Id = i.Id,
@@ -61,12 +75,16 @@ namespace BikeRentalApplication.Services
             var response = new BikeResponse
             {
                 Id = data.Id,
-                Brand = data.Brand,
                 BrandId = data.BrandId,
                 Model = data.Model,
                 Type = data.Type,
                 RatePerHour = data.RatePerHour,
                 Description = data.Description,
+                Brand = new BrandResponse
+                {
+                    Name = data.Brand.Name,
+                    Id = data.Brand.Id,
+                },
                 Images = data.Images.Select(i => new ImageResponse
                 {
                     Id = i.Id,
@@ -84,8 +102,8 @@ namespace BikeRentalApplication.Services
                     BikeId = u.BikeId,
                 }).ToList() ?? [],
             };
-           // return await _bikeRepository.GetBike(id);
-           return response;
+            // return await _bikeRepository.GetBike(id);
+            return response;
         }
 
         public async Task<Bike> PutBike(BikePutRequest bikePutRequest, Guid id)
@@ -119,7 +137,7 @@ namespace BikeRentalApplication.Services
                     ImagePath = i.ImagePath
                 }).ToList()
             };
-           
+
             return await _bikeRepository.PostBike(bike);
         }
         public async Task<string> DeleteBike(Guid id)
