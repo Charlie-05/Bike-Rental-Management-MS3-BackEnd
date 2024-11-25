@@ -12,6 +12,7 @@ namespace BikeRentalApplication.DTOs.ResponseDTOs
         public decimal RatePerHour { get; set; }
         public string? Description { get; set; }
         public decimal Rating { get; set; }
+        public int NumberOfRatings { get; set; }
         public List<InventoryUnitResponse> InventoryUnits { get; set; }
         public List<RentalRequest> RentalRequests { get; set; }
         public List<ImageResponse> Images { get; set; }

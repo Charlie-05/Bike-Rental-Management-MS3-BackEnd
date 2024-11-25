@@ -44,6 +44,8 @@ namespace BikeRentalApplication.Services
                 Type = b.Type,
                 RatePerHour = b.RatePerHour,
                 Description = b.Description,
+                Rating = b.Rating,
+                NumberOfRatings = b.NumberOfRatings,
                 Brand = new BrandResponse
                 {
                     Name = b.Brand.Name,
@@ -80,6 +82,8 @@ namespace BikeRentalApplication.Services
                 Type = data.Type,
                 RatePerHour = data.RatePerHour,
                 Description = data.Description,
+                Rating = data.Rating,
+                NumberOfRatings = data.NumberOfRatings,
                 Brand = new BrandResponse
                 {
                     Name = data.Brand.Name,
