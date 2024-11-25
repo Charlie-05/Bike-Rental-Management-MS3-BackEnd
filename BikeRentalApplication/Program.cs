@@ -1,5 +1,6 @@
 
 using BikeRentalApplication.Database;
+using BikeRentalApplication.Entities;
 using BikeRentalApplication.IRepositories;
 using BikeRentalApplication.IServices;
 using BikeRentalApplication.Repositories;
@@ -28,6 +29,8 @@ namespace BikeRentalApplication
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddDbContext<RentalDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+         
             builder.Services.AddScoped<IBikeRepository, BikeRepository>();
             builder.Services.AddScoped<IBikeService, BikeService>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -40,7 +43,7 @@ namespace BikeRentalApplication
             builder.Services.AddScoped<IRentalRecordService, RentalRecordService>();
             builder.Services.AddScoped<IBrandRepository, BrandRepository>();
             builder.Services.AddScoped<IBrandService, BrandService>();
-
+            builder.Services.AddScoped<IEmailService, EmailService>();
             builder.Services.AddCors(opt =>
             {
                 opt.AddPolicy(
