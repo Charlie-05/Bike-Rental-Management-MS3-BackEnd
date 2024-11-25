@@ -42,6 +42,7 @@ namespace BikeRentalApplication.Repositories
             return request;
         }
 
+
         public async Task<RentalRequest> UpdateRentalRequest(RentalRequest rentalRequest)
         {
            var data = _dbContext.RentalRequests.Update(rentalRequest);

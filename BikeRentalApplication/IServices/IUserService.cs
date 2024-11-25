@@ -7,7 +7,7 @@ namespace BikeRentalApplication.IServices
     public interface IUserService
     {
         Task<List<User>> GetUsers(Roles? role);
-        Task<User> GetUser(string NICNo);
+        Task<UserResponse> GetUser(string NICNo);
         Task<User> UpdateUser(User user, string nicNo);
         Task<TokenModel> SignUp(UserRequest userRequest);
         Task<string> DeleteUser(string nicNo);

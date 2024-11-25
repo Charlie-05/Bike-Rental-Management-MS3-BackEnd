@@ -34,17 +34,17 @@ namespace BikeRentalApplication.Controllers
         }
 
         // GET: api/Users/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(string id)
+        [HttpGet("{NICNo}")]
+        public async Task<IActionResult> GetUser(string NICNo)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _userService.GetUser(NICNo);
 
             if (user == null)
             {
                 return NotFound();
             }
 
-            return user;
+            return Ok(user);
         }
 
         // PUT: api/Users/5

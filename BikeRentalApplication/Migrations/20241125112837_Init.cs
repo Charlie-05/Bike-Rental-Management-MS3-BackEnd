@@ -12,18 +12,15 @@ namespace BikeRentalApplication.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Bikes",
+                name: "Brands",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Brand = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Model = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RatePerHour = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Bikes", x => x.Id);
+                    table.PrimaryKey("PK_Brands", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -36,17 +33,41 @@ namespace BikeRentalApplication.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ContactNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HashPassword = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HashPassword = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AccountCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Role = table.Column<int>(type: "int", nullable: false),
                     IsBlocked = table.Column<bool>(type: "bit", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProfileImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsVerified = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.NICNumber);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Bikes",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    BrandId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Model = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RatePerHour = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Rating = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    NumberOfRatings = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bikes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Bikes_Brands_BrandId",
+                        column: x => x.BrandId,
+                        principalTable: "Brands",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -128,6 +149,7 @@ namespace BikeRentalApplication.Migrations
                     Payment = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     BikeRegNo = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     RentalRequestId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Review = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserNICNumber = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
@@ -150,6 +172,11 @@ namespace BikeRentalApplication.Migrations
                         principalTable: "Users",
                         principalColumn: "NICNumber");
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Bikes_BrandId",
+                table: "Bikes",
+                column: "BrandId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Images_BikeId",
@@ -208,6 +235,9 @@ namespace BikeRentalApplication.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Brands");
         }
     }
 }
