@@ -11,7 +11,7 @@ namespace BikeRentalApplication.Services
         private readonly IRentalRecordRepository _rentalRecordRepository;
         private readonly IRentalRequestRepository _rentalRequestRepository;
 
-        public RentalRecordService(IRentalRecordRepository rentalRecordRepository , IRentalRequestRepository rentalRequestRepository )
+        public RentalRecordService(IRentalRecordRepository rentalRecordRepository, IRentalRequestRepository rentalRequestRepository)
         {
             _rentalRecordRepository = rentalRecordRepository;
             _rentalRequestRepository = rentalRequestRepository;
@@ -24,7 +24,8 @@ namespace BikeRentalApplication.Services
                 var data = await _rentalRecordRepository.GetIncompleteRentalRecords();
                 return data;
             }
-            else if (state == State.Completed) {
+            else if (state == State.Completed)
+            {
                 var data = await _rentalRecordRepository.GetRentalRecords();
                 return data;
             }
@@ -32,7 +33,7 @@ namespace BikeRentalApplication.Services
             {
                 throw new Exception("Invalid State Code");
             }
-            
+
         }
 
         public async Task<List<RentalRecord>> GetOverDueRentals()
@@ -42,8 +43,9 @@ namespace BikeRentalApplication.Services
             var now = DateTime.Now;
             foreach (RentalRecord record in data)
             {
-                if (now.Subtract((DateTime)record.RentalOut).Days > 7) { 
-                overdue.Add(record);
+                if (now.Subtract((DateTime)record.RentalOut).Days > 1)
+                {
+                    overdue.Add(record);
                 }
             }
             return overdue;
@@ -104,15 +106,16 @@ namespace BikeRentalApplication.Services
         }
 
         public async Task<RentalRecord> PostRentalRecord(RentalRecRequest rentalRecRequest)
-        {   
+        {
+            var getRequest = await _rentalRequestRepository.GetRentalRequest(rentalRecRequest.RentalRequestId);
             var RentalRecord = new RentalRecord()
             {
-               RentalRequestId = rentalRecRequest.RentalRequestId,
-               RentalOut = DateTime.Now,
-               BikeRegNo = rentalRecRequest.BikeRegNo,
+                RentalRequestId = rentalRecRequest.RentalRequestId,
+                RentalOut = DateTime.Now,
+                BikeRegNo = rentalRecRequest.BikeRegNo,
+
             };
             var data = await _rentalRecordRepository.PostRentalRecord(RentalRecord);
-            var getRequest = await _rentalRequestRepository.GetRentalRequest(rentalRecRequest.RentalRequestId);
             getRequest.Status = Status.OnRent;
             var updated = await _rentalRequestRepository.UpdateRentalRequest(getRequest);
             return data;

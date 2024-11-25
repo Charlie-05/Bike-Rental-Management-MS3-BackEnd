@@ -8,6 +8,7 @@ namespace BikeRentalApplication.IRepositories
         Task<List<RentalRecord>> GetRentalRecords();
         Task<List<RentalRecord>> GetIncompleteRentalRecords();
         Task<RentalRecord> GetRentalRecord(Guid id);
+        Task<RentalRecord> GetRentalRecordbyRequestID(Guid RequestId);
         Task<RentalRecord> UpdateRentalRecord(RentalRecord RentalRecord);
         Task<string> DeleteRentalRecord(Guid id);
     }

@@ -5,6 +5,7 @@ using BikeRentalApplication.IRepositories;
 using BikeRentalApplication.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -15,10 +16,12 @@ namespace BikeRentalApplication.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly IConfiguration _configuration;
-        public UserService(IUserRepository userRepository, IConfiguration configuration)
+        private readonly IRentalRecordRepository _recordRepository;
+        public UserService(IUserRepository userRepository, IConfiguration configuration, IRentalRecordRepository rentalRecordRepository)
         {
             _userRepository = userRepository;
             _configuration = configuration;
+            _recordRepository = rentalRecordRepository;
         }
 
         public async Task<List<User>> GetUsers(Roles? role)
@@ -26,14 +29,52 @@ namespace BikeRentalApplication.Services
             return await _userRepository.GetUsers(role);
         }
 
-        public async Task<User> GetUser(string NICNo)
+        public async Task<UserResponse> GetUser(string NICNo)
         {
             var data = await _userRepository.GetUser(NICNo);
+            var rentalRecords = new List<RentalRecord>();
+            foreach (var item in data.RentalRequests)
+            {
+                var record = await _recordRepository.GetRentalRecordbyRequestID(item.Id);
+                rentalRecords.Add(record);
+            }
+            var response = new UserResponse
+            {
+                NICNumber = data.NICNumber,
+                FirstName = data.FirstName,
+                LastName = data.LastName,
+                Email = data.Email,
+                ContactNo = data.ContactNo,
+                Address = data.Address,
+                IsBlocked = data.IsBlocked,
+                UserName = data.UserName,
+                ProfileImage = data.ProfileImage,
+                RentalRecords = rentalRecords.Select(r => new RentalRecordResponse
+                {
+                    Id = r.Id,
+                    RentalOut = r.RentalOut,
+                    RentalReturn = r.RentalReturn,
+                    BikeRegNo = r.BikeRegNo,
+                    Payment = r.Payment,
+                    RentalRequestId = r.RentalRequestId,
+                }).ToList(),
+                RentalRequests = data.RentalRequests.Select(r => new RentalRequestResponse
+                {Id = r.Id,
+                RequestTime = r.RequestTime,
+                Status = r.Status,
+                BikeId = r.BikeId,
+                UserId = r.UserId,
+                Notify = r.Notify,
+
+                }).ToList(),
+
+            };
+           
             if (data == null)
             {
                 throw new Exception("Not found");
             }
-            return data;
+            return response;
         }
 
         public async Task<User> UpdateUser(User user, string nicNo)

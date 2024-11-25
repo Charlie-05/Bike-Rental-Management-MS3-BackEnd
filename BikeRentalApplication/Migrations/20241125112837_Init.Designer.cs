@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BikeRentalApplication.Migrations
 {
     [DbContext(typeof(RentalDbContext))]
-    [Migration("20241121113701_rating column nullable")]
-    partial class ratingcolumnnullable
+    [Migration("20241125112837_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,9 +34,15 @@ namespace BikeRentalApplication.Migrations
                     b.Property<Guid>("BrandId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Model")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("NumberOfRatings")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("RatePerHour")
                         .HasColumnType("decimal(18,2)");
@@ -212,7 +218,6 @@ namespace BikeRentalApplication.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HashPassword")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsBlocked")
@@ -232,7 +237,6 @@ namespace BikeRentalApplication.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("NICNumber");
