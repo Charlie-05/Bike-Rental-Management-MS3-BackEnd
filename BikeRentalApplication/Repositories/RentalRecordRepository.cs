@@ -44,7 +44,7 @@ namespace BikeRentalApplication.Repositories
         public async Task<RentalRecord> GetRentalRecordbyRequestID(Guid RequestId)
         {
             var data = await _dbContext.RentalRecords.Where(r => r.RentalRequestId == RequestId).SingleOrDefaultAsync();
-            return data ?? throw new Exception();
+            return data;
         }
 
         public async Task<RentalRecord> UpdateRentalRecord(RentalRecord RentalRecord)

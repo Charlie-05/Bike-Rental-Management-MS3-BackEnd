@@ -36,8 +36,12 @@ namespace BikeRentalApplication.Services
             foreach (var item in data.RentalRequests)
             {
                 var record = await _recordRepository.GetRentalRecordbyRequestID(item.Id);
-                rentalRecords.Add(record);
+                if(record != null)
+                {
+                    rentalRecords.Add(record);
+                }
             }
+              
             var response = new UserResponse
             {
                 NICNumber = data.NICNumber,

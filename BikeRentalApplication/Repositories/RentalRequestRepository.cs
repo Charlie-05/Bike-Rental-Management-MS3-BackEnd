@@ -27,12 +27,12 @@ namespace BikeRentalApplication.Repositories
 
         public async Task<List<RentalRequest>> GetRentalRequestsByStatus(Status? status)
         {
-            return await _dbContext.RentalRequests.Where(r => r.Status == status).Include(r => r.Bike).ToListAsync();
+            return await _dbContext.RentalRequests.Where(r => r.Status == status).Include(r => r.Bike).ThenInclude(r => r.Brand).ToListAsync();
         }
 
         public async Task<RentalRequest> GetRentalRequest(Guid id)
         {
-            var request = await _dbContext.RentalRequests.Include(r => r.Bike).SingleOrDefaultAsync(u => u.Id == id);
+            var request = await _dbContext.RentalRequests.Include(r => r.Bike).ThenInclude(r => r.Brand).SingleOrDefaultAsync(u => u.Id == id);
 
             if (request == null)
             {
