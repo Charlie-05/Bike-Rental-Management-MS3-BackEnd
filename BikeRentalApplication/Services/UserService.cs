@@ -37,17 +37,23 @@ namespace BikeRentalApplication.Services
             {
                 var record = await _recordRepository.GetRentalRecordbyRequestID(item.Id);
 <<<<<<< HEAD
+<<<<<<< HEAD
                 if(record != null)
                 {
                     rentalRecords.Add(record);
                 }
 =======
+=======
+>>>>>>> f359cdfcb473f97815b0615579bebed27d3cdbb4
                 if (record != null)
                 {
                     rentalRecords.Add(record);
                 }
                
+<<<<<<< HEAD
 >>>>>>> 9e8756a1110dbe45cb7ebd06f4517e78fb7aa386
+=======
+>>>>>>> f359cdfcb473f97815b0615579bebed27d3cdbb4
             }
               
             var response = new UserResponse
