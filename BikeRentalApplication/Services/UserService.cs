@@ -36,10 +36,18 @@ namespace BikeRentalApplication.Services
             foreach (var item in data.RentalRequests)
             {
                 var record = await _recordRepository.GetRentalRecordbyRequestID(item.Id);
+<<<<<<< HEAD
                 if(record != null)
                 {
                     rentalRecords.Add(record);
                 }
+=======
+                if (record != null)
+                {
+                    rentalRecords.Add(record);
+                }
+               
+>>>>>>> 9e8756a1110dbe45cb7ebd06f4517e78fb7aa386
             }
               
             var response = new UserResponse
@@ -74,6 +82,7 @@ namespace BikeRentalApplication.Services
 
             };
            
+            
             if (data == null)
             {
                 throw new Exception("Not found");

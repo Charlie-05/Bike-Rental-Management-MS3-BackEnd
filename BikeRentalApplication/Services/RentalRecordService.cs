@@ -10,11 +10,13 @@ namespace BikeRentalApplication.Services
     {
         private readonly IRentalRecordRepository _rentalRecordRepository;
         private readonly IRentalRequestRepository _rentalRequestRepository;
+        private readonly IInventoryUnitRepository _inventoryUnitRepository;
 
-        public RentalRecordService(IRentalRecordRepository rentalRecordRepository, IRentalRequestRepository rentalRequestRepository)
+        public RentalRecordService(IRentalRecordRepository rentalRecordRepository, IRentalRequestRepository rentalRequestRepository, IInventoryUnitRepository inventoryUnitRepository)
         {
             _rentalRecordRepository = rentalRecordRepository;
             _rentalRequestRepository = rentalRequestRepository;
+            _inventoryUnitRepository = inventoryUnitRepository;
         }
 
         public async Task<List<RentalRecord>> GetRentalRecords(State? state)
@@ -115,7 +117,11 @@ namespace BikeRentalApplication.Services
                 BikeRegNo = rentalRecRequest.BikeRegNo,
 
             };
+          
             var data = await _rentalRecordRepository.PostRentalRecord(RentalRecord);
+            var getUnit = await _inventoryUnitRepository.GetInventoryUnit(rentalRecRequest.BikeRegNo);
+            getUnit.Availability = false;
+            var updatedUnit = await _inventoryUnitRepository.PutInventoryUnit(getUnit);
             getRequest.Status = Status.OnRent;
             var updated = await _rentalRequestRepository.UpdateRentalRequest(getRequest);
             return data;
