@@ -17,5 +17,6 @@ namespace BikeRentalApplication.DTOs.ResponseDTOs
         public List<RentalRequestResponse>? RentalRequests { get; set; }
         public List<RentalRecordResponse>? RentalRecords { get; set; }
         public string? ProfileImage { get; set; }
+        public DateTime AccountCreated { get; set; }
     }
 }

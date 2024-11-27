@@ -31,4 +31,9 @@ namespace BikeRentalApplication.Entities
         Manager,
         User
     }
+    public enum Settings
+    {
+        credentials = 0,
+        info = 1
+    }
 }
