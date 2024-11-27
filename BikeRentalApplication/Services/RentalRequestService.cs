@@ -52,6 +52,7 @@ namespace BikeRentalApplication.Services
         {
             var request = await _rentalRequestRepository.GetRentalRequest(Id);
             request.Status = Status.Accepted;
+            request.Notify = true;
             var data = await _rentalRequestRepository.UpdateRentalRequest(request);
             return data;
         }
@@ -59,6 +60,7 @@ namespace BikeRentalApplication.Services
         {
             var request = await _rentalRequestRepository.GetRentalRequest(Id);
             request.Status = Status.Declined;
+            request.Notify = true;
             var data = await _rentalRequestRepository.UpdateRentalRequest(request);
             return data;
         }

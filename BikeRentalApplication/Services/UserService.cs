@@ -36,10 +36,18 @@ namespace BikeRentalApplication.Services
             foreach (var item in data.RentalRequests)
             {
                 var record = await _recordRepository.GetRentalRecordbyRequestID(item.Id);
+
                 if(record != null)
                 {
                     rentalRecords.Add(record);
                 }
+
+                if (record != null)
+                {
+                    rentalRecords.Add(record);
+                }
+               
+
             }
               
             var response = new UserResponse
@@ -74,6 +82,7 @@ namespace BikeRentalApplication.Services
 
             };
            
+            
             if (data == null)
             {
                 throw new Exception("Not found");
@@ -145,7 +154,7 @@ namespace BikeRentalApplication.Services
             }
             else
             {
-                throw new Exception("Invalid Password");
+                throw new Exception("Check your credentials");
             }
         }
 
