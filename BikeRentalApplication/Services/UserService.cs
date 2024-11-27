@@ -32,6 +32,7 @@ namespace BikeRentalApplication.Services
         public async Task<UserResponse> GetUser(string NICNo)
         {
             var data = await _userRepository.GetUser(NICNo);
+            data.RentalRequests = data.RentalRequests ?? [];
             var rentalRecords = new List<RentalRecord>();
             foreach (var item in data.RentalRequests)
             {
@@ -92,6 +93,10 @@ namespace BikeRentalApplication.Services
 
         public async Task<User> UpdateUser(User user, string nicNo)
         {
+            var userNameUnavailable = await _userRepository.UserNameExists(user.UserName);
+            if (userNameUnavailable){
+                throw new Exception("Username already exists.Try something different.");
+            }
             user.HashPassword = BCrypt.Net.BCrypt.HashPassword(user.HashPassword);
             return await _userRepository.UpdateUser(user);
         }
@@ -154,7 +159,7 @@ namespace BikeRentalApplication.Services
             }
             else
             {
-                throw new Exception("Check your credentials");
+                throw new Exception("Check your password");
             }
         }
 

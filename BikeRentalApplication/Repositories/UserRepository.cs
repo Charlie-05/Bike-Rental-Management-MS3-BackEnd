@@ -56,7 +56,7 @@ namespace BikeRentalApplication.Repositories
 
         public async Task<bool>UserNameExists(string userName)
         {
-            return _dbContext.Users.Any(e => e.NICNumber == userName);
+            return _dbContext.Users.Any(e => e.UserName == userName);
         }
 
     }
