@@ -97,7 +97,11 @@ namespace BikeRentalApplication.Services
             {
                 getRecord.RentalReturn = DateTime.Now;
                 getRecord.Payment = rentalRecPutRequest.Payment;
+               
                 var data = await _rentalRecordRepository.UpdateRentalRecord(getRecord);
+                var getUnit = await _inventoryUnitRepository.GetInventoryUnit(getRecord.BikeRegNo);
+                getUnit.Availability = true;
+               await _inventoryUnitRepository.PutInventoryUnit(getUnit);
                 return data;
             }
             else
