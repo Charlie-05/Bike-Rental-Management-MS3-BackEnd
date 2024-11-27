@@ -50,13 +50,13 @@ namespace BikeRentalApplication.Controllers
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{nicNo}")]
-        public async Task<IActionResult> PutUser(User user, string nicNo)
+        public async Task<IActionResult> PutUser(UserPutRequest user, string nicNo, Settings setting)
         {
 
 
             try
             {
-               var data = await  _userService.UpdateUser(user, nicNo);  
+               var data = await  _userService.UpdateUser(user, nicNo , setting);  
                 return Ok(data);
             }
             catch (Exception ex)

@@ -38,7 +38,7 @@ namespace BikeRentalApplication.Services
             {
                 var record = await _recordRepository.GetRentalRecordbyRequestID(item.Id);
 
-                if(record != null)
+                if (record != null)
                 {
                     rentalRecords.Add(record);
                 }
@@ -47,10 +47,10 @@ namespace BikeRentalApplication.Services
                 {
                     rentalRecords.Add(record);
                 }
-               
+
 
             }
-              
+
             var response = new UserResponse
             {
                 NICNumber = data.NICNumber,
@@ -62,6 +62,8 @@ namespace BikeRentalApplication.Services
                 IsBlocked = data.IsBlocked,
                 UserName = data.UserName,
                 ProfileImage = data.ProfileImage,
+                Role = data.Role,
+                AccountCreated = data.AccountCreated,
                 RentalRecords = rentalRecords.Select(r => new RentalRecordResponse
                 {
                     Id = r.Id,
@@ -72,18 +74,19 @@ namespace BikeRentalApplication.Services
                     RentalRequestId = r.RentalRequestId,
                 }).ToList(),
                 RentalRequests = data.RentalRequests.Select(r => new RentalRequestResponse
-                {Id = r.Id,
-                RequestTime = r.RequestTime,
-                Status = r.Status,
-                BikeId = r.BikeId,
-                UserId = r.UserId,
-                Notify = r.Notify,
+                {
+                    Id = r.Id,
+                    RequestTime = r.RequestTime,
+                    Status = r.Status,
+                    BikeId = r.BikeId,
+                    UserId = r.UserId,
+                    Notify = r.Notify,
 
                 }).ToList(),
 
             };
-           
-            
+
+
             if (data == null)
             {
                 throw new Exception("Not found");
@@ -91,13 +94,34 @@ namespace BikeRentalApplication.Services
             return response;
         }
 
-        public async Task<User> UpdateUser(User user, string nicNo)
+        public async Task<User> UpdateUser(UserPutRequest userRequest, string nicNo, Settings setting)
         {
-            var userNameUnavailable = await _userRepository.UserNameExists(user.UserName);
-            if (userNameUnavailable){
+            var userNameUnavailable = await _userRepository.UserNameExists(userRequest.UserName);
+            if (userNameUnavailable)
+            {
                 throw new Exception("Username already exists.Try something different.");
             }
-            user.HashPassword = BCrypt.Net.BCrypt.HashPassword(user.HashPassword);
+            var user = await _userRepository.GetUser(nicNo);
+            if(user == null)
+            {
+                throw new Exception("User not found");
+            }
+            if (setting == Settings.credentials)
+            {
+                user.UserName = userRequest.UserName;
+                user.HashPassword = BCrypt.Net.BCrypt.HashPassword(userRequest.HashPassword);
+            }
+            else if (setting == Settings.info)
+            {
+                user.FirstName = userRequest.FirstName;
+                user.LastName = userRequest.LastName;
+                user.ProfileImage = userRequest.ProfileImage;
+                user.Address = userRequest.Address;
+                user.Email = userRequest.Email;
+                user.ContactNo = userRequest.ContactNo;
+            }
+
+
             return await _userRepository.UpdateUser(user);
         }
         public async Task<TokenModel> SignUp(UserRequest userRequest)
@@ -120,7 +144,8 @@ namespace BikeRentalApplication.Services
                 user.UserName = "admin";
             }
             var getUser = await _userRepository.SignUp(user);
-            if (getUser != null) {
+            if (getUser != null)
+            {
                 var token = CreateToken(user);
                 return token;
             }
@@ -140,7 +165,7 @@ namespace BikeRentalApplication.Services
             {
                 throw new Exception();
             }
-            
+
         }
 
         public async Task<TokenModel> LogIn(LogInData logInData)
@@ -186,7 +211,7 @@ namespace BikeRentalApplication.Services
         {
             var claimList = new List<Claim>();
             claimList.Add(new Claim("ContactNo", user.ContactNo));
-            if(user.UserName != null)
+            if (user.UserName != null)
             {
                 claimList.Add(new Claim("UserName", user.UserName));
             }

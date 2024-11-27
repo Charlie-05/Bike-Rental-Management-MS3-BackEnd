@@ -45,7 +45,7 @@ namespace BikeRentalApplication.Services
             var now = DateTime.Now;
             foreach (RentalRecord record in data)
             {
-                if (now.Subtract((DateTime)record.RentalOut).Days > 1)
+                if (now.Subtract((DateTime)record.RentalOut).Minutes > 5)
                 {
                     overdue.Add(record);
                 }
