@@ -60,10 +60,10 @@ namespace BikeRentalApplication.Controllers
         }
 
         [HttpGet("Get-overdue")]
-        public async Task<IActionResult> GetOverDueRentals()
+        public async Task<IActionResult> GetOverDueRentals(string? nicNo)
         {
             try { 
-                var data = await _rentalRecordService.GetOverDueRentals();
+                var data = await _rentalRecordService.GetOverDueRentals(nicNo);
                 return Ok(data);
             } catch (Exception ex) {
                 return BadRequest(ex.Message);
