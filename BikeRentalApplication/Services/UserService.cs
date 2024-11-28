@@ -43,11 +43,6 @@ namespace BikeRentalApplication.Services
                     rentalRecords.Add(record);
                 }
 
-                if (record != null)
-                {
-                    rentalRecords.Add(record);
-                }
-
 
             }
 
@@ -72,7 +67,7 @@ namespace BikeRentalApplication.Services
                     BikeRegNo = r.BikeRegNo,
                     Payment = r.Payment,
                     RentalRequestId = r.RentalRequestId,
-                }).ToList(),
+                }).OrderBy(r => r.RentalOut).ToList(),
                 RentalRequests = data.RentalRequests.Select(r => new RentalRequestResponse
                 {
                     Id = r.Id,
@@ -82,7 +77,7 @@ namespace BikeRentalApplication.Services
                     UserId = r.UserId,
                     Notify = r.Notify,
 
-                }).ToList(),
+                }).OrderBy(r => r.RequestTime).ToList(),
 
             };
 

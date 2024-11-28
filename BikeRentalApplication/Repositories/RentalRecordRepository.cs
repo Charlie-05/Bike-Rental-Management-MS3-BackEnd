@@ -22,11 +22,11 @@ namespace BikeRentalApplication.Repositories
         }
         public async Task<List<RentalRecord>> GetRentalRecords()
         {
-            return await _dbContext.RentalRecords.Where(r => r.RentalReturn != null).ToListAsync();
+            return await _dbContext.RentalRecords.Where(r => r.RentalReturn != null).Include(r => r.RentalRequest).ToListAsync();
         }
         public async Task<List<RentalRecord>> GetIncompleteRentalRecords()
         {
-            var data = await _dbContext.RentalRecords.Where(r => r.RentalReturn == null).ToListAsync();
+            var data = await _dbContext.RentalRecords.Where(r => r.RentalReturn == null).Include(r => r.RentalRequest).ToListAsync();
             return data;
         }
 
