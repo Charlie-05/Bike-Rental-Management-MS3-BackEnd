@@ -13,6 +13,7 @@ namespace BikeRentalApplication.IServices
         Task<string> DeleteUser(string nicNo);
         Task<TokenModel> LogIn(LogInData logInData);
         Task<List<RoleResponse>> GetRoles();
+        Task<User> VerifyUser(string nicNo);
 
     }
 }

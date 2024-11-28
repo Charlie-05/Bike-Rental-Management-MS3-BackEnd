@@ -69,28 +69,7 @@ namespace BikeRentalApplication.Controllers
 
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
-        {
-            _context.Users.Add(user);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (UserExists(user.NICNumber))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetUser", new { id = user.NICNumber }, user);
-        }
+   
 
         [HttpPost("Sign-Up")]
         public async Task<ActionResult<User>> SignUp(UserRequest userRequest)
@@ -143,9 +122,12 @@ namespace BikeRentalApplication.Controllers
             return Ok(data);
         }
 
-        private bool UserExists(string id)
+        [HttpGet("Verify-user{nicNo}")]
+        public async Task<IActionResult> VerifyUser(string nicNo)
         {
-            return _context.Users.Any(e => e.NICNumber == id);
+            var data = await _userService.VerifyUser(nicNo);
+            return Ok(data);
         }
+
     }
 }

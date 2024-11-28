@@ -97,7 +97,7 @@ namespace BikeRentalApplication.Services
                 throw new Exception("Username already exists.Try something different.");
             }
             var user = await _userRepository.GetUser(nicNo);
-            if(user == null)
+            if (user == null)
             {
                 throw new Exception("User not found");
             }
@@ -105,6 +105,14 @@ namespace BikeRentalApplication.Services
             {
                 user.UserName = userRequest.UserName;
                 user.HashPassword = BCrypt.Net.BCrypt.HashPassword(userRequest.HashPassword);
+                if (user.Role == Roles.Admin)
+                {
+                    user.IsVerified = true;
+                }
+                if (user.Role == Roles.Manager && user.IsVerified == false)
+                {
+                    throw new Exception("Your registration is under approval by Admin.");
+                }
             }
             else if (setting == Settings.info)
             {
@@ -119,6 +127,7 @@ namespace BikeRentalApplication.Services
 
             return await _userRepository.UpdateUser(user);
         }
+
         public async Task<TokenModel> SignUp(UserRequest userRequest)
         {
             var user = new User
@@ -161,6 +170,18 @@ namespace BikeRentalApplication.Services
                 throw new Exception();
             }
 
+        }
+
+        public async Task<User> VerifyUser(string nicNo)
+        {
+            var getUser = await _userRepository.GetUser(nicNo);
+            if (getUser == null)
+            {
+                throw new Exception("User not Found");
+            }
+            getUser.IsVerified = true;
+            var data = await _userRepository.UpdateUser(getUser);
+            return data;
         }
 
         public async Task<TokenModel> LogIn(LogInData logInData)
