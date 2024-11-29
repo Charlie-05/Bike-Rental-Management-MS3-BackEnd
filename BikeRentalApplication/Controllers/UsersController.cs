@@ -9,6 +9,7 @@ using BikeRentalApplication.Database;
 using BikeRentalApplication.Entities;
 using BikeRentalApplication.IServices;
 using BikeRentalApplication.DTOs.RequestDTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BikeRentalApplication.Controllers
 {
@@ -50,6 +51,7 @@ namespace BikeRentalApplication.Controllers
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{nicNo}")]
+
         public async Task<IActionResult> PutUser(UserPutRequest user, string nicNo, Settings setting)
         {
 

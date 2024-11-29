@@ -234,6 +234,7 @@ namespace BikeRentalApplication.Services
             claimList.Add(new Claim("Email", user.Email));
             claimList.Add(new Claim("Role", user.Role.ToString()));
             claimList.Add(new Claim("NICNo", user.NICNumber));
+            claimList.Add(new Claim(ClaimTypes.Role, user.Role.ToString()));
 
             var key = _configuration["JWT:Key"];
             var secKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key));

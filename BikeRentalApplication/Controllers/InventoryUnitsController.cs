@@ -9,6 +9,7 @@ using BikeRentalApplication.Database;
 using BikeRentalApplication.Entities;
 using BikeRentalApplication.IServices;
 using BikeRentalApplication.DTOs.RequestDTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BikeRentalApplication.Controllers
 {
@@ -41,6 +42,7 @@ namespace BikeRentalApplication.Controllers
 
         // GET: api/InventoryUnits/5
         [HttpGet("{registrationNumber}")]
+
         public async Task<IActionResult> GetInventoryUnit(string registrationNumber)
         {
             try

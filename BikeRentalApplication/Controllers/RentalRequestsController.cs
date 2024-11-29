@@ -9,6 +9,7 @@ using BikeRentalApplication.Database;
 using BikeRentalApplication.Entities;
 using BikeRentalApplication.IServices;
 using BikeRentalApplication.DTOs.RequestDTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BikeRentalApplication.Controllers
 {
@@ -105,6 +106,7 @@ namespace BikeRentalApplication.Controllers
 
         // DELETE: api/RentalRequests/5
         [HttpDelete("{id}")]
+
         public async Task<IActionResult> DeleteRentalRequest(Guid id)
         {
             var rentalRequest = await _context.RentalRequests.FindAsync(id);
@@ -119,6 +121,7 @@ namespace BikeRentalApplication.Controllers
             return NoContent();
         }
         [HttpGet("Accept-Request{id}")]
+
         public async Task<IActionResult> AcceptRenatlRequest(Guid id)
         {
             var data = await _rentalRequestService.AcceptRentalRequest(id);

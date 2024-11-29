@@ -1,5 +1,6 @@
 ﻿using BikeRentalApplication.DTOs.RequestDTOs;
 using BikeRentalApplication.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,6 +15,7 @@ namespace BikeRentalApplication.Controllers
             _brandService = brandService;
         }
         [HttpPost]
+        
         public async Task<IActionResult>AddBrand(BrandRequest request)
         {
             var data = await _brandService.AddBrand(request);

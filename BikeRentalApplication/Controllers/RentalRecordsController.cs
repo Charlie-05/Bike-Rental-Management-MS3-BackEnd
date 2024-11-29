@@ -9,6 +9,7 @@ using BikeRentalApplication.Database;
 using BikeRentalApplication.Entities;
 using BikeRentalApplication.IServices;
 using BikeRentalApplication.DTOs.RequestDTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BikeRentalApplication.Controllers
 {
@@ -25,6 +26,7 @@ namespace BikeRentalApplication.Controllers
 
         // GET: api/RentalRecords
         [HttpGet]
+
         public async Task<IActionResult> GetRentalRecord(State? state)
         {
             var data = await _rentalRecordService.GetRentalRecords(state);
@@ -101,6 +103,7 @@ namespace BikeRentalApplication.Controllers
         }
 
         [HttpPut("complete-record")]
+
         public async Task<IActionResult> CompleteRentalRecord(Guid id , RentalRecPutRequest rentalRecPutRequest)
         {
             var data = await _rentalRecordService.CompleteRentalRecord(id , rentalRecPutRequest);
@@ -117,12 +120,12 @@ namespace BikeRentalApplication.Controllers
         }
 
         // DELETE: api/RentalRecords/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRentalRecord(Guid id)
-        {
-            var data = await _rentalRecordService.DeleteRentalRecord(id);
-            return Ok(data);
-        }
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> DeleteRentalRecord(Guid id)
+        //{
+        //    var data = await _rentalRecordService.DeleteRentalRecord(id);
+        //    return Ok(data);
+        //}
 
         //private bool RentalRecordExists(Guid id)
         //{

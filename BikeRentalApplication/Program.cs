@@ -6,7 +6,10 @@ using BikeRentalApplication.IServices;
 using BikeRentalApplication.Repositories;
 using BikeRentalApplication.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using System.Text.Json.Serialization;
+
 
 namespace BikeRentalApplication
 {
@@ -27,6 +30,7 @@ namespace BikeRentalApplication
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddAuthorization();
 
             builder.Services.AddDbContext<RentalDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
@@ -44,6 +48,15 @@ namespace BikeRentalApplication
             builder.Services.AddScoped<IBrandRepository, BrandRepository>();
             builder.Services.AddScoped<IBrandService, BrandService>();
             builder.Services.AddScoped<IEmailService, EmailService>();
+            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]));
+
+            builder.Services.AddAuthentication()
+                .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    IssuerSigningKey = key,
+                    ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                    ValidAudience = builder.Configuration["Jwt:Audience"],
+                });
             builder.Services.AddCors(opt =>
             {
                 opt.AddPolicy(
@@ -67,6 +80,7 @@ namespace BikeRentalApplication
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
+
 
 
             app.MapControllers();
