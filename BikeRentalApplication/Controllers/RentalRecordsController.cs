@@ -59,17 +59,30 @@ namespace BikeRentalApplication.Controllers
             }
         }
 
+        //[HttpGet("Get-overdue")]
+        //public async Task<IActionResult> GetOverDueRentals()
+        //{
+        //    try { 
+        //        var data = await _rentalRecordService.GetOverDueRentals();
+        //        return Ok(data);
+        //    } catch (Exception ex) {
+        //        return BadRequest(ex.Message);
+        //    }
+        //}
+
         [HttpGet("Get-overdue")]
-        public async Task<IActionResult> GetOverDueRentals(string? nicNo)
+        public async Task<IActionResult> GetOverDueRentalsOfUser(string? nicNo)
         {
-            try { 
-                var data = await _rentalRecordService.GetOverDueRentals(nicNo);
+            try
+            {
+                var data = await _rentalRecordService.GetOverDueRentalsOfUser(nicNo);
                 return Ok(data);
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 return BadRequest(ex.Message);
             }
         }
-
         // PUT: api/RentalRecords/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

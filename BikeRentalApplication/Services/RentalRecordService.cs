@@ -38,27 +38,37 @@ namespace BikeRentalApplication.Services
 
         }
 
-        public async Task<List<RentalRecord>> GetOverDueRentals(string? nicNo)
+        public async Task<List<RentalRecord>> GetOverDueRentalsOfUser(string? nicNo)
         {
             var data = await _rentalRecordRepository.GetIncompleteRentalRecords();
             var overdue = new List<RentalRecord>();
             var now = DateTime.Now;
-            foreach (RentalRecord record in data)
-            {
-                if (now.Subtract((DateTime)record.RentalOut).Minutes > 5)
-                {
-                    overdue.Add(record);
-                }
-
-            }
             if (nicNo != null)
             {
-                var userOverDueData = overdue.Where(r => r.RentalRequest.UserId == nicNo).ToList();
-                return userOverDueData;
-            }
+                foreach (RentalRecord record in data)
+                {
+                    if (now.Subtract((DateTime)record.RentalOut).Minutes > 5 && record.RentalRequest.UserId == nicNo)
+                    {
+                        overdue.Add(record);
+                    }
 
+                }
+            }
+            else
+            {
+                foreach (RentalRecord record in data)
+                {
+                    if (now.Subtract((DateTime)record.RentalOut).Minutes > 5)
+                    {
+                        overdue.Add(record);
+                    }
+
+                }
+            }
+        
             return overdue;
         }
+
 
 
         public async Task<RentalRecord> GetRentalRecord(Guid id)
