@@ -67,7 +67,7 @@ namespace BikeRentalApplication.Services
                     BikeRegNo = r.BikeRegNo,
                     Payment = r.Payment,
                     RentalRequestId = r.RentalRequestId,
-                }).OrderBy(r => r.RentalOut).ToList(),
+                }).OrderByDescending(r => r.RentalOut).ToList(),
                 RentalRequests = data.RentalRequests.Select(r => new RentalRequestResponse
                 {
                     Id = r.Id,
@@ -77,7 +77,7 @@ namespace BikeRentalApplication.Services
                     UserId = r.UserId,
                     Notify = r.Notify,
 
-                }).OrderBy(r => r.RequestTime).ToList(),
+                }).OrderByDescending(r => r.RequestTime).ToList(),
 
             };
 

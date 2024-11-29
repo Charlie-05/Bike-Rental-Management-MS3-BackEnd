@@ -27,7 +27,7 @@ namespace BikeRentalApplication.Controllers
 
         // GET: api/Bikes
         [HttpGet]
-        public async Task<ActionResult<Bike>> GetBike(string? type, Guid? brandId)
+        public async Task<IActionResult> GetBike(string? type, Guid? brandId)
         {
             try
             {
