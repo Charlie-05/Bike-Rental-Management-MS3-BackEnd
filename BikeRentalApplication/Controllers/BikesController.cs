@@ -9,6 +9,7 @@ using BikeRentalApplication.Database;
 using BikeRentalApplication.Entities;
 using BikeRentalApplication.IServices;
 using BikeRentalApplication.DTOs.RequestDTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BikeRentalApplication.Controllers
 {
@@ -60,6 +61,7 @@ namespace BikeRentalApplication.Controllers
         // PUT: api/Bikes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+  
         public async Task<IActionResult> PutBike(BikePutRequest bikePutRequest, Guid id)
         {
 
@@ -89,6 +91,7 @@ namespace BikeRentalApplication.Controllers
         // POST: api/Bikes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+
         public async Task<IActionResult> PostBike(BikeRequest bikeRequest)
         {
 
@@ -98,6 +101,7 @@ namespace BikeRentalApplication.Controllers
 
         // DELETE: api/Bikes/5
         [HttpDelete("{id}")]
+
         public async Task<IActionResult> DeleteBike(Guid id)
         {
 
