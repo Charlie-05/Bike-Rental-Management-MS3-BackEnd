@@ -8,11 +8,13 @@ namespace BikeRentalApplication.Services
     public class RentalRequestService : IRentalRequestService
     {
         private readonly IRentalRequestRepository _rentalRequestRepository;
+        private readonly IUserRepository _userRepository;
 
-        public RentalRequestService(IRentalRequestRepository rentalRequestRepository)
+        public RentalRequestService(IRentalRequestRepository rentalRequestRepository, IUserRepository userRepository)
         {
 
             _rentalRequestRepository = rentalRequestRepository;
+            _userRepository = userRepository;
         }
 
         public async Task<List<RentalRequest>> GetRentalRequests(Status? status)
@@ -71,6 +73,11 @@ namespace BikeRentalApplication.Services
             if (rentalReqRequest.RequestTime.Subtract(now).Minutes < 0)
             {
                 throw new Exception("Check your request Date");
+            }
+            var getUser = await _userRepository.GetUser(rentalReqRequest.UserId);
+            if(getUser.IsBlocked == true)
+            {
+                throw new Exception("You have been blocked");
             }
             var rentalRequest = new RentalRequest()
             {
