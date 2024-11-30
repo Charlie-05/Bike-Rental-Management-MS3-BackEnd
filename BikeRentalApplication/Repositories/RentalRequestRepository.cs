@@ -32,7 +32,7 @@ namespace BikeRentalApplication.Repositories
 
         public async Task<RentalRequest> GetRentalRequest(Guid id)
         {
-            var request = await _dbContext.RentalRequests.Include(r => r.Bike).ThenInclude(r => r.Brand).SingleOrDefaultAsync(u => u.Id == id);
+            var request = await _dbContext.RentalRequests.Include(r => r.User).Include(r => r.Bike).ThenInclude(r => r.Brand).SingleOrDefaultAsync(u => u.Id == id);
 
             if (request == null)
             {

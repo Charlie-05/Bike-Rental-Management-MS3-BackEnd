@@ -139,6 +139,10 @@ namespace BikeRentalApplication.Services
                 BikeRegNo = rentalRecRequest.BikeRegNo,
 
             };
+            if(getRequest.User.IsVerified == false)
+            {
+                throw new Exception("Unverified user.");
+            }
           
             var data = await _rentalRecordRepository.PostRentalRecord(RentalRecord);
             var getUnit = await _inventoryUnitRepository.GetInventoryUnit(rentalRecRequest.BikeRegNo);

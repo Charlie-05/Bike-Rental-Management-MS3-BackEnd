@@ -17,7 +17,7 @@ namespace BikeRentalApplication.Services
             _bikeRepository = bikeRepository;
         }
 
-        public async Task<List<BikeResponse>> GetBike(string? type, Guid? brandId)
+        public async Task<List<BikeResponse>> GetBike(string? type, Guid? brandId, Roles? role)
         {
             var data = new List<Bike>();
             if (brandId == null && type == null)
@@ -35,6 +35,10 @@ namespace BikeRentalApplication.Services
             else
             {
                 data = await _bikeRepository.GetBikeFilter(type, brandId);
+            }
+
+            if (role == Roles.User) {
+                data = data.Where(b => b.InventoryUnits.Any(u => u.Availability == true)).ToList(); 
             }
             var bikes = data.Select(b => new BikeResponse
             {
