@@ -51,7 +51,7 @@ namespace BikeRentalApplication.Controllers
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{nicNo}")]
-
+        [Authorize]
         public async Task<IActionResult> PutUser(UserPutRequest user, string nicNo, Settings setting)
         {
 
@@ -125,6 +125,7 @@ namespace BikeRentalApplication.Controllers
         }
 
         [HttpGet("Verify-user{nicNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> VerifyUser(string nicNo)
         {
             var data = await _userService.VerifyUser(nicNo);

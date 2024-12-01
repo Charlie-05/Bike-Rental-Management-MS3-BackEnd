@@ -15,7 +15,7 @@ namespace BikeRentalApplication.Controllers
             _brandService = brandService;
         }
         [HttpPost]
-        
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult>AddBrand(BrandRequest request)
         {
             var data = await _brandService.AddBrand(request);
