@@ -17,11 +17,13 @@ namespace BikeRentalApplication.Services
         private readonly IUserRepository _userRepository;
         private readonly IConfiguration _configuration;
         private readonly IRentalRecordRepository _recordRepository;
-        public UserService(IUserRepository userRepository, IConfiguration configuration, IRentalRecordRepository rentalRecordRepository)
+        private readonly IEmailService _emailService;
+        public UserService(IUserRepository userRepository, IConfiguration configuration, IRentalRecordRepository rentalRecordRepository, IEmailService emailService)
         {
             _userRepository = userRepository;
             _configuration = configuration;
             _recordRepository = rentalRecordRepository;
+            _emailService = emailService;
         }
 
         public async Task<List<User>> GetUsers(Roles? role)
@@ -151,7 +153,14 @@ namespace BikeRentalApplication.Services
             if (getUser != null)
             {
                 var token = CreateToken(user);
+                var mailrequest = new MailRequest
+                {
+                    User = getUser,
+                    Template = EmailTemplate.Registration
+                };
+                var sendmail =  _emailService.SendEmail(mailrequest);
                 return token;
+             
             }
             else
             {

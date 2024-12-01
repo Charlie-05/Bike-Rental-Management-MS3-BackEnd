@@ -11,11 +11,9 @@
     {
         Registration,  
         RentalConfirmation,
-        RentalOverDue
+        RentalOverDue,
+        OTP
     }
 
-    public enum EmailBody
-    {
-
-    }
+    
 }
