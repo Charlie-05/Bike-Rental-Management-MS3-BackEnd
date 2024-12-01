@@ -28,6 +28,7 @@ namespace BikeRentalApplication.Controllers
 
         // GET: api/RentalRequests
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetRentalRequest(Status? status)
         {
             //  return await _context.RentalRequests.ToListAsync();
@@ -45,6 +46,7 @@ namespace BikeRentalApplication.Controllers
 
         // GET: api/RentalRequests/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> GetRentalRequest(Guid id)
         {
             var rentalRequest = await _context.RentalRequests.FindAsync(id);
@@ -60,6 +62,7 @@ namespace BikeRentalApplication.Controllers
         // PUT: api/RentalRequests/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutRentalRequest(Guid id, RentalRequest rentalRequest)
         {
             if (id != rentalRequest.Id)
@@ -107,7 +110,7 @@ namespace BikeRentalApplication.Controllers
 
         // DELETE: api/RentalRequests/5
         [HttpDelete("{id}")]
-
+        [Authorize]
         public async Task<IActionResult> DeleteRentalRequest(Guid id)
         {
             var rentalRequest = await _context.RentalRequests.FindAsync(id);

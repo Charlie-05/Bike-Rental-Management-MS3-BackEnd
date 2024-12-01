@@ -91,6 +91,7 @@ namespace BikeRentalApplication.Controllers
         // POST: api/InventoryUnits
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PostInventoryUnit(List<InventoryUnitRequest> inventoryUnitRequests)
         {
             try
@@ -106,6 +107,7 @@ namespace BikeRentalApplication.Controllers
 
         //    // DELETE: api/InventoryUnits/5
         [HttpDelete("{registrationNumber}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteInventoryUnit(string registrationNumber)
         {
             try

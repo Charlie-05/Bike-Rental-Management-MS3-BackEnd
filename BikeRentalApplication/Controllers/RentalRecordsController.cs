@@ -26,7 +26,7 @@ namespace BikeRentalApplication.Controllers
 
         // GET: api/RentalRecords
         [HttpGet]
-
+        [Authorize]
         public async Task<IActionResult> GetRentalRecord(State? state)
         {
             var data = await _rentalRecordService.GetRentalRecords(state);
@@ -35,6 +35,7 @@ namespace BikeRentalApplication.Controllers
 
         // GET: api/RentalRecords/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> GetRentalRecord(Guid id)
         {
             try
@@ -48,6 +49,7 @@ namespace BikeRentalApplication.Controllers
             }
         }
         [HttpGet("get-payment{id}")]
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> GetRentalRecordPayment(Guid id)
         {
             try
@@ -73,6 +75,7 @@ namespace BikeRentalApplication.Controllers
         //}
 
         [HttpGet("Get-overdue")]
+        [Authorize]
         public async Task<IActionResult> GetOverDueRentalsOfUser(string? nicNo)
         {
             try
@@ -88,6 +91,7 @@ namespace BikeRentalApplication.Controllers
         // PUT: api/RentalRecords/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> PutRentalRecord(Guid id, RentalRecord rentalRecord)
         {
             try
@@ -103,7 +107,7 @@ namespace BikeRentalApplication.Controllers
         }
 
         [HttpPut("complete-record")]
-
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> CompleteRentalRecord(Guid id , RentalRecPutRequest rentalRecPutRequest)
         {
             var data = await _rentalRecordService.CompleteRentalRecord(id , rentalRecPutRequest);
@@ -113,6 +117,7 @@ namespace BikeRentalApplication.Controllers
         // POST: api/RentalRecords
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> PostRentalRecord(RentalRecRequest rentalRecRequest)
         {
             try

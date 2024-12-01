@@ -61,7 +61,7 @@ namespace BikeRentalApplication.Controllers
         // PUT: api/Bikes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-  
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutBike(BikePutRequest bikePutRequest, Guid id)
         {
 
@@ -91,7 +91,7 @@ namespace BikeRentalApplication.Controllers
         // POST: api/Bikes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PostBike(BikeRequest bikeRequest)
         {
 
@@ -101,7 +101,7 @@ namespace BikeRentalApplication.Controllers
 
         // DELETE: api/Bikes/5
         [HttpDelete("{id}")]
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteBike(Guid id)
         {
 
