@@ -22,7 +22,7 @@ namespace BikeRentalApplication.Repositories
         }
         public async Task<List<RentalRequest>> GetRentalRequests()
         {
-            return await _dbContext.RentalRequests.Where(r => r.Status == Status.Pending).Include(r => r.Bike).ToListAsync();
+            return await _dbContext.RentalRequests.Where(r => r.Status == Status.Pending).Include(r => r.Bike).ThenInclude(b=>b.Brand).ToListAsync();
         }
 
         public async Task<List<RentalRequest>> GetRentalRequestsByStatus(Status? status)
