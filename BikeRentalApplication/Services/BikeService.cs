@@ -148,9 +148,19 @@ namespace BikeRentalApplication.Services
 
             return await _bikeRepository.PostBike(bike);
         }
-        public async Task<string> DeleteBike(Guid id)
+        public async Task<MessageResponse> DeleteBike(Guid id)
         {
-            return await _bikeRepository.DeleteBike(id);
+            var getBike = await _bikeRepository.GetBike(id);
+            if (getBike == null)
+            {
+                throw new Exception("Invalid Id");
+            }
+            await _bikeRepository.DeleteBike(getBike);
+            var response = new MessageResponse
+            {
+                Message = "SuccessFully Deleted"
+            };
+            return response;
         }
     }
 }
