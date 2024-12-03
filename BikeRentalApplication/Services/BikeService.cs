@@ -17,7 +17,7 @@ namespace BikeRentalApplication.Services
             _bikeRepository = bikeRepository;
         }
 
-        public async Task<List<BikeResponse>> GetBike(string? type, Guid? brandId)
+        public async Task<List<BikeResponse>> GetBike(string? type, Guid? brandId ,Roles? role)
         {
             var data = new List<Bike>();
             if (brandId == null && type == null)
@@ -36,6 +36,7 @@ namespace BikeRentalApplication.Services
             {
                 data = await _bikeRepository.GetBikeFilter(type, brandId);
             }
+           
             var bikes = data.Select(b => new BikeResponse
             {
                 Id = b.Id,
@@ -68,6 +69,10 @@ namespace BikeRentalApplication.Services
                     BikeId = u.BikeId,
                 }).ToList() ?? [],
             }).ToList();
+            if (role == Roles.User)
+            {
+                bikes = bikes.Where(r => r.InventoryUnits.Any(u => u.Availability == true)).ToList();
+            }
             return bikes;
         }
 
@@ -144,9 +149,19 @@ namespace BikeRentalApplication.Services
 
             return await _bikeRepository.PostBike(bike);
         }
-        public async Task<string> DeleteBike(Guid id)
+        public async Task<MessageResponse> DeleteBike(Guid id)
         {
-            return await _bikeRepository.DeleteBike(id);
+            var getBike = await _bikeRepository.GetBike(id);
+            if(getBike == null)
+            {
+                throw new Exception("Invalid Id");
+            }
+             await _bikeRepository.DeleteBike(getBike);
+            var response = new MessageResponse
+            {
+                Message = "SuccessFully Deleted"
+            };
+            return response;
         }
     }
 }

@@ -118,6 +118,12 @@ namespace BikeRentalApplication.Controllers
             var data = await _rentalRecordService.PostRentalRecord(rentalRecRequest);
             return Ok(data);
         }
+        [HttpPost("Review")]
+        public async Task<IActionResult> PostReview(RatingRequest ratingRequest)
+        {
+            var data = await _rentalRecordService.PostReview(ratingRequest);
+            return Ok(data);
+        }
 
         // DELETE: api/RentalRecords/5
         //[HttpDelete("{id}")]

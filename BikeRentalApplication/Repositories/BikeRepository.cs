@@ -66,18 +66,12 @@ namespace BikeRentalApplication.Repositories
           return data.Entity;
         }
 
-        public async Task<string> DeleteBike(Guid id)
+        public async Task<Bike> DeleteBike(Bike bike)
         {
-            var bike = await _dbContext.Bikes.FindAsync(id);
-            if (bike == null)
-            {
-                throw new ArgumentException();
-            }
-
-            _dbContext.Bikes.Remove(bike);
-            await _dbContext.SaveChangesAsync();
-
-            return "Successfully Deleted...";
+         _dbContext.Bikes.Remove(bike);
+            var data = await _dbContext.SaveChangesAsync();
+            return bike;
+            
         }
 
         private bool BikeExists(Guid id)

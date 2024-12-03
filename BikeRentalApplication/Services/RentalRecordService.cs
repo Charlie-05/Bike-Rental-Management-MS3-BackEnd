@@ -11,12 +11,13 @@ namespace BikeRentalApplication.Services
         private readonly IRentalRecordRepository _rentalRecordRepository;
         private readonly IRentalRequestRepository _rentalRequestRepository;
         private readonly IInventoryUnitRepository _inventoryUnitRepository;
-
-        public RentalRecordService(IRentalRecordRepository rentalRecordRepository, IRentalRequestRepository rentalRequestRepository, IInventoryUnitRepository inventoryUnitRepository)
+        private readonly IBikeRepository _bikeRepository;
+        public RentalRecordService(IRentalRecordRepository rentalRecordRepository, IRentalRequestRepository rentalRequestRepository, IInventoryUnitRepository inventoryUnitRepository, IBikeRepository bikeRepository)
         {
             _rentalRecordRepository = rentalRecordRepository;
             _rentalRequestRepository = rentalRequestRepository;
             _inventoryUnitRepository = inventoryUnitRepository;
+            _bikeRepository = bikeRepository;
         }
 
         public async Task<List<RentalRecord>> GetRentalRecords(State? state)
@@ -65,7 +66,7 @@ namespace BikeRentalApplication.Services
 
                 }
             }
-        
+
             return overdue;
         }
 
@@ -115,11 +116,11 @@ namespace BikeRentalApplication.Services
             {
                 getRecord.RentalReturn = DateTime.Now;
                 getRecord.Payment = rentalRecPutRequest.Payment;
-               
+
                 var data = await _rentalRecordRepository.UpdateRentalRecord(getRecord);
                 var getUnit = await _inventoryUnitRepository.GetInventoryUnit(getRecord.BikeRegNo);
                 getUnit.Availability = true;
-               await _inventoryUnitRepository.PutInventoryUnit(getUnit);
+                await _inventoryUnitRepository.PutInventoryUnit(getUnit);
                 return data;
             }
             else
@@ -132,6 +133,10 @@ namespace BikeRentalApplication.Services
         public async Task<RentalRecord> PostRentalRecord(RentalRecRequest rentalRecRequest)
         {
             var getRequest = await _rentalRequestRepository.GetRentalRequest(rentalRecRequest.RentalRequestId);
+            if (getRequest?.User?.IsVerified == false)
+            {
+                throw new Exception("Unverified User");
+            }
             var RentalRecord = new RentalRecord()
             {
                 RentalRequestId = rentalRecRequest.RentalRequestId,
@@ -139,7 +144,7 @@ namespace BikeRentalApplication.Services
                 BikeRegNo = rentalRecRequest.BikeRegNo,
 
             };
-          
+
             var data = await _rentalRecordRepository.PostRentalRecord(RentalRecord);
             var getUnit = await _inventoryUnitRepository.GetInventoryUnit(rentalRecRequest.BikeRegNo);
             getUnit.Availability = false;
@@ -149,6 +154,25 @@ namespace BikeRentalApplication.Services
             return data;
         }
 
+        public async Task<decimal> PostReview(RatingRequest ratingRequest)
+        {
+            var getRecord = await _rentalRecordRepository.GetRentalRecord(ratingRequest.RecordId);
+
+            if (ratingRequest.Rating != null)
+            {
+                var getBike = await _bikeRepository.GetBike(getRecord.RentalRequest.BikeId);
+                getBike.NumberOfRatings = getBike.NumberOfRatings + 1;
+                getBike.Rating = (getBike.Rating + (decimal)ratingRequest.Rating) / getBike.NumberOfRatings;
+                var updated = await _bikeRepository.PutBike(getBike);
+            }
+            if (ratingRequest.Review != null)
+            {
+               
+                getRecord.Review = ratingRequest.Review;
+                var updatedRecord = await _rentalRecordRepository.UpdateRentalRecord(getRecord);
+            }
+            return (decimal)ratingRequest.Rating;
+        }
         public async Task<string> DeleteRentalRecord(Guid id)
         {
             var data = await _rentalRecordRepository.DeleteRentalRecord(id);

@@ -11,6 +11,6 @@ namespace BikeRentalApplication.IRepositories
         Task<Bike> GetBike(Guid id);
         Task<Bike> PutBike(Bike bike);
         Task<Bike> PostBike(Bike bike);
-        Task<string> DeleteBike(Guid id);
+        Task<Bike> DeleteBike(Bike bike);
     }
 }

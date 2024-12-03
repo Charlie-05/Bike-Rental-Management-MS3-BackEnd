@@ -10,5 +10,7 @@ namespace BikeRentalApplication.DTOs.ResponseDTOs
         public decimal? Payment { get; set; }
         public string? BikeRegNo { get; set; }
         public Guid RentalRequestId { get; set; }
+
+        public string Review {  get; set; }
     }
 }
