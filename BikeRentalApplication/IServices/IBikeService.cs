@@ -10,6 +10,6 @@ namespace BikeRentalApplication.IServices
         Task<BikeResponse> GetBike(Guid id);
         Task<Bike> PutBike(BikePutRequest bikePutRequest, Guid id);
         Task<Bike> PostBike(BikeRequest bikeRequest);
-        Task<string> DeleteBike(Guid id);
+        Task<MessageResponse> DeleteBike(Guid id);
     }
 }

@@ -68,6 +68,7 @@ namespace BikeRentalApplication.Services
                     RentalReturn = r.RentalReturn,
                     BikeRegNo = r.BikeRegNo,
                     Payment = r.Payment,
+                    Review = r.Review,
                     RentalRequestId = r.RentalRequestId,
                 }).OrderByDescending(r => r.RentalOut).ToList(),
                 RentalRequests = data.RentalRequests.Select(r => new RentalRequestResponse
