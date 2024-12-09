@@ -5,6 +5,7 @@ using BikeRentalApplication.IRepositories;
 using BikeRentalApplication.IServices;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.Intrinsics.X86;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BikeRentalApplication.Services
 {
@@ -31,6 +32,7 @@ namespace BikeRentalApplication.Services
             else if (brandId == null && type != null)
             {
                 data = await _bikeRepository.GetBikeTypeFilter(type);
+
             }
             else
             {
@@ -38,8 +40,11 @@ namespace BikeRentalApplication.Services
             }
 
             if (role == Roles.User) {
+
                 data = data.Where(b => b.InventoryUnits.Any(u => u.Availability == true)).ToList(); 
             }
+
+                
             var bikes = data.Select(b => new BikeResponse
             {
                 Id = b.Id,
@@ -123,6 +128,7 @@ namespace BikeRentalApplication.Services
                 getBike.RatePerHour = bikePutRequest.RatePerHour;
                 getBike.Model = bikePutRequest.Model;
                 getBike.Type = bikePutRequest.Type;
+                getBike.Description = bikePutRequest.Description;
                 return await _bikeRepository.PutBike(getBike);
             }
             else
@@ -162,5 +168,7 @@ namespace BikeRentalApplication.Services
             };
             return response;
         }
+
+      
     }
 }
