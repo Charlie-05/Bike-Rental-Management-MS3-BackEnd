@@ -59,5 +59,12 @@ namespace BikeRentalApplication.Repositories
             return _dbContext.Users.Any(e => e.UserName == userName);
         }
 
+        public async Task<List<User>> Search(string searchText)
+        {
+            var data = await _dbContext.Users.Where(b => b.NICNumber.Contains(searchText) || b.FirstName.Contains(searchText) || b.LastName.Contains(searchText)
+            || b.Email.Contains(searchText) || b.ContactNo.Contains(searchText) || b.UserName.Contains(searchText)).Take(5).ToListAsync();
+            return data;
+        }
+
     }
 }

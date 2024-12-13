@@ -11,12 +11,13 @@ namespace BikeRentalApplication.Controllers
     public class BrandController : ControllerBase
     {
         private readonly IBrandService _brandService;
-        public BrandController(IBrandService brandService) { 
+        public BrandController(IBrandService brandService)
+        {
             _brandService = brandService;
         }
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult>AddBrand(BrandRequest request)
+        public async Task<IActionResult> AddBrand(BrandRequest request)
         {
             var data = await _brandService.AddBrand(request);
             return Ok(data);
@@ -26,6 +27,19 @@ namespace BikeRentalApplication.Controllers
         {
             var data = await _brandService.GetAllBrands();
             return Ok(data);
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetBrandById(Guid id)
+        {
+            try
+            {
+                var data = await _brandService.GetBrandById(id);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

@@ -9,5 +9,6 @@ namespace BikeRentalApplication.IRepositories
         Task<InventoryUnit> PutInventoryUnit(InventoryUnit inventoryUnit);
         Task<List<InventoryUnit>> PostInventoryUnit(List<InventoryUnit> inventoryUnits);
         Task<string> DeleteInventoryUnit(InventoryUnit inventoryUnit);
+        Task<List<InventoryUnit>> Search(string searchText);
     }
 }

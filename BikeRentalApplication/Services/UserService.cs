@@ -92,13 +92,9 @@ namespace BikeRentalApplication.Services
             return response;
         }
 
-        public async Task<User> UpdateUser(UserPutRequest userRequest, string nicNo, Settings setting)
+        public async Task<User> UpdateUser(UserPutRequest? userRequest, string nicNo, Settings setting)
         {
-            var userNameUnavailable = await _userRepository.UserNameExists(userRequest.UserName);
-            if (userNameUnavailable)
-            {
-                throw new Exception("Username already exists.Try something different.");
-            }
+           
             var user = await _userRepository.GetUser(nicNo);
             if (user == null)
             {
@@ -106,6 +102,11 @@ namespace BikeRentalApplication.Services
             }
             if (setting == Settings.credentials)
             {
+                var userNameUnavailable = await _userRepository.UserNameExists(userRequest.UserName);
+                if (userNameUnavailable)
+                {
+                    throw new Exception("Username already exists.Try something different.");
+                }
                 user.UserName = userRequest.UserName;
                 user.HashPassword = BCrypt.Net.BCrypt.HashPassword(userRequest.HashPassword);
                 if (user.Role == Roles.Admin)
@@ -125,6 +126,16 @@ namespace BikeRentalApplication.Services
                 user.Address = userRequest.Address;
                 user.Email = userRequest.Email;
                 user.ContactNo = userRequest.ContactNo;
+            }
+            else if(setting == Settings.block)
+            {
+                if (user.IsBlocked == true)
+                {
+                    user.IsBlocked = false;
+                }
+                else if (user.IsBlocked == false) {
+                    user.IsBlocked = true;
+                }
             }
 
 
@@ -201,6 +212,10 @@ namespace BikeRentalApplication.Services
             if (user == null)
             {
                 throw new Exception("Invalid Username");
+            }
+            if(user.IsBlocked == true)
+            {
+                throw new Exception("Sorry,You have been blocked.Contact for more Details");
             }
             var hash = BCrypt.Net.BCrypt.Verify(logInData.Password, user.HashPassword);
             if (hash)

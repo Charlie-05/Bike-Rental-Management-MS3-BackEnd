@@ -34,6 +34,7 @@ namespace BikeRentalApplication.Entities
     public enum Settings
     {
         credentials = 0,
-        info = 1
+        info = 1,
+        block=2
     }
 }

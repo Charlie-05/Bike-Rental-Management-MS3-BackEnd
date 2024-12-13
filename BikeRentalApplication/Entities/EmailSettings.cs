@@ -12,7 +12,8 @@
         Registration,  
         RentalConfirmation,
         RentalOverDue,
-        OTP
+        OTP,
+        Payment
     }
 
     

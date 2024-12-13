@@ -22,7 +22,7 @@ namespace BikeRentalApplication.Repositories
         }
         public async Task<List<RentalRequest>> GetRentalRequests()
         {
-            return await _dbContext.RentalRequests.Where(r => r.Status == Status.Pending).Include(r => r.Bike).ThenInclude(b=>b.Brand).ToListAsync();
+            return await _dbContext.RentalRequests.Where(r => r.Status == Status.Pending).Include(r => r.Bike).ThenInclude(b => b.Brand).ToListAsync();
         }
 
         public async Task<List<RentalRequest>> GetRentalRequestsByStatus(Status? status)
@@ -45,7 +45,7 @@ namespace BikeRentalApplication.Repositories
 
         public async Task<RentalRequest> UpdateRentalRequest(RentalRequest rentalRequest)
         {
-           var data = _dbContext.RentalRequests.Update(rentalRequest);
+            var data = _dbContext.RentalRequests.Update(rentalRequest);
             await _dbContext.SaveChangesAsync();
 
             return data.Entity;
@@ -63,6 +63,11 @@ namespace BikeRentalApplication.Repositories
             await _dbContext.SaveChangesAsync();
 
             return "Successfully Deleted...";
+        }
+        public async Task<List<RentalRequest>> Search(string searchText)
+        {
+            var data = await _dbContext.RentalRequests.Where(b => b.UserId.Contains(searchText) || b.RequestTime.ToString().Contains(searchText)).Take(5).ToListAsync();
+            return data;
         }
     }
 }

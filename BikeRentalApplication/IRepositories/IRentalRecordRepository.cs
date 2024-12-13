@@ -11,5 +11,7 @@ namespace BikeRentalApplication.IRepositories
         Task<RentalRecord> GetRentalRecordbyRequestID(Guid RequestId);
         Task<RentalRecord> UpdateRentalRecord(RentalRecord RentalRecord);
         Task<string> DeleteRentalRecord(Guid id);
+        Task<List<RentalRecord>> GetRecordsByRange(DateTime Start, DateTime End);
+        Task<List<RentalRecord>> Search(string searchText);
     }
 }

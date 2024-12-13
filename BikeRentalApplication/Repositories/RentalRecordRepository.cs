@@ -73,5 +73,17 @@ namespace BikeRentalApplication.Repositories
 
             return "Successfully Deleted...";
         }
+        public async Task<List<RentalRecord>>GetRecordsByRange(DateTime Start , DateTime End)
+        {
+            var data = await _dbContext.RentalRecords.Where(r => r.RentalReturn > Start &&  r.RentalReturn < End && r.RentalReturn!= null).ToListAsync();
+            return data;
+        }
+
+        public async Task<List<RentalRecord>> Search(string searchText)
+        {
+            var data = await _dbContext.RentalRecords.Where(b => b.BikeRegNo.Contains(searchText) || b.RentalReturn.ToString().Contains(searchText) ||
+            b.RentalOut.ToString().Contains(searchText)).Take(5).ToListAsync();
+            return data;
+        }
     }
 }

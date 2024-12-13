@@ -27,7 +27,7 @@ namespace BikeRentalApplication.Repositories
 
         public async Task<InventoryUnit> GetInventoryUnit(string RegistrationNumber)
         {
-            var data = await _dbContext.InventoryUnits.Include(i => i.Bike).SingleOrDefaultAsync(u => u.RegistrationNo == RegistrationNumber);
+            var data = await _dbContext.InventoryUnits.Include(i => i.Bike).ThenInclude(b =>b.Brand).SingleOrDefaultAsync(u => u.RegistrationNo == RegistrationNumber);
 
             if (data == null)
             {
@@ -59,6 +59,11 @@ namespace BikeRentalApplication.Repositories
             await _dbContext.SaveChangesAsync();
 
             return "Successfully Deleted...";
+        }
+        public async Task<List<InventoryUnit>> Search(string searchText)
+        {
+            var data = await _dbContext.InventoryUnits.Where(b => b.RegistrationNo.Contains(searchText) || b.YearOfManufacture.ToString().Contains(searchText) ).Take(5).ToListAsync();
+            return data;
         }
 
     }

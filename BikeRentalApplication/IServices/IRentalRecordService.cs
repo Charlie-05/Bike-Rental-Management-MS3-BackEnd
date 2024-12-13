@@ -15,5 +15,7 @@ namespace BikeRentalApplication.IServices
         Task<string> DeleteRentalRecord(Guid id);
         Task<PaymentResponse> GetPayment(Guid id);
         Task<decimal> PostReview(RatingRequest ratingRequest);
+        Task<List<RentalRecord>> GetRecordsByRange(DateTime Start, DateTime End);
+        Task<Dictionary<string, string>> Search(string searchText);
     }
 }

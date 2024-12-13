@@ -11,5 +11,6 @@ namespace BikeRentalApplication.IRepositories
         Task<string> DeleteUser(User user);
         Task<User> GetUserByUserName(string userName);
         Task<bool> UserNameExists(string userName);
+        Task<List<User>> Search(string searchText);
     }
 }
