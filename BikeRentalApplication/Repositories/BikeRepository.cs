@@ -72,7 +72,11 @@ namespace BikeRentalApplication.Repositories
             await _dbContext.SaveChangesAsync();
             return bike;
         }
-
+        public async Task<List<Bike>>Search(string searchText)
+        {
+            var data = await _dbContext.Bikes.Where(b=> b.Model.Contains(searchText) || b.Type.Contains(searchText)  || b.Description.Contains(searchText)).Take(5).ToListAsync();
+            return data;
+        }
         private bool BikeExists(Guid id)
         {
             return _dbContext.Bikes.Any(e => e.Id == id);

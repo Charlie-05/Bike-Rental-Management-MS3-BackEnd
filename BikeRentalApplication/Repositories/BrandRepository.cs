@@ -24,5 +24,16 @@ namespace BikeRentalApplication.Repositories
             var data = await _context.Brands.Include(b => b.Bikes).ToListAsync();
             return data;
         }
+
+        public async Task<Brand>GetBrandById(Guid id)
+        {
+            var data = await _context.Brands.Where(b => b.Id == id).SingleOrDefaultAsync();
+            return data;
+        }
+        public async Task<List<Brand>> Search(string searchText)
+        {
+            var data = await _context.Brands.Where(b => b.Name.Contains(searchText)).Take(5).ToListAsync();
+            return data;
+        }
     }
 }

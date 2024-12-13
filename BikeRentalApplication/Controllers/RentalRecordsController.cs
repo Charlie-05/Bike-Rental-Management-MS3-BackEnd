@@ -138,6 +138,32 @@ namespace BikeRentalApplication.Controllers
             return Ok(data);
         }
 
+        [HttpGet("Search")]
+        public async Task<IActionResult> Search(string searchText)
+        {
+            try
+            {
+                var data = await _rentalRecordService.Search(searchText);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("Get-Range")]
+        public async Task<IActionResult> GetRecordsByRange(DateTime Start, DateTime End)
+        {
+            try
+            {
+                var data = await _rentalRecordService.GetRecordsByRange(Start, End);
+                return Ok(data);
+            }
+            catch (Exception ex) { 
+                return BadRequest(ex.Message);
+            }
+        }
         // DELETE: api/RentalRecords/5
         //[HttpDelete("{id}")]
         //public async Task<IActionResult> DeleteRentalRecord(Guid id)

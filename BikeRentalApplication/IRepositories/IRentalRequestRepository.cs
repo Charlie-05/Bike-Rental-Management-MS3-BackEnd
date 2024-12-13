@@ -10,6 +10,6 @@ namespace BikeRentalApplication.IRepositories
         Task<RentalRequest> GetRentalRequest(Guid id);
         Task<RentalRequest> UpdateRentalRequest(RentalRequest rentalRequest);
         Task<string> DeleteRentalRequest(Guid id);
-
+        Task<List<RentalRequest>> Search(string searchText);
     }
 }

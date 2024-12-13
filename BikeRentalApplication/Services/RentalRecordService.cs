@@ -12,13 +12,20 @@ namespace BikeRentalApplication.Services
         private readonly IRentalRequestRepository _rentalRequestRepository;
         private readonly IInventoryUnitRepository _inventoryUnitRepository;
         private readonly IBikeRepository _bikeRepository;
+        private readonly IUserRepository _userRepository;
+        private readonly IBrandRepository _brandRepository;
+        private readonly IEmailService _emailService;
 
-        public RentalRecordService(IRentalRecordRepository rentalRecordRepository, IRentalRequestRepository rentalRequestRepository, IInventoryUnitRepository inventoryUnitRepository , IBikeRepository bikeRepository)
+        public RentalRecordService(IRentalRecordRepository rentalRecordRepository, IRentalRequestRepository rentalRequestRepository, IInventoryUnitRepository inventoryUnitRepository ,
+            IBikeRepository bikeRepository , IEmailService emailService, IUserRepository userRepository, IBrandRepository brandRepository)
         {
             _rentalRecordRepository = rentalRecordRepository;
             _rentalRequestRepository = rentalRequestRepository;
             _inventoryUnitRepository = inventoryUnitRepository;
             _bikeRepository = bikeRepository;
+            _userRepository = userRepository;
+            _brandRepository = brandRepository;
+            _emailService = emailService;
         }
 
         public async Task<List<RentalRecord>> GetRentalRecords(State? state)
@@ -119,14 +126,22 @@ namespace BikeRentalApplication.Services
                 getRecord.Payment = rentalRecPutRequest.Payment;
                
                 var data = await _rentalRecordRepository.UpdateRentalRecord(getRecord);
+                
                 var getUnit = await _inventoryUnitRepository.GetInventoryUnit(getRecord.BikeRegNo);
                 getUnit.Availability = true;
                await _inventoryUnitRepository.PutInventoryUnit(getUnit);
+                var getRequest = await _rentalRequestRepository.GetRentalRequest(getRecord.RentalRequestId);
+                var mailReq = new MailRequest();
+                mailReq.Bike = getUnit.Bike;
+                mailReq.User = getRequest.User; 
+                mailReq.RentalRecord = getRecord;
+                mailReq.Template = EmailTemplate.Payment;
+                await _emailService.SendEmail(mailReq);
                 return data;
             }
             else
             {
-                throw new NotImplementedException();
+                throw new NotImplementedException("Try Again");
             }
 
         }
@@ -178,6 +193,47 @@ namespace BikeRentalApplication.Services
         {
             var data = await _rentalRecordRepository.DeleteRentalRecord(id);
             return data;
+        }
+        public async Task<List<RentalRecord>> GetRecordsByRange(DateTime Start, DateTime End)
+        {
+            var data = await _rentalRecordRepository.GetRecordsByRange(Start, End);
+            return data;
+        }
+
+        public async Task<Dictionary<string, string>> Search(string searchText)
+        {
+            var bikes = await _bikeRepository.Search(searchText);
+            var users = await _userRepository.Search(searchText);
+            var brands = await _brandRepository.Search(searchText);
+            var inventoryUnits = await _inventoryUnitRepository.Search(searchText);
+            var rentalRecords = await _rentalRecordRepository.Search(searchText);
+            var rentalRequests = await _rentalRequestRepository.Search(searchText);
+            Dictionary<string, string> res  = new Dictionary<string, string>();
+            foreach (var bike in bikes)
+            {
+                res.Add(bike.Id.ToString(), "bike");
+            }
+            foreach (var user in users)
+            {
+                res.Add(user.NICNumber, "user");
+            }
+            foreach (var unit in inventoryUnits)
+            {
+                res.Add(unit.RegistrationNo, "unit");
+            }
+            foreach (var brand in brands)
+            {
+                res.Add(brand.Id.ToString(), "brand");
+            }
+            foreach (var record in rentalRecords)
+            {
+                res.Add(record.Id.ToString(), "record");
+            }
+            foreach (var request in rentalRequests)
+            {
+                res.Add(request.Id.ToString(), "request");
+            }
+            return res;
         }
     }
 }

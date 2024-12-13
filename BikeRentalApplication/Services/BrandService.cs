@@ -1,4 +1,5 @@
 ﻿using BikeRentalApplication.DTOs.RequestDTOs;
+using BikeRentalApplication.DTOs.ResponseDTOs;
 using BikeRentalApplication.Entities;
 using BikeRentalApplication.IRepositories;
 using BikeRentalApplication.IServices;
@@ -27,6 +28,16 @@ namespace BikeRentalApplication.Services
         {
             var data = await _brandRepository.GetAllBrands();
             return data;
+        }
+        public async Task<BrandResponse> GetBrandById(Guid id)
+        {
+            var data = await _brandRepository.GetBrandById(id);
+            var brandResponse = new BrandResponse
+            {
+                Name = data.Name,
+                Id = id
+            };
+            return brandResponse;
         }
     }
 }
