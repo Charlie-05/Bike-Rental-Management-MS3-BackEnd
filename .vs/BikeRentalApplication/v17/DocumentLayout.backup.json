@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\Dhivina\\OneDrive\\Desktop\\Bike-Rental\\Bike-Rental-Management-MS3-BackEnd\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|c:\\users\\dhivina\\onedrive\\desktop\\bike-rental\\bike-rental-management-ms3-backend\\bikerentalapplication\\repositories\\rentalrecordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\repositories\\rentalrecordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|c:\\users\\dhivina\\onedrive\\desktop\\bike-rental\\bike-rental-management-ms3-backend\\bikerentalapplication\\irepositories\\irentalrecordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\irepositories\\irentalrecordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|c:\\users\\dhivina\\onedrive\\desktop\\bike-rental\\bike-rental-management-ms3-backend\\bikerentalapplication\\controllers\\rentalrecordscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\controllers\\rentalrecordscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,14 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|c:\\users\\dhivina\\onedrive\\desktop\\bike-rental\\bike-rental-management-ms3-backend\\bikerentalapplication\\services\\rentalrecordservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\services\\rentalrecordservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|c:\\users\\dhivina\\onedrive\\desktop\\bike-rental\\bike-rental-management-ms3-backend\\bikerentalapplication\\irepositories\\irentalrecordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\irepositories\\irentalrecordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|c:\\users\\dhivina\\onedrive\\desktop\\bike-rental\\bike-rental-management-ms3-backend\\bikerentalapplication\\repositories\\rentalrecordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|solutionrelative:bikerentalapplication\\repositories\\rentalrecordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7111DBB7-F30B-4B83-A947-D0968845A0AA}|BikeRentalApplication\\BikeRentalApplication.csproj|c:\\users\\dhivina\\onedrive\\desktop\\bike-rental\\bike-rental-management-ms3-backend\\bikerentalapplication\\controllers\\brandcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -206,43 +206,41 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "RentalRecordService.cs",
               "DocumentMoniker": "C:\\Users\\Dhivina\\OneDrive\\Desktop\\Bike-Rental\\Bike-Rental-Management-MS3-BackEnd\\BikeRentalApplication\\Services\\RentalRecordService.cs",
               "RelativeDocumentMoniker": "BikeRentalApplication\\Services\\RentalRecordService.cs",
-              "ToolTip": "C:\\Users\\Dhivina\\OneDrive\\Desktop\\Bike-Rental\\Bike-Rental-Management-MS3-BackEnd\\BikeRentalApplication\\Services\\RentalRecordService.cs*",
-              "RelativeToolTip": "BikeRentalApplication\\Services\\RentalRecordService.cs*",
+              "ToolTip": "C:\\Users\\Dhivina\\OneDrive\\Desktop\\Bike-Rental\\Bike-Rental-Management-MS3-BackEnd\\BikeRentalApplication\\Services\\RentalRecordService.cs",
+              "RelativeToolTip": "BikeRentalApplication\\Services\\RentalRecordService.cs",
               "ViewState": "AgIAALYAAAAAAAAAAAAwwMQAAABdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T18:03:09.743Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T18:03:09.743Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "IRentalRecordService.cs",
               "DocumentMoniker": "C:\\Users\\Dhivina\\OneDrive\\Desktop\\Bike-Rental\\Bike-Rental-Management-MS3-BackEnd\\BikeRentalApplication\\IServices\\IRentalRecordService.cs",
               "RelativeDocumentMoniker": "BikeRentalApplication\\IServices\\IRentalRecordService.cs",
-              "ToolTip": "C:\\Users\\Dhivina\\OneDrive\\Desktop\\Bike-Rental\\Bike-Rental-Management-MS3-BackEnd\\BikeRentalApplication\\IServices\\IRentalRecordService.cs*",
-              "RelativeToolTip": "BikeRentalApplication\\IServices\\IRentalRecordService.cs*",
+              "ToolTip": "C:\\Users\\Dhivina\\OneDrive\\Desktop\\Bike-Rental\\Bike-Rental-Management-MS3-BackEnd\\BikeRentalApplication\\IServices\\IRentalRecordService.cs",
+              "RelativeToolTip": "BikeRentalApplication\\IServices\\IRentalRecordService.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAuwBEAAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T18:10:36.113Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T18:10:36.113Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "RentalRecordsController.cs",
               "DocumentMoniker": "C:\\Users\\Dhivina\\OneDrive\\Desktop\\Bike-Rental\\Bike-Rental-Management-MS3-BackEnd\\BikeRentalApplication\\Controllers\\RentalRecordsController.cs",
               "RelativeDocumentMoniker": "BikeRentalApplication\\Controllers\\RentalRecordsController.cs",
-              "ToolTip": "C:\\Users\\Dhivina\\OneDrive\\Desktop\\Bike-Rental\\Bike-Rental-Management-MS3-BackEnd\\BikeRentalApplication\\Controllers\\RentalRecordsController.cs*",
-              "RelativeToolTip": "BikeRentalApplication\\Controllers\\RentalRecordsController.cs*",
-              "ViewState": "AgIAAJAAAAAAAAAAAAAIwKMAAAAuAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Dhivina\\OneDrive\\Desktop\\Bike-Rental\\Bike-Rental-Management-MS3-BackEnd\\BikeRentalApplication\\Controllers\\RentalRecordsController.cs",
+              "RelativeToolTip": "BikeRentalApplication\\Controllers\\RentalRecordsController.cs",
+              "ViewState": "AgIAAIsAAAAAAAAAAADwv6MAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-01T07:10:53.723Z",
               "EditorCaption": ""
@@ -257,8 +255,7 @@
               "RelativeToolTip": "BikeRentalApplication\\Controllers\\BrandController.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAA1wB4AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T11:25:45.329Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T11:25:45.329Z"
             },
             {
               "$type": "Document",
@@ -270,8 +267,7 @@
               "RelativeToolTip": "BikeRentalApplication\\Services\\BrandService.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAswB8AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T22:54:11.315Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-12T22:54:11.315Z"
             },
             {
               "$type": "Document",
@@ -283,30 +279,29 @@
               "RelativeToolTip": "BikeRentalApplication\\IServices\\IBrandService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T22:55:29.146Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-12T22:55:29.146Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "RentalRecordRepository.cs",
               "DocumentMoniker": "C:\\Users\\Dhivina\\OneDrive\\Desktop\\Bike-Rental\\Bike-Rental-Management-MS3-BackEnd\\BikeRentalApplication\\Repositories\\RentalRecordRepository.cs",
               "RelativeDocumentMoniker": "BikeRentalApplication\\Repositories\\RentalRecordRepository.cs",
               "ToolTip": "C:\\Users\\Dhivina\\OneDrive\\Desktop\\Bike-Rental\\Bike-Rental-Management-MS3-BackEnd\\BikeRentalApplication\\Repositories\\RentalRecordRepository.cs*",
               "RelativeToolTip": "BikeRentalApplication\\Repositories\\RentalRecordRepository.cs*",
-              "ViewState": "AgIAADoAAAAAAAAAAAAwwEsAAABdAAAAAAAAAA==",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAwwE0AAACnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-03T17:59:47.155Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "IRentalRecordRepository.cs",
               "DocumentMoniker": "C:\\Users\\Dhivina\\OneDrive\\Desktop\\Bike-Rental\\Bike-Rental-Management-MS3-BackEnd\\BikeRentalApplication\\IRepositories\\IRentalRecordRepository.cs",
               "RelativeDocumentMoniker": "BikeRentalApplication\\IRepositories\\IRentalRecordRepository.cs",
-              "ToolTip": "C:\\Users\\Dhivina\\OneDrive\\Desktop\\Bike-Rental\\Bike-Rental-Management-MS3-BackEnd\\BikeRentalApplication\\IRepositories\\IRentalRecordRepository.cs*",
-              "RelativeToolTip": "BikeRentalApplication\\IRepositories\\IRentalRecordRepository.cs*",
+              "ToolTip": "C:\\Users\\Dhivina\\OneDrive\\Desktop\\Bike-Rental\\Bike-Rental-Management-MS3-BackEnd\\BikeRentalApplication\\IRepositories\\IRentalRecordRepository.cs",
+              "RelativeToolTip": "BikeRentalApplication\\IRepositories\\IRentalRecordRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-12T20:31:23.868Z",
@@ -322,8 +317,7 @@
               "RelativeToolTip": "BikeRentalApplication\\Repositories\\BrandRepository.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAqwBsAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T20:18:37.142Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-12T20:18:37.142Z"
             },
             {
               "$type": "Document",
@@ -335,8 +329,7 @@
               "RelativeToolTip": "BikeRentalApplication\\Entities\\RentalRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T20:24:02.108Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-12T20:24:02.108Z"
             },
             {
               "$type": "Document",
@@ -348,8 +341,7 @@
               "RelativeToolTip": "BikeRentalApplication\\DTOs\\ResponseDTOs\\BrandResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T22:54:03.567Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-12T22:54:03.567Z"
             },
             {
               "$type": "Document",
@@ -361,8 +353,7 @@
               "RelativeToolTip": "BikeRentalApplication\\Repositories\\UserRepository.cs",
               "ViewState": "AgIAACcAAAAAAAAAAAAowD0AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T20:25:47.903Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-12T20:25:47.903Z"
             },
             {
               "$type": "Document",
@@ -374,8 +365,7 @@
               "RelativeToolTip": "BikeRentalApplication\\IRepositories\\IBrandRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T20:30:39.252Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-12T20:30:39.252Z"
             },
             {
               "$type": "Document",
@@ -387,8 +377,7 @@
               "RelativeToolTip": "BikeRentalApplication\\IRepositories\\IUserRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T20:32:30.199Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-12T20:32:30.199Z"
             },
             {
               "$type": "Document",
@@ -400,8 +389,7 @@
               "RelativeToolTip": "BikeRentalApplication\\IRepositories\\IInventoryUnitRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T20:31:01.502Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-12T20:31:01.502Z"
             },
             {
               "$type": "Document",
@@ -413,8 +401,7 @@
               "RelativeToolTip": "BikeRentalApplication\\IRepositories\\IRentalRequestRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T20:31:43.975Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-12T20:31:43.975Z"
             },
             {
               "$type": "Document",
@@ -426,8 +413,7 @@
               "RelativeToolTip": "BikeRentalApplication\\Repositories\\InventoryUnitRepository.cs",
               "ViewState": "AgIAACkAAAAAAAAAAAAgwD4AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T02:24:04.391Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-12T02:24:04.391Z"
             },
             {
               "$type": "Document",
@@ -439,8 +425,7 @@
               "RelativeToolTip": "BikeRentalApplication\\Entities\\User.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAASwCUAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T06:25:19.312Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-11T06:25:19.312Z"
             },
             {
               "$type": "Document",
@@ -452,8 +437,7 @@
               "RelativeToolTip": "BikeRentalApplication\\Repositories\\BikeRepository.cs",
               "ViewState": "AgIAAD0AAAAAAAAAAADwv0oAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T18:07:21.489Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T18:07:21.489Z"
             },
             {
               "$type": "Document",
@@ -465,8 +449,7 @@
               "RelativeToolTip": "BikeRentalApplication\\Repositories\\RentalRequestRepository.cs",
               "ViewState": "AgIAAC8AAAAAAAAAAAAswEIAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T11:54:51.314Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T11:54:51.314Z"
             },
             {
               "$type": "Document",
@@ -478,8 +461,7 @@
               "RelativeToolTip": "BikeRentalApplication\\IRepositories\\IBikeRepository.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T18:09:12.903Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T18:09:12.903Z"
             },
             {
               "$type": "Document",
@@ -491,8 +473,7 @@
               "RelativeToolTip": "BikeRentalApplication\\Entities\\RentalRecord.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T20:21:58.474Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-12T20:21:58.474Z"
             },
             {
               "$type": "Document",
@@ -504,8 +485,7 @@
               "RelativeToolTip": "BikeRentalApplication\\Entities\\InventoryUnit.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T20:20:12.885Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-12T20:20:12.885Z"
             },
             {
               "$type": "Document",
@@ -517,8 +497,7 @@
               "RelativeToolTip": "BikeRentalApplication\\Entities\\Brand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T20:18:30.117Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-12T20:18:30.117Z"
             },
             {
               "$type": "Document",
@@ -530,8 +509,7 @@
               "RelativeToolTip": "BikeRentalApplication\\Services\\UserService.cs",
               "ViewState": "AgIAAHgAAAAAAAAAAAAuwI0AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T05:02:24.222Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T05:02:24.222Z"
             },
             {
               "$type": "Document",
@@ -591,8 +569,7 @@
               "RelativeToolTip": "BikeRentalApplication\\Entities\\Bike.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAA8wAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-09T05:56:12.497Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-09T05:56:12.497Z"
             },
             {
               "$type": "Document",
