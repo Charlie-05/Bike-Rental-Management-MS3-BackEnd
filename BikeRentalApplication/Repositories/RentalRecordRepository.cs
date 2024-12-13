@@ -75,7 +75,7 @@ namespace BikeRentalApplication.Repositories
         }
         public async Task<List<RentalRecord>>GetRecordsByRange(DateTime Start , DateTime End)
         {
-            var data = await _dbContext.RentalRecords.Where(r => r.RentalReturn > Start &&  r.RentalReturn < End && r.RentalReturn!= null).ToListAsync();
+            var data = await _dbContext.RentalRecords.Where(r => r.RentalReturn > Start &&  r.RentalReturn < End && r.RentalReturn!= null).Include(r => r.RentalRequest).ToListAsync();
             return data;
         }
 
